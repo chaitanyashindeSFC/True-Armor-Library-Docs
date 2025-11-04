@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Zap, Palette, Shield } from "lucide-react";
 
@@ -7,19 +6,19 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-subtle">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-          <Link to="/" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
               <span className="text-lg font-bold text-white">T</span>
             </div>
             <span className="font-bold text-lg">TrueArmor UI</span>
-          </Link>
+          </a>
           <nav className="flex items-center space-x-1">
-            <Link to="/docs">
+            <a href="/docs">
               <Button variant="ghost">Documentation</Button>
-            </Link>
-            <Link to="/quickstart">
+            </a>
+            <a href="/quickstart">
               <Button>Get Started</Button>
-            </Link>
+            </a>
           </nav>
         </div>
       </header>
@@ -46,17 +45,17 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/quickstart">
+              <a href="/quickstart">
                 <Button size="lg" className="text-lg px-8">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
-              <Link to="/docs">
+              </a>
+              <a href="/docs">
                 <Button size="lg" variant="outline" className="text-lg px-8">
                   View Documentation
                 </Button>
-              </Link>
+              </a>
             </div>
 
             <div className="pt-8 flex items-center justify-center gap-8 text-sm text-muted-foreground">
@@ -138,12 +137,12 @@ const Index = () => {
               <p className="text-lg mb-8 opacity-90">
                 Join thousands of developers using TrueArmor UI to create beautiful applications.
               </p>
-              <Link to="/quickstart">
+              <a href="/quickstart">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8">
                   Start Building Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -172,12 +171,12 @@ const Index = () => {
               >
                 Twitter
               </a>
-              <Link
-                to="/docs"
+              <a
+                href="/docs"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Documentation
-              </Link>
+              </a>
             </div>
           </div>
         </div>
