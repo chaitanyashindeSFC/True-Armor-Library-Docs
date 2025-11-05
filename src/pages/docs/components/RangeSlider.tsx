@@ -29,7 +29,7 @@ const RangeSliderDoc = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <RangeSliderTA defaultValue={50} />
+            <RangeSliderTA defaultValue={50} max={100} />
           </div>
         </div>
 

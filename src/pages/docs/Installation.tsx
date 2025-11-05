@@ -9,17 +9,22 @@ const Installation = () => {
   const yarnInstall = `yarn add @chaitanya123123/truearmor-ui-components`;
   const pnpmInstall = `pnpm add @chaitanya123123/truearmor-ui-components`;
 
-  const tailwindConfig = `// tailwind.config.js
+  const tailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/@chaitanya123123/truearmor-ui-components/**/*.js",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+    "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@chaitanya123123/truearmor-ui-components/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
-}`;
+  plugins: [require("flowbite/plugin")],
+};
+`;
+
+const cssConfig = `import "stfox-tailwind-react-ui/styles.css";`;
 
   const tsConfig = `// tsconfig.json
 {
@@ -101,6 +106,17 @@ module.exports = {
               components in the content paths:
             </p>
             <CodeBlock code={tailwindConfig} language="javascript" />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">
+              Css Configuration
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              Import the TrueArmor UI CSS styles in your main CSS or
+              JavaScript/TypeScript entry file:
+            </p>
+            <CodeBlock code={cssConfig} language="json" />
           </div>
 
           <div>

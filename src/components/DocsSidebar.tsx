@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { X, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -30,11 +30,27 @@ const navSections: NavSection[] = [
       { label: "Alerts", path: "/docs/components/alerts" },
       { label: "Buttons", path: "/docs/components/buttons" },
       { label: "Cards", path: "/docs/components/cards" },
-      { label: "Tabs", path: "/docs/components/tabs" },
+      // { label: "Tabs", path: "/docs/components/tabs" },
       { label: "Badges", path: "/docs/components/badges" },
       { label: "Accordions", path: "/docs/components/accordions" },
       { label: "Modals", path: "/docs/components/modals" },
       { label: "Forms", path: "/docs/components/forms" },
+      { label: "Breadcrumbs", path: "/docs/components/breadcrumbs" },
+      { label: "Checkboxes", path: "/docs/components/checkboxes" },
+      { label: "Context Menu", path: "/docs/components/context-menu" },
+      { label: "Date Picker", path: "/docs/components/date-picker" },
+      { label: "Dropdown", path: "/docs/components/dropdown" },
+      { label: "File Input", path: "/docs/components/file-input" },
+      { label: "Input", path: "/docs/components/input" },
+      // { label: "Pagination", path: "/docs/components/pagination" },
+      { label: "Progress", path: "/docs/components/progress" },
+      { label: "Radio", path: "/docs/components/radio" },
+      { label: "Range Slider", path: "/docs/components/rangeslider" },
+      { label: "Stepper", path: "/docs/components/stepper" },
+      { label: "Table", path: "/docs/components/table" },
+      { label: "Toast", path: "/docs/components/toast" },
+      { label: "Toggle Switch", path: "/docs/components/toggleswitch" },
+      { label: "Tooltip", path: "/docs/components/tooltip" },
     ],
   },
   {
@@ -48,18 +64,34 @@ const navSections: NavSection[] = [
   },
 ];
 
+const SCROLL_KEY = "docsSidebarScrollPosition";
+
 const DocsSidebar = ({ isOpen, onClose }: DocsSidebarProps) => {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(navSections.map((s) => s.title))
   );
 
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  // ✅ Save scroll position when scrolling
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      localStorage.setItem(SCROLL_KEY, scrollRef.current.scrollTop.toString());
+    }
+  };
+
+  // ✅ Restore scroll position on load
+  useEffect(() => {
+    const savedScroll = localStorage.getItem(SCROLL_KEY);
+    if (scrollRef.current && savedScroll) {
+      scrollRef.current.scrollTop = parseInt(savedScroll, 10);
+    }
+  }, []);
+
   const toggleSection = (title: string) => {
     const newExpanded = new Set(expandedSections);
-    if (newExpanded.has(title)) {
-      newExpanded.delete(title);
-    } else {
-      newExpanded.add(title);
-    }
+    if (newExpanded.has(title)) newExpanded.delete(title);
+    else newExpanded.add(title);
     setExpandedSections(newExpanded);
   };
 
@@ -78,7 +110,12 @@ const DocsSidebar = ({ isOpen, onClose }: DocsSidebarProps) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="flex h-full flex-col overflow-y-auto pb-10">
+        {/* ✅ scrollable div with saved scroll */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex h-full flex-col overflow-y-auto pb-10"
+        >
           <div className="flex items-center justify-between p-4 md:hidden">
             <span className="font-semibold">Documentation</span>
             <Button variant="ghost" size="icon" onClick={onClose}>

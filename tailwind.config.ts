@@ -57,6 +57,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"], // ✅ add this line
+      },
       },
       borderRadius: {
         lg: "var(--radius)",

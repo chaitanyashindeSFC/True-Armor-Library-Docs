@@ -14,7 +14,7 @@ const TableDoc = () => {
   const columns = [
     { key: 'name', header: 'Name' },
     { key: 'age', header: 'Age' },
-    { key: 'city', header: 'City' },
+    { key: 'city', header: 'City' },  
   ];
 
   const importCode = `import { TableTA } from '@chaitanya123123/truearmor-ui-components';`;

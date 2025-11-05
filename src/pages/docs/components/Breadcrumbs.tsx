@@ -1,6 +1,10 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { BreadCrumbTA } from '@chaitanya123123/truearmor-ui-components';
+import {
+  BreadCrumbTA,
+  BreadCrumbItem,
+  BreadCrumbSeperator
+} from '@chaitanya123123/truearmor-ui-components';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -38,12 +42,13 @@ const Breadcrumbs = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <BreadCrumbTA 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Components', href: '/docs/components', active: true }
-              ]}
-            />
+            <div className="p-4 border rounded-lg bg-white">
+              <BreadCrumbTA>
+                <BreadCrumbItem label="Home" href="/" />
+                <BreadCrumbSeperator />
+                <BreadCrumbItem label="Components" href="/docs/components" active />
+              </BreadCrumbTA>
+            </div>
           </div>
         </div>
 

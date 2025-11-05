@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToastTA } from '@chaitanya123123/truearmor-ui-components';
+import { ToastTA ,ButtonTA} from '@chaitanya123123/truearmor-ui-components';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
+
 
 interface PropsRow {
   name: string;
@@ -78,13 +79,17 @@ export default function ToastExample() {
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
         <div className="p-4 border rounded-lg bg-white">
-          <ToastTA data={data} />
-          <button
-            className="px-4 py-2 bg-primary text-white rounded-md"
+         <div className='h-10'>
+           <ToastTA data={data}  top-0 right-0/>
+         </div>
+          <br />
+
+          <ButtonTA
+           
             onClick={showToast}
           >
             Show Toast
-          </button>
+          </ButtonTA>
         </div>
       </div>
 

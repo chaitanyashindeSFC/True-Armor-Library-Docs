@@ -3,7 +3,7 @@ import DocsLayout from '@/components/DocsLayout';
 import { StepperTA } from '@chaitanya123123/truearmor-ui-components';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
-
+import { ButtonTA } from '@chaitanya123123/truearmor-ui-components';
 const StepperDoc = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const steps = ['Account', 'Details', 'Review'];
@@ -47,21 +47,21 @@ const steps = ['Account', 'Details', 'Review'];
               currentStep={currentStep}
               onStepClick={setCurrentStep}
             />
-            <div className="mt-4 space-x-2">
-              <button 
+            <div className="mt-4 space-x-2 flex">
+              <ButtonTA 
                 onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              
                 disabled={currentStep === 1}
               >
                 Previous
-              </button>
-              <button 
+              </ButtonTA>
+              <ButtonTA 
                 onClick={() => setCurrentStep(Math.min(steps.length, currentStep + 1))}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              
                 disabled={currentStep === steps.length}
               >
                 Next
-              </button>
+              </ButtonTA>
             </div>
           </div>
         </div>
