@@ -21,7 +21,7 @@ const navSections: NavSection[] = [
       { label: "Introduction", path: "/docs" },
       { label: "Installation", path: "/docs/installation" },
       { label: "Quickstart", path: "/quickstart" },
-      { label: "Changelog", path: "/docs/changelog" },
+      
     ],
   },
   {
@@ -53,15 +53,7 @@ const navSections: NavSection[] = [
       { label: "Tooltip", path: "/docs/components/tooltip" },
     ],
   },
-  {
-    title: "Advanced",
-    items: [
-      { label: "Theming", path: "/docs/theming" },
-      { label: "Customization", path: "/docs/customization" },
-      { label: "Accessibility", path: "/docs/accessibility" },
-      { label: "Contributing", path: "/docs/contributing" },
-    ],
-  },
+
 ];
 
 const SCROLL_KEY = "docsSidebarScrollPosition";

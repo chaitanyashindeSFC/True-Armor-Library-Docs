@@ -1,4 +1,3 @@
-import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
 import { TabsTA } from '@chaitanya123123/truearmor-ui-components';
 import CodeBlock from '@/components/CodeBlock';
