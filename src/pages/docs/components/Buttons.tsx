@@ -124,7 +124,7 @@ function App() {
             <div className="flex flex-wrap gap-3">
               <ButtonTA
                 label="Download"
-                icon={<span className="text-lg">📥</span>}
+                icon={<span className="text-lg"></span>}
                 iconPosition="before"
               />
               <ButtonTA>
