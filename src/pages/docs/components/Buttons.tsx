@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { ButtonTA } from "@chaitanya123123/truearmor-ui-components"; // ✅ your button
+import { ButtonTA } from "@chaitanya123123/truearmor-ui-components"; // ✅ TrueArmor UI button
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
+import { Download, ArrowRight } from "lucide-react"; // ✅ Correct Lucide React imports
 
 const Buttons = () => {
+  // ✅ Example Code Snippets
   const basicExample = `import { ButtonTA } from "@chaitanya123123/truearmor-ui-components";
 
 function App() {
@@ -20,18 +22,26 @@ function App() {
 
   const iconsExample = `import { ArrowRight, Download } from "lucide-react";
 
-<ButtonTA label="Download" icon={<Download />} iconPosition="before" />
-<ButtonTA>
-  Continue
-  <ArrowRight />
-</ButtonTA>`;
+<ButtonTA 
+  label="Download" 
+  icon={<Download size={16} />} 
+  iconPosition="before" 
+/>
 
+<ButtonTA 
+  label="Continue" 
+  icon={<ArrowRight size={16} />} 
+  iconPosition="after" 
+/>`;
+
+  // ✅ Props Table Data
   const buttonProps = [
     {
       name: "label",
       type: "string",
       default: '"Click Me"',
-      description: "Text label for the button. Ignored if children are provided.",
+      description:
+        "Text label for the button. Ignored if children are provided.",
     },
     {
       name: "children",
@@ -80,25 +90,27 @@ function App() {
 
   return (
     <DocsLayout>
-      <div className="space-y-8 animate-fade-in">
-        {/* Header */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 font-[Montserrat] overflow-x-hidden">
+        {/* ✅ Header */}
         <div>
           <h1 className="text-4xl font-bold tracking-tight mb-4">Button</h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-600">
             The <code>ButtonTA</code> component is used for actions in forms,
             dialogs, and toolbars. It supports multiple styles, icons, and
             disabled states.
           </p>
         </div>
 
-        {/* Basic Usage */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight mb-4">
-            Basic Usage
-          </h2>
-          <CodeBlock code={basicExample} language="tsx" />
+        {/* ✅ Basic Usage */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
 
-          <div className="mt-6 rounded-xl border bg-card p-8 shadow-soft">
+          {/* Scroll-safe code block */}
+          <div className="overflow-x-auto rounded-md border bg-gray-50">
+            <CodeBlock code={basicExample} language="tsx" />
+          </div>
+
+          <div className="mt-6 p-6 border rounded-xl bg-white shadow-sm">
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
             <div className="flex flex-wrap gap-3">
               <ButtonTA label="Primary" />
@@ -107,61 +119,64 @@ function App() {
               <ButtonTA label="Disabled" disabled />
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Icons Example */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight mb-4">
-            With Icons
-          </h2>
-          <p className="text-muted-foreground mb-4">
-            Add icons before or after button text to improve clarity.
+        {/* ✅ Icons Example */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold mb-4">With Icons</h2>
+          <p className="text-gray-500 mb-4">
+            Add icons before or after button text to enhance clarity and
+            usability.
           </p>
-          <CodeBlock code={iconsExample} language="tsx" />
 
-          <div className="mt-6 rounded-xl border bg-card p-8 shadow-soft">
+          <div className="overflow-x-auto rounded-md border bg-gray-50">
+            <CodeBlock code={iconsExample} language="tsx" />
+          </div>
+
+          <div className="mt-6 p-6 border rounded-xl bg-white shadow-sm">
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 items-center">
               <ButtonTA
                 label="Download"
-                icon={<span className="text-lg"></span>}
+                icon={<Download size={18} />}
                 iconPosition="before"
               />
-              <ButtonTA>
-                Continue
-                <span className="ml-1">→</span>
-              </ButtonTA>
+              <ButtonTA
+                label="Continue"
+                icon={<ArrowRight size={18} />}
+                iconPosition="after"
+              />
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Props Table */}
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight mb-4">Props</h2>
+        {/* ✅ Props Table */}
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Props</h2>
           <PropsTable props={buttonProps} />
-        </div>
+        </section>
 
-        {/* Best Practices */}
-        <div className="rounded-xl border bg-muted/50 p-6">
+        {/* ✅ Best Practices */}
+        <section className="rounded-xl border bg-muted/50 p-6">
           <h3 className="text-lg font-semibold mb-2">💡 Best Practices</h3>
-          <ul className="text-sm text-muted-foreground space-y-2">
-            <li>• Use primary for the main action on a screen</li>
-            <li>• Secondary buttons for alternative actions</li>
-            <li>• Tertiary for less important or subtle actions</li>
-            <li>• Keep text short and action-focused (e.g., “Save”, “Continue”)</li>
-            <li>• Include clear icons when they enhance understanding</li>
+          <ul className="text-sm text-gray-600 space-y-2">
+            <li>• Use primary for the main action on a screen.</li>
+            <li>• Secondary buttons for alternative actions.</li>
+            <li>• Tertiary for subtle or less critical actions.</li>
+            <li>• Keep labels short and action-oriented (e.g., “Save”, “Next”).</li>
+            <li>• Add icons when they improve context or clarity.</li>
           </ul>
-        </div>
+        </section>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-between py-4 border-t">
+        {/* ✅ Navigation */}
+        <footer className="flex items-center justify-between py-4 border-t">
           <Link to="/docs/components/alerts">
             <ButtonTA buttonType="secondary">← Alerts</ButtonTA>
           </Link>
           <Link to="/docs/components/cards">
             <ButtonTA buttonType="secondary">Cards →</ButtonTA>
           </Link>
-        </div>
+        </footer>
       </div>
     </DocsLayout>
   );
