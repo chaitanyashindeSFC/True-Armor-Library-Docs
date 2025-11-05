@@ -13,10 +13,10 @@ import "@chaitanya123123/truearmor-ui-components/styles.css";
 function App() {
   return (
     <div>
-      <Alert variant="info">Welcome to TrueArmor UI!</Alert>
-      <Button onClick={() => console.log("Clicked!")}>
+      <AlertTA variant="info">Welcome to TrueArmor UI!</Alert>
+      <ButtonTA onClick={() => console.log("Clicked!")}>
         Click me
-      </Button>
+      </ButtonTA>
     </div>
   );
 }`;
