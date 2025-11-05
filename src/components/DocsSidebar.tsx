@@ -21,7 +21,6 @@ const navSections: NavSection[] = [
       { label: "Introduction", path: "/docs" },
       { label: "Installation", path: "/docs/installation" },
       { label: "Quickstart", path: "/quickstart" },
-      
     ],
   },
   {
@@ -30,7 +29,6 @@ const navSections: NavSection[] = [
       { label: "Alerts", path: "/docs/components/alerts" },
       { label: "Buttons", path: "/docs/components/buttons" },
       { label: "Cards", path: "/docs/components/cards" },
-      // { label: "Tabs", path: "/docs/components/tabs" },
       { label: "Badges", path: "/docs/components/badges" },
       { label: "Accordions", path: "/docs/components/accordions" },
       { label: "Modals", path: "/docs/components/modals" },
@@ -42,7 +40,6 @@ const navSections: NavSection[] = [
       { label: "Dropdown", path: "/docs/components/dropdown" },
       { label: "File Input", path: "/docs/components/file-input" },
       { label: "Input", path: "/docs/components/input" },
-      // { label: "Pagination", path: "/docs/components/pagination" },
       { label: "Progress", path: "/docs/components/progress" },
       { label: "Radio", path: "/docs/components/radio" },
       { label: "Range Slider", path: "/docs/components/rangeslider" },
@@ -53,7 +50,6 @@ const navSections: NavSection[] = [
       { label: "Tooltip", path: "/docs/components/tooltip" },
     ],
   },
-
 ];
 
 const SCROLL_KEY = "docsSidebarScrollPosition";
@@ -65,14 +61,12 @@ const DocsSidebar = ({ isOpen, onClose }: DocsSidebarProps) => {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  // ✅ Save scroll position when scrolling
   const handleScroll = () => {
     if (scrollRef.current) {
       localStorage.setItem(SCROLL_KEY, scrollRef.current.scrollTop.toString());
     }
   };
 
-  // ✅ Restore scroll position on load
   useEffect(() => {
     const savedScroll = localStorage.getItem(SCROLL_KEY);
     if (scrollRef.current && savedScroll) {
@@ -102,11 +96,11 @@ const DocsSidebar = ({ isOpen, onClose }: DocsSidebarProps) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        {/* ✅ scrollable div with saved scroll */}
+        {/* ✅ Scrollable area with styled thin scrollbar */}
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex h-full flex-col overflow-y-auto pb-10"
+          className="flex h-full flex-col overflow-y-auto pb-10 custom-scrollbar"
         >
           <div className="flex items-center justify-between p-4 md:hidden">
             <span className="font-semibold">Documentation</span>

@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import {
   AlertTA,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chaitanya123123/truearmor-ui-components"; // ✅ your library
+  
+} from "@chaitanya123123/truearmor-ui-components";
 import { ButtonTA } from "@chaitanya123123/truearmor-ui-components";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
@@ -34,7 +31,8 @@ function App() {
       name: "type",
       type: '"success" | "error" | "warning" | "info"',
       default: '"info"',
-      description: "The visual type of the alert, which controls its icon and color.",
+      description:
+        "The visual type of the alert, which controls its icon and color.",
     },
     {
       name: "title",
@@ -52,29 +50,32 @@ function App() {
       name: "className",
       type: "string",
       default: "undefined",
-      description: "Additional custom CSS classes to apply to the alert container.",
+      description:
+        "Additional custom CSS classes to apply to the alert container.",
     },
   ];
 
   return (
     <DocsLayout>
-      <div className="space-y-8 animate-fade-in">
-        {/* Header */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 font-[Montserrat] overflow-x-hidden">
+        {/* ✅ Header */}
         <div>
           <h1 className="text-4xl font-bold tracking-tight mb-4">Alert</h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-600">
             Displays important messages to the user — including info, success,
             warnings, and errors.
           </p>
         </div>
 
-        {/* Basic Usage */}
-        <div className="space-y-6">
+        {/* ✅ Basic Usage */}
+        <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight mb-4">
-              Basic Usage
-            </h2>
-            <CodeBlock code={basicExample} language="tsx" />
+            <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
+
+            {/* Prevent overflow */}
+            <div className="overflow-x-auto rounded-md border bg-gray-50">
+              <CodeBlock code={basicExample} language="tsx" />
+            </div>
 
             <div className="mt-6 space-y-4">
               <AlertTA
@@ -85,13 +86,18 @@ function App() {
             </div>
           </div>
 
-          {/* Variants */}
+          {/* ✅ Variants */}
           <div>
-            <h2 className="text-2xl font-bold tracking-tight mb-4">Variants</h2>
-            <p className="text-muted-foreground mb-4">
-              Use different <code>type</code> values to convey different levels of importance.
+            <h2 className="text-2xl font-bold mb-4">Variants</h2>
+            <p className="text-gray-500 mb-4">
+              Use different <code>type</code> values to convey different levels
+              of importance.
             </p>
-            <CodeBlock code={variantsExample} language="tsx" />
+
+            {/* CodeBlock in scroll-safe container */}
+            <div className="overflow-x-auto rounded-md border bg-gray-50">
+              <CodeBlock code={variantsExample} language="tsx" />
+            </div>
 
             <div className="mt-6 space-y-4">
               <AlertTA
@@ -117,16 +123,16 @@ function App() {
             </div>
           </div>
 
-          {/* Props Table */}
+          {/* ✅ Props Table */}
           <div>
-            <h2 className="text-2xl font-bold tracking-tight mb-4">Props</h2>
+            <h2 className="text-2xl font-bold mb-4">Props</h2>
             <PropsTable props={alertProps} />
           </div>
 
-          {/* Best Practices */}
+          {/* ✅ Best Practices */}
           <div className="rounded-xl border bg-muted/50 p-6">
             <h3 className="text-lg font-semibold mb-2">💡 Best Practices</h3>
-            <ul className="text-sm text-muted-foreground space-y-2">
+            <ul className="text-sm text-gray-600 space-y-2">
               <li>• Use icons to visually differentiate alert types</li>
               <li>• Keep alert messages short and clear</li>
               <li>• Use error type only for actual errors</li>
@@ -136,16 +142,16 @@ function App() {
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-between py-4 border-t">
+        {/* ✅ Navigation */}
+        <footer className="flex items-center justify-between py-4 border-t">
           <Link to="/docs">
             <ButtonTA buttonType="secondary">← Introduction</ButtonTA>
           </Link>
           <Link to="/docs/components/buttons">
             <ButtonTA buttonType="secondary">Buttons →</ButtonTA>
           </Link>
-        </div>
-      </div>  
+        </footer>
+      </div>
     </DocsLayout>
   );
 };
