@@ -24,7 +24,7 @@ module.exports = {
 };
 `;
 
-const cssConfig = `import "stfox-tailwind-react-ui/styles.css";`;
+const cssConfig = `import "@chaitanya123123/truearmor-ui-components/styles.css";`;
 
   const tsConfig = `// tsconfig.json
 {
