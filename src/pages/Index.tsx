@@ -16,7 +16,7 @@ const Index = () => {
             <a href="/docs">
               <Button variant="ghost">Documentation</Button>
             </a>
-            <a href="/quickstart">
+            <a href="/docs/installation">
               <Button>Get Started</Button>
             </a>
           </nav>

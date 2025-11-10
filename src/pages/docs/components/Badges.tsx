@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { BadgeTA } from '@chaitanya123123/truearmor-ui-components';
+import { BadgeTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Badges = () => {
-  const importCode = `import { BadgeTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { BadgeTA } from 'atoms-ta';`;
 
   const usageCode = `<BadgeTA label="New" color="success" />`;
 

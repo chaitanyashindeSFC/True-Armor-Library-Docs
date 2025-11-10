@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { FileInputTA } from '@chaitanya123123/truearmor-ui-components';
+import { FileInputTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const FileInput = () => {
-  const importCode = `import { FileInputTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { FileInputTA } from 'atoms-ta';`;
   const usageCode = `<FileInputTA />`;
 
   const props = [

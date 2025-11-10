@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToastTA ,ButtonTA} from '@chaitanya123123/truearmor-ui-components';
+import { ToastTA ,ButtonTA} from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -46,9 +46,9 @@ const ToastComponent = () => {
     }
   ];
 
-  const importCode = `import { ToastTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { ToastTA } from 'atoms-ta';`;
 
-  const usageCode = `import { ToastTA } from '@chaitanya123123/truearmor-ui-components';
+  const usageCode = `import { ToastTA } from 'atoms-ta';
 
 export default function ToastExample() {
   return (

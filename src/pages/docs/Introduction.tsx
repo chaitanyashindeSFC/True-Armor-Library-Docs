@@ -5,10 +5,10 @@ import CodeBlock from "@/components/CodeBlock";
 import DocsLayout from "@/components/DocsLayout";
 
 const Introduction = () => {
-  const installCode = `npm install @chaitanya123123/truearmor-ui-components`;
+  const installCode = `npm install atoms-ta`;
 
-  const importCode = `import { ButtonTA, AlertTA, CardTA } from "@chaitanya123123/truearmor-ui-components";
-import "@chaitanya123123/truearmor-ui-components/styles.css";
+  const importCode = `import { ButtonTA, AlertTA, CardTA } from "atoms-ta";
+import "atoms-ta/styles.css";
 
 function App() {
   return (
@@ -114,7 +114,7 @@ function App() {
               <span>Active community and regular updates</span>
             </li>
           </ul>
-          <Link to="/quickstart">
+          <Link to="/docs/installation">
             <Button size="lg" className="bg-white text-primary hover:bg-white/90">
               Get Started →
             </Button>

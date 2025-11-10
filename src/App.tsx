@@ -33,7 +33,7 @@ import StepperDoc from "@/pages/docs/components/Stepper";
 import TableDoc from "@/pages/docs/components/Table";
 import Theming from "./pages/docs/Theming";
 
-import "stfox-tailwind-react-ui/styles.css";
+import 'atoms-ta/styles.css';
 
 const TabsDoc = lazy(() => import("./pages/docs/components/Tabs"));
 const ToastDoc = lazy(() => import("./pages/docs/components/Toast"));
