@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import DocsLayout from "@/components/DocsLayout";
-import { CheckboxTA } from "atoms-ta";
+import { CheckboxTA } from "@true-armor/atoms-ta";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 
 const Checkboxes = () => {
-  const importCode = `import { CheckboxTA } from 'atoms-ta';`;
+  const importCode = `import { CheckboxTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<CheckboxTA label="Accept" checked={true} onChange={(v)=>console.log(v)} />`;
 
   const props = [

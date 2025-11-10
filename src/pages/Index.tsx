@@ -46,7 +46,7 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="/quickstart">
+              <a href="/docs/installation">
                 <Button size="lg" className="text-lg px-8">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />

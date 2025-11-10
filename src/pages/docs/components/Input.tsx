@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { InputTA } from 'atoms-ta';
+import { InputTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const InputDoc = () => {
   const [value, setValue] = useState('');
-  const importCode = `import { InputTA } from 'atoms-ta';`;
+  const importCode = `import { InputTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<InputTA id="name" label="Name" value={value} onChange={(e)=>setValue(e.target.value)} />`;
 
   const props = [

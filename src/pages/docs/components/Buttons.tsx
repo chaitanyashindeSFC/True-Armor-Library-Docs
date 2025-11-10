@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ButtonTA } from "atoms-ta"; // ✅ TrueArmor UI button
+import { ButtonTA } from "@true-armor/atoms-ta"; // ✅ TrueArmor UI button
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
@@ -7,7 +7,7 @@ import { Download, ArrowRight } from "lucide-react"; // ✅ Correct Lucide React
 
 const Buttons = () => {
   // ✅ Example Code Snippets
-  const basicExample = `import { ButtonTA } from "atoms-ta";
+  const basicExample = `import { ButtonTA } from "@true-armor/atoms-ta";
 
 function App() {
   return (

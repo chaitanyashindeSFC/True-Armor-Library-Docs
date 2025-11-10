@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { TableTA } from 'atoms-ta';
+import { TableTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -17,7 +17,7 @@ const TableDoc = () => {
     { key: 'city', header: 'City' },  
   ];
 
-  const importCode = `import { TableTA } from 'atoms-ta';`;
+  const importCode = `import { TableTA } from '@true-armor/atoms-ta';`;
   const usageCode = `const data = [
   { id: 1, name: 'John', age: 30, city: 'New York' },
   { id: 2, name: 'Jane', age: 25, city: 'Los Angeles' },

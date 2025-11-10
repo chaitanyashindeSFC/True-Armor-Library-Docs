@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { CustomRadioTA } from 'atoms-ta';
+import { CustomRadioTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const RadioDoc = () => {
-  const importCode = `import { CustomRadioTA } from 'atoms-ta';`;
+  const importCode = `import { CustomRadioTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<CustomRadioTA label="Option" name="r1" checked={true} onChange={()=>{}} />`;
 
   const props = [

@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { FileInputTA } from 'atoms-ta';
+import { FileInputTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const FileInput = () => {
-  const importCode = `import { FileInputTA } from 'atoms-ta';`;
+  const importCode = `import { FileInputTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<FileInputTA />`;
 
   const props = [

@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import {
   AlertTA,
   
-} from "atoms-ta";
-import { ButtonTA } from "atoms-ta";
+} from "@true-armor/atoms-ta";
+import { ButtonTA } from "@true-armor/atoms-ta";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
 
 const Alerts = () => {
-  const basicExample = `import { AlertTA } from "atoms-ta";
+  const basicExample = `import { AlertTA } from "@true-armor/atoms-ta";
 
 function App() {
   return (

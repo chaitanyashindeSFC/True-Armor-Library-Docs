@@ -5,9 +5,9 @@ import CodeBlock from "@/components/CodeBlock";
 import DocsLayout from "@/components/DocsLayout";
 
 const Installation = () => {
-  const npmInstall = `npm install atoms-ta`;
-  const yarnInstall = `yarn add atoms-ta`;
-  const pnpmInstall = `pnpm add atoms-ta`;
+  const npmInstall = `npm install @true-armor/atoms-ta`;
+  const yarnInstall = `yarn add @true-armor/atoms-ta`;
+  const pnpmInstall = `pnpm add @true-armor/atoms-ta`;
 
   const tailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/atoms-ta/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@true-armor/atoms-ta/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -24,7 +24,7 @@ module.exports = {
 };
 `;
 
-const cssConfig = `import "atoms-ta/styles.css";`;
+const cssConfig = `import "@true-armor/atoms-ta/styles.css";`;
 
   const tsConfig = `// tsconfig.json
 {
@@ -113,7 +113,7 @@ const cssConfig = `import "atoms-ta/styles.css";`;
               Css Configuration
             </h2>
             <p className="text-muted-foreground mb-4">
-              Import the TrueArmor UI styles in your App.jsx or index.tsx file:
+              Import the TrueArmor UI styles in your App.jsx:
             </p>
             <CodeBlock code={cssConfig} language="json" />
           </div>
