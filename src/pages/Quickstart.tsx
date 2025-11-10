@@ -11,13 +11,13 @@ import {
   CardContent,
   CardTitle,
   CardDescription,
-} from "atoms-ta";
+} from "@true-armor/atoms-ta";
 
 const Quickstart = () => {
   const [count, setCount] = useState(0);
 
   const quickExample = `import React, { useState } from "react";
-import { ButtonTA } from "atoms-ta";
+import { ButtonTA } from "@true-armor/atoms-ta";
 
 function CounterExample() {
   const [count, setCount] = useState(0);
@@ -33,7 +33,7 @@ function CounterExample() {
   );
 }`;
 
-  const alertExample = `import { AlertTA } from "atoms-ta";
+  const alertExample = `import { AlertTA } from "@true-armor/atoms-ta";
 
 function AlertExample() {
   return (
@@ -46,7 +46,7 @@ function AlertExample() {
 }`;
 
   const cardExample = `import { CardTA, CardTitle, CardContent, CardDescription, ButtonTA } 
-from "atoms-ta";
+from "@true-armor/atoms-ta";
 
 function ProductCard() {
   return (

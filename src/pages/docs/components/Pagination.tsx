@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { PaginationTA } from 'atoms-ta';
+import { PaginationTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const PaginationDoc = () => {
-  const importCode = `import { PaginationTA } from 'atoms-ta';`;
+  const importCode = `import { PaginationTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<PaginationTA length={100} rowsCount={10} page={0} setPage={(p)=>{}} />`;
 
   const props = [

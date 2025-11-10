@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToolTipTA } from 'atoms-ta';
+import { ToolTipTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -44,9 +44,9 @@ const TooltipComponent = () => {
     }
   ];
 
-  const importCode = `import { ToolTipTA } from 'atoms-ta';`;
+  const importCode = `import { ToolTipTA } from '@true-armor/atoms-ta';`;
 
-  const usageCode = `import { ToolTipTA } from 'atoms-ta';
+  const usageCode = `import { ToolTipTA } from '@true-armor/atoms-ta';
 
 export default function TooltipExample() {
   return (

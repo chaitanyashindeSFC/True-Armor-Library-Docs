@@ -4,12 +4,12 @@ import {
   BreadCrumbTA,
   BreadCrumbItem,
   BreadCrumbSeperator
-} from 'atoms-ta';
+} from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Breadcrumbs = () => {
-  const importCode = `import { BreadCrumbTA } from 'atoms-ta';`;
+  const importCode = `import { BreadCrumbTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<BreadCrumbTA 
   items={[
     { label: 'Home', href: '/' },

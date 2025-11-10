@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { DatePickerTA, CalendarTA } from 'atoms-ta';
+import { DatePickerTA, CalendarTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const DatePickerDoc = () => {
-  const importCode = `import { DatePickerTA } from 'atoms-ta';`;
+  const importCode = `import { DatePickerTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<DatePickerTA />`;
 
   const props = [

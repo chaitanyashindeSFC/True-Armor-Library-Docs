@@ -65,7 +65,7 @@ export function ComponentPage({
           <p className="text-muted-foreground mb-4">
             Import the component from our package:
           </p>
-          <CodeBlock code={`import { ${title} } from "atoms-ta";`} language="typescript" />
+          <CodeBlock code={`import { ${title} } from "@true-armor/atoms-ta";`} language="typescript" />
         </div>
 
         {/* Props */}

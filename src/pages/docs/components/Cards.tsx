@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardLeftIcon,
   CardRightIcon,
-} from "atoms-ta";
+} from "@true-armor/atoms-ta";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import { FolderGit2, CheckCircle } from "lucide-react";
@@ -22,7 +22,7 @@ const Cards = () => {
   CardFooter,
   CardLeftIcon,
   CardRightIcon
-} from 'atoms-ta';`;
+} from '@true-armor/atoms-ta';`;
 
   const usageCode = `<CardTA className="border rounded-lg shadow-sm bg-white">
   <CardTitle>Repository</CardTitle>

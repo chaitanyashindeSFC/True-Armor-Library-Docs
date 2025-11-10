@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ModalTA, ButtonTA } from 'atoms-ta';
+import { ModalTA, ButtonTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Modals = () => {
   const [open, setOpen] = useState(false);
 
-  const importCode = `import { ModalTA } from 'atoms-ta';`;
+  const importCode = `import { ModalTA } from '@true-armor/atoms-ta';`;
 
   const usageCode = `export default function ModalDemo(){
   const [open,setOpen] = useState(true);

@@ -1,12 +1,12 @@
 import React from "react";
 import DocsLayout from "@/components/DocsLayout";
-import { ContextMenuTA } from "atoms-ta";
+import { ContextMenuTA } from "@true-armor/atoms-ta";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import { FileText, Share2 } from "lucide-react";
 
 const ContextMenu = () => {
-  const importCode = `import { ContextMenuTA } from 'atoms-ta';`;
+  const importCode = `import { ContextMenuTA } from '@true-armor/atoms-ta';`;
 
   const usageCode = `<ContextMenuTA
   type=""
