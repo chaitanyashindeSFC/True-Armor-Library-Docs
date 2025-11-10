@@ -5,9 +5,9 @@ import CodeBlock from "@/components/CodeBlock";
 import DocsLayout from "@/components/DocsLayout";
 
 const Installation = () => {
-  const npmInstall = `npm install @chaitanya123123/truearmor-ui-components`;
-  const yarnInstall = `yarn add @chaitanya123123/truearmor-ui-components`;
-  const pnpmInstall = `pnpm add @chaitanya123123/truearmor-ui-components`;
+  const npmInstall = `npm install atoms-ta`;
+  const yarnInstall = `yarn add atoms-ta`;
+  const pnpmInstall = `pnpm add atoms-ta`;
 
   const tailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@chaitanya123123/truearmor-ui-components/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/atoms-ta/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -24,7 +24,7 @@ module.exports = {
 };
 `;
 
-const cssConfig = `import "@chaitanya123123/truearmor-ui-components/styles.css";`;
+const cssConfig = `import "atoms-ta/styles.css";`;
 
   const tsConfig = `// tsconfig.json
 {

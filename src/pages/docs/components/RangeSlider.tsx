@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { RangeSliderTA } from '@chaitanya123123/truearmor-ui-components';
+import { RangeSliderTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const RangeSliderDoc = () => {
-  const importCode = `import { RangeSliderTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { RangeSliderTA } from 'atoms-ta';`;
   const usageCode = `<RangeSliderTA defaultValue={50} />`;
 
   const props = [

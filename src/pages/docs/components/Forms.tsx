@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from '@chaitanya123123/truearmor-ui-components';
+import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -8,7 +8,7 @@ const Forms = () => {
   const [name, setName] = useState('');
   const [agree, setAgree] = useState(false);
 
-  const importCode = `import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from 'atoms-ta';`;
 
   const usageCode = `export default function FormDemo(){
   const [name,setName] = useState('');

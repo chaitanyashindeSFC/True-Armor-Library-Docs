@@ -1,5 +1,5 @@
 import DocsLayout from '@/components/DocsLayout';
-import { TabsTA } from '@chaitanya123123/truearmor-ui-components';
+import { TabsTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -43,9 +43,9 @@ const TabsComponent = () => {
     }
   ];
 
-  const importCode = `import { TabsTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { TabsTA } from 'atoms-ta';`;
 
-  const usageCode = `import { TabsTA } from '@chaitanya123123/truearmor-ui-components';
+  const usageCode = `import { TabsTA } from 'atoms-ta';
 
 const tabs = [
   { title: 'One', content: 'First' },

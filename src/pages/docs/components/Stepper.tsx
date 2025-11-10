@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { StepperTA } from '@chaitanya123123/truearmor-ui-components';
+import { StepperTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
-import { ButtonTA } from '@chaitanya123123/truearmor-ui-components';
+import { ButtonTA } from 'atoms-ta';
 const StepperDoc = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const steps = ['Account', 'Details', 'Review'];
 
-  const importCode = `import { StepperTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { StepperTA } from 'atoms-ta';`;
   const usageCode = `const [currentStep, setCurrentStep] = useState(1);
 const steps = ['Account', 'Details', 'Review'];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToggleSwitchTA } from '@chaitanya123123/truearmor-ui-components';
+import { ToggleSwitchTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -47,9 +47,9 @@ const ToggleSwitchComponent = () => {
     }
   ];
 
-  const importCode = `import { ToggleSwitchTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { ToggleSwitchTA } from 'atoms-ta';`;
 
-  const usageCode = `import { ToggleSwitchTA } from '@chaitanya123123/truearmor-ui-components';
+  const usageCode = `import { ToggleSwitchTA } from 'atoms-ta';
 import React from 'react';
 
 export default function ToggleSwitchExample() {

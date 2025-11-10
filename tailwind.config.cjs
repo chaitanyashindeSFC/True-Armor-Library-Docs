@@ -8,7 +8,7 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@chaitanya123123/truearmor-ui-components/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/atoms-ta/dist/**/*.{js,ts,jsx,tsx}",
 
   ],
   prefix: "",

@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { DropDownTA } from '@chaitanya123123/truearmor-ui-components';
+import { DropDownTA } from 'atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Dropdown = () => {
-  const importCode = `import { DropDownTA } from '@chaitanya123123/truearmor-ui-components';`;
+  const importCode = `import { DropDownTA } from 'atoms-ta';`;
   const usageCode = `<DropDownTA items={[{name:'Alice'}]} showSearch />`;
 
   const props = [

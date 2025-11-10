@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardLeftIcon,
   CardRightIcon,
-} from "@chaitanya123123/truearmor-ui-components";
+} from "atoms-ta";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import { FolderGit2, CheckCircle } from "lucide-react";
@@ -22,7 +22,7 @@ const Cards = () => {
   CardFooter,
   CardLeftIcon,
   CardRightIcon
-} from '@chaitanya123123/truearmor-ui-components';`;
+} from 'atoms-ta';`;
 
   const usageCode = `<CardTA className="border rounded-lg shadow-sm bg-white">
   <CardTitle>Repository</CardTitle>
