@@ -113,8 +113,7 @@ const cssConfig = `import "atoms-ta/styles.css";`;
               Css Configuration
             </h2>
             <p className="text-muted-foreground mb-4">
-              Import the TrueArmor UI CSS styles in your main CSS or
-              JavaScript/TypeScript entry file:
+              Import the TrueArmor UI styles in your App.jsx or index.tsx file:
             </p>
             <CodeBlock code={cssConfig} language="json" />
           </div>
