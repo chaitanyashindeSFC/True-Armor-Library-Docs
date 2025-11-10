@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { BadgeTA } from 'atoms-ta';
+import { BadgeTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Badges = () => {
-  const importCode = `import { BadgeTA } from 'atoms-ta';`;
+  const importCode = `import { BadgeTA } from '@true-armor/atoms-ta';`;
 
   const usageCode = `<BadgeTA label="New" color="success" />`;
 

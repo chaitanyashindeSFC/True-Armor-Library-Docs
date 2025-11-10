@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from 'atoms-ta';
+import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Accordions = () => {
-  const importCode = `import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from 'atoms-ta';`;
+  const importCode = `import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from '@true-armor/atoms-ta';`;
 
   const usageCode = `
 <AccordionTA>

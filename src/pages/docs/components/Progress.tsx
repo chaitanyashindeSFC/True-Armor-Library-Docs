@@ -1,11 +1,11 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ProgressBarTA } from 'atoms-ta';
+import { ProgressBarTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const ProgressDoc = () => {
-  const importCode = `import { ProgressBarTA } from 'atoms-ta';`;
+  const importCode = `import { ProgressBarTA } from '@true-armor/atoms-ta';`;
   const usageCode = `<ProgressBarTA progress={60} />`;
 
   const props = [

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-declare module 'atoms-ta' {
+declare module '@true-armor/atoms-ta' {
   import React from 'react';
   // Lightweight ambient types for docs preview — replace with real types when the package is installed
   export const ButtonTA: React.ComponentType<any>;

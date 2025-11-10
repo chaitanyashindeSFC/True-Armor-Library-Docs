@@ -1,5 +1,5 @@
 import DocsLayout from '@/components/DocsLayout';
-import { TabsTA } from 'atoms-ta';
+import { TabsTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -43,9 +43,9 @@ const TabsComponent = () => {
     }
   ];
 
-  const importCode = `import { TabsTA } from 'atoms-ta';`;
+  const importCode = `import { TabsTA } from '@true-armor/atoms-ta';`;
 
-  const usageCode = `import { TabsTA } from 'atoms-ta';
+  const usageCode = `import { TabsTA } from '@true-armor/atoms-ta';
 
 const tabs = [
   { title: 'One', content: 'First' },

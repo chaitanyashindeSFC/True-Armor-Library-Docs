@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToggleSwitchTA } from 'atoms-ta';
+import { ToggleSwitchTA } from '@true-armor/atoms-ta';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -47,9 +47,9 @@ const ToggleSwitchComponent = () => {
     }
   ];
 
-  const importCode = `import { ToggleSwitchTA } from 'atoms-ta';`;
+  const importCode = `import { ToggleSwitchTA } from '@true-armor/atoms-ta';`;
 
-  const usageCode = `import { ToggleSwitchTA } from 'atoms-ta';
+  const usageCode = `import { ToggleSwitchTA } from '@true-armor/atoms-ta';
 import React from 'react';
 
 export default function ToggleSwitchExample() {
