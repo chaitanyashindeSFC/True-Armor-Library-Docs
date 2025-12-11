@@ -93,7 +93,7 @@ import { CheckCircle, Star } from 'lucide-react';`;
             <BadgeTA label="Pink" color="pink" />
           </div>
         </div>
-
+    
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
           <div className="mb-6">

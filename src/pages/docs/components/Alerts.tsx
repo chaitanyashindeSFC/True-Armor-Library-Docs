@@ -46,10 +46,8 @@ function App() {
 
 <Alert type="error">
   <AlertCircle size={20} className="text-red-600" />
-  <div>
     <AlertTitle type="error">Error</AlertTitle>
-    <AlertDescription>Something went wrong!</AlertDescription>
-  </div>
+    <AlertDescription>Something went wrong!</AlertDescription
 </Alert>
 
 <AlertTA 
@@ -124,10 +122,10 @@ function App() {
               />
               <Alert type="error">
                 <AlertCircle size={20} className="text-red-600" />
-                <div>
+                
                   <AlertTitle type="error">Error</AlertTitle>
                   <AlertDescription>Something went wrong</AlertDescription>
-                </div>
+                
               </Alert>
             </div>
           </div>
@@ -194,10 +192,10 @@ function App() {
         {/* ✅ Navigation */}
         <footer className="flex items-center justify-between py-4 border-t">
           <Link to="/docs">
-            <ButtonTA buttonType="secondary">← Introduction</ButtonTA>
+            <ButtonTA buttonType="secondary" className="w-full">← Introduction</ButtonTA>
           </Link>
           <Link to="/docs/components/buttons">
-            <ButtonTA buttonType="secondary">Buttons →</ButtonTA>
+            <ButtonTA buttonType="secondary" className="w-full">Buttons →</ButtonTA>
           </Link>
         </footer>
       </div>
