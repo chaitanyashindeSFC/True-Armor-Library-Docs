@@ -1,150 +1,207 @@
-import React from 'react';
-import DocsLayout from '@/components/DocsLayout';
-import { TableTA } from '@true-armor/ta-atoms2-public';
-import CodeBlock from '@/components/CodeBlock';
-import PropsTable from '@/components/PropsTable';
+import React, { useState } from "react";
+import DocsLayout from "@/components/DocsLayout";
+import { TableTA } from "@true-armor/ta-atoms2-public";
+import CodeBlock from "@/components/CodeBlock";
+import PropsTable from "@/components/PropsTable";
 
 const TableDoc = () => {
-  const data = [
-    { id: 1, name: 'John', age: 30, city: 'New York' },
-    { id: 2, name: 'Jane', age: 25, city: 'Los Angeles' },
-    { id: 3, name: 'Bob', age: 35, city: 'Chicago' },
+  const tableData = [
+    {
+      agentName: "Customer Support BOT",
+      provider: "Open AI",
+      authMethod: "API Key",
+      status: "ACTIVE",
+      dateAdded: "15/09/2025",
+      lastTested: "15/09/2025",
+      actions: "⋯",
+    },
+    {
+      agentName: "Content Generator",
+      provider: "Hugging Face",
+      authMethod: "OAuth2",
+      status: "ACTIVE",
+      dateAdded: "14/09/2025",
+      lastTested: "14/09/2025",
+      actions: "⋯",
+    },
+    {
+      agentName: "Code Assistant",
+      provider: "AWS Bedrock",
+      authMethod: "JWT",
+      status: "FAILED",
+      dateAdded: "13/09/2025",
+      lastTested: "13/09/2025",
+      actions: "⋯",
+    },
+    {
+      agentName: "Data Processor",
+      provider: "Google AI",
+      authMethod: "API Key",
+      status: "INACTIVE",
+      dateAdded: "12/09/2025",
+      lastTested: "12/09/2025",
+      actions: "⋯",
+    },
   ];
+  const [page, setPage] = useState(0);
+  const rowsPerPage = 3;
+
+  // Paginate the data
+  const paginatedData = tableData.slice(
+    page * rowsPerPage,
+    (page + 1) * rowsPerPage
+  );
 
   const columns = [
-    { key: 'name', header: 'Name' },
-    { key: 'age', header: 'Age' },
-    { key: 'city', header: 'City' },  
+    { key: "agentName", label: "Agent Name", header: "Agent Name" },
+    { key: "provider", label: "Provider", header: "Provider" },
+    { key: "authMethod", label: "Auth Method", header: "Auth Method" },
+    { key: "status", label: "Status", header: "Status" },
+    { key: "dateAdded", label: "Date Added", header: "Date Added" },
+    { key: "lastTested", label: "Last Tested", header: "Last Tested" },
+    { key: "actions", label: "Action", header: "Action" },
   ];
 
   const importCode = `import { TableTA } from '@true-armor/ta-atoms2-public';`;
-  const usageCode = `const data = [
-  { id: 1, name: 'John', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Bob', age: 35, city: 'Chicago' },
-];
-
-const columns = [
-  { key: 'name', header: 'Name' },
-  { key: 'age', header: 'Age' },
-  { key: 'city', header: 'City' },
-];
-
-<TableTA 
-  data={data}
-  columns={columns}
-  onRowClick={(row) => console.log(row)}
-/>`;
-
-  // TableTA props
-  const tableTAProps = [
+  const usageCode = `const tableData = [
     {
-      name: 'data',
-      type: 'any[]',
-      default: '[]',
-      description: 'Array of data objects to display in the table rows.',
+      agentName: "Customer Support BOT",
+      provider: "Open AI",
+      authMethod: "API Key",
+      status: "ACTIVE",
+      dateAdded: "15/09/2025",
+      lastTested: "15/09/2025",
+      actions: "⋯",
     },
     {
-      name: 'columns',
-      type: 'Column[]',
-      default: '[]',
-      description: 'Array of column configurations. Each column must have key and header properties.',
+      agentName: "Content Generator",
+      provider: "Hugging Face",
+      authMethod: "OAuth2",
+      status: "ACTIVE",
+      dateAdded: "14/09/2025",
+      lastTested: "14/09/2025",
+      actions: "⋯",
     },
     {
-      name: 'onRowClick',
-      type: '(row: any) => void',
-      default: 'undefined',
-      description: 'Callback function triggered when a row is clicked.',
+      agentName: "Code Assistant",
+      provider: "AWS Bedrock",
+      authMethod: "JWT",
+      status: "FAILED",
+      dateAdded: "13/09/2025",
+      lastTested: "13/09/2025",
+      actions: "⋯",
     },
     {
-      name: 'striped',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether to show striped rows (alternating row colors).',
-    },
-    {
-      name: 'hoverable',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether to show hover effect on rows.',
-    },
-    {
-      name: 'className',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional CSS classes for the table container.',
+      agentName: "Data Processor",
+      provider: "Google AI",
+      authMethod: "API Key",
+      status: "INACTIVE",
+      dateAdded: "12/09/2025",
+      lastTested: "12/09/2025",
+      actions: "⋯",
     },
   ];
+  const [page, setPage] = useState(0);
+  const rowsPerPage = 3;
 
-  // Column configuration props
-  const columnProps = [
-    {
-      name: 'key',
-      type: 'string',
-      default: 'undefined',
-      description: 'The key in data objects that this column displays.',
-    },
-    {
-      name: 'header',
-      type: 'string',
-      default: 'undefined',
-      description: 'The header text displayed in the column header.',
-    },
-    {
-      name: 'width',
-      type: 'string',
-      default: 'undefined',
-      description: 'CSS width value for the column (e.g., "200px", "20%").',
-    },
-    {
-      name: 'render',
-      type: '(value: any, row: any) => React.ReactNode',
-      default: 'undefined',
-      description: 'Custom render function for cell content (allows custom formatting).',
-    },
+  // Paginate the data
+  const paginatedData = tableData.slice(
+    page * rowsPerPage,
+    (page + 1) * rowsPerPage
+  );
+
+  const columns = [
+    { key: "agentName", label: "Agent Name", header: "Agent Name" },
+    { key: "provider", label: "Provider", header: "Provider" },
+    { key: "authMethod", label: "Auth Method", header: "Auth Method" },
+    { key: "status", label: "Status", header: "Status" },
+    { key: "dateAdded", label: "Date Added", header: "Date Added" },
+    { key: "lastTested", label: "Last Tested", header: "Last Tested" },
+    { key: "actions", label: "Action", header: "Action" },
   ];
+  
+  <section>
+              <TableTA
+                columns={columns}
+                tableData={paginatedData}
+                length={tableData.length}
+                page={page}
+                setPage={setPage}
+                rowsCount={rowsPerPage}
+              />
+  </section>
+  `;
+
+const generateTablePropsFromData = (data: any[]) => {
+  if (!data.length) return [];
+
+  return Object.keys(data[0]).map((key) => ({
+    name: key,
+    type: typeof data[0][key],
+    default: "—",
+    description: "—",
+  }));
+};
+
+const tableProps = generateTablePropsFromData(tableData);
+const generateColumnProps = (columns) => {
+  return columns.map((col) => ({
+    name: col.key,
+    type: "string",
+    default: col.header || col.label || "—",
+    description: `Column for ${col.label || col.header}`,
+  }));
+};
+
+const columnProps = generateColumnProps(columns);
 
   return (
     <DocsLayout>
       <div className="flex flex-col gap-8">
         <div>
           <h1 className="text-3xl font-bold mb-4">TableTA</h1>
-          <p className="text-gray-600 mb-4">A flexible table component for displaying data in rows and columns.</p>
+          <p className="text-gray-600 mb-4">
+            A flexible table component for displaying data in rows and columns.
+          </p>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Usage</h2>
-          <div className="mb-4"><CodeBlock code={importCode} language="typescript" /></div>
-          <div className="mb-4"><CodeBlock code={usageCode} language="tsx" /></div>
+          <div className="mb-4">
+            <CodeBlock code={importCode} language="typescript" />
+          </div>
+          <div className="mb-4">
+            <CodeBlock code={usageCode} language="tsx" />
+          </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <TableTA 
-              data={data}
-              columns={columns}
-              onRowClick={(row) => console.log(row)}
-              hoverable
-              striped
-            />
+            <section>
+              <TableTA
+                columns={columns}
+                tableData={paginatedData}
+                length={tableData.length}
+                page={page}
+                setPage={setPage}
+                rowsCount={rowsPerPage}
+              />
+            </section>
           </div>
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-4">Props</h2>
-          
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">TableTA</h3>
-            <PropsTable props={tableTAProps} />
-          </div>
+          <h2 className="text-2xl font-bold mb-4">Component Props</h2>
+          <PropsTable props={tableProps} />
+        </div>
 
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">Column Configuration</h3>
             <PropsTable props={columnProps} />
           </div>
         </div>
-      </div>
+  
     </DocsLayout>
   );
 };
