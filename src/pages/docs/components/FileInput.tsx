@@ -17,8 +17,84 @@ const FileInput = () => {
   </FileInputTADropzone>
 </FileInputTA>`;
 
-  const props = [
-    { name: 'onChange', type: 'function', description: 'File change handler' },
+  // FileInputTA props
+  const fileInputTAProps = [
+    {
+      name: 'accept',
+      type: 'string',
+      default: 'undefined',
+      description: 'File types accepted (e.g., "image/*", ".pdf,.doc").',
+    },
+    {
+      name: 'multiple',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether multiple files can be selected.',
+    },
+    {
+      name: 'onChange',
+      type: '(files: FileList | null) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when files are selected.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the file input is disabled.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'FileInputTADropzone component as child.',
+    },
+  ];
+
+  // FileInputTADropzone props
+  const fileInputTADropzoneProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'FileInputTAIcon, FileInputTAText, and FileInputTAButton components as children.',
+    },
+  ];
+
+  // FileInputTAIcon props
+  const fileInputTAIconProps = [
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Optional custom icon component (defaults to upload icon if not provided).',
+    },
+  ];
+
+  // FileInputTAText props
+  const fileInputTATextProps = [
+    {
+      name: 'mainText',
+      type: 'string',
+      default: '"Click to upload"',
+      description: 'Main text displayed in the dropzone.',
+    },
+    {
+      name: 'subText',
+      type: 'string',
+      default: 'undefined',
+      description: 'Subtitle or helper text displayed below the main text.',
+    },
+  ];
+
+  // FileInputTAButton props
+  const fileInputTAButtonProps = [
+    {
+      name: 'label',
+      type: 'string',
+      default: '"Browse"',
+      description: 'Label text for the browse button.',
+    },
   ];
 
   return (
@@ -53,7 +129,31 @@ const FileInput = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">FileInputTA</h3>
+            <PropsTable props={fileInputTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">FileInputTADropzone</h3>
+            <PropsTable props={fileInputTADropzoneProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">FileInputTAIcon</h3>
+            <PropsTable props={fileInputTAIconProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">FileInputTAText</h3>
+            <PropsTable props={fileInputTATextProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">FileInputTAButton</h3>
+            <PropsTable props={fileInputTAButtonProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

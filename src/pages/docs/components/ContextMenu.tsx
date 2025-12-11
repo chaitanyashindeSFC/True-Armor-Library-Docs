@@ -24,16 +24,47 @@ import { Edit2Icon, Trash2, Share2 } from 'lucide-react';`;
   />
 </ContextMenuTA>`;
 
-  const props = [
+  // ContextMenuTA props
+  const contextMenuTAProps = [
     {
       name: "onSelect",
       type: "(item: string) => void",
+      default: "undefined",
       description: "Callback function triggered when a menu item is clicked.",
     },
     {
       name: "children",
-      type: "ContextMenuTAItem[]",
-      description: "Menu item components.",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "ContextMenuTAItem components as children.",
+    },
+  ];
+
+  // ContextMenuTAItem props
+  const contextMenuTAItemProps = [
+    {
+      name: "label",
+      type: "string",
+      default: "undefined",
+      description: "Text label displayed for the menu item.",
+    },
+    {
+      name: "icon",
+      type: "React.ComponentType",
+      default: "undefined",
+      description: "Optional icon component to display before the label.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Whether the menu item is disabled.",
+    },
+    {
+      name: "onClick",
+      type: "() => void",
+      default: "undefined",
+      description: "Optional custom click handler (overrides onSelect from parent).",
     },
   ];
 
@@ -84,7 +115,16 @@ import { Edit2Icon, Trash2, Share2 } from 'lucide-react';`;
         {/* Props Table */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ContextMenuTA</h3>
+            <PropsTable props={contextMenuTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ContextMenuTAItem</h3>
+            <PropsTable props={contextMenuTAItemProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

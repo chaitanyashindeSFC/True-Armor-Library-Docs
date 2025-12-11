@@ -16,8 +16,62 @@ const Accordions = () => {
   </AccordionPanel>
 </AccordionTA>`;
 
-  const props = [
-    { name: 'children', type: 'React.ReactNode', description: 'Accordion panels' },
+  // AccordionTA props
+  const accordionProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'AccordionPanel components as children.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the accordion container.',
+    },
+    {
+      name: 'allowMultiple',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether multiple panels can be expanded at the same time.',
+    },
+  ];
+
+  // AccordionPanel props
+  const accordionPanelProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'AccordionTitle and AccordionContent components.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the panel is open by default.',
+    },
+  ];
+
+  // AccordionTitle props
+  const accordionTitleProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Title text or content to display in the accordion header.',
+    },
+  ];
+
+  // AccordionContent props
+  const accordionContentProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Content to display when the accordion panel is expanded.',
+    },
   ];
 
   return (
@@ -56,7 +110,26 @@ const Accordions = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">AccordionTA</h3>
+            <PropsTable props={accordionProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">AccordionPanel</h3>
+            <PropsTable props={accordionPanelProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">AccordionTitle</h3>
+            <PropsTable props={accordionTitleProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">AccordionContent</h3>
+            <PropsTable props={accordionContentProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

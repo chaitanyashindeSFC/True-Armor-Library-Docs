@@ -13,19 +13,74 @@ interface PropsRow {
 }
 
 const TabsComponent = () => {
-  const propsData: PropsRow[] = [
+  // TabsTA props
+  const tabsTAProps: PropsRow[] = [
     {
       name: 'variant',
       type: '"primary" | "tertiary"',
       default: '"primary"',
-      description: 'Visual style variant of the tabs'
+      description: 'Visual style variant of the tabs.',
     },
     {
       name: 'color',
       type: 'string',
       default: 'undefined',
-      description: 'Color theme for the active tab indicator'
-    }
+      description: 'Color theme for the active tab indicator (hex color code).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'TabsTAList and TabsTAPanel components as children.',
+    },
+  ];
+
+  // TabsTAList props
+  const tabsTAListProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'TabsTAItem components as children.',
+    },
+  ];
+
+  // TabsTAItem props
+  const tabsTAItemProps: PropsRow[] = [
+    {
+      name: 'index',
+      type: 'number',
+      default: 'undefined',
+      description: 'Zero-based index of the tab item (must match corresponding panel index).',
+    },
+    {
+      name: 'title',
+      type: 'string',
+      default: 'undefined',
+      description: 'Text label displayed in the tab.',
+    },
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Optional icon component to display in the tab.',
+    },
+  ];
+
+  // TabsTAPanel props
+  const tabsTAPanelProps: PropsRow[] = [
+    {
+      name: 'index',
+      type: 'number',
+      default: 'undefined',
+      description: 'Zero-based index of the panel (must match corresponding tab item index).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Content to display when this panel is active.',
+    },
   ];
 
   const importCode = `import { TabsTA, TabsTAList, TabsTAItem, TabsTAPanel } from '@true-armor/ta-atoms2-public';
@@ -93,7 +148,26 @@ import { FolderIcon, ArchiveIcon } from 'lucide-react';`;
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={propsData} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">TabsTA</h3>
+            <PropsTable props={tabsTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">TabsTAList</h3>
+            <PropsTable props={tabsTAListProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">TabsTAItem</h3>
+            <PropsTable props={tabsTAItemProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">TabsTAPanel</h3>
+            <PropsTable props={tabsTAPanelProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

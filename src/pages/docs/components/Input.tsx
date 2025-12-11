@@ -29,9 +29,94 @@ const InputDoc = () => {
   />
 </InputTA>`;
 
-  const props = [
-    { name: 'id', type: 'string', description: 'Input id' },
-    { name: 'label', type: 'string', description: 'Label text' },
+  // InputTA props
+  const inputTAProps = [
+    {
+      name: 'id',
+      type: 'string',
+      default: 'undefined',
+      description: 'Unique identifier for the input field (used for accessibility and form association).',
+    },
+    {
+      name: 'multiline',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the input is a multiline textarea.',
+    },
+    {
+      name: 'rows',
+      type: 'number',
+      default: 'undefined',
+      description: 'Number of rows for multiline input (only applies when multiline is true).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'InputTALabel and InputTAField components as children.',
+    },
+  ];
+
+  // InputTALabel props
+  const inputTALabelProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Label text or content to display above the input field.',
+    },
+  ];
+
+  // InputTAField props
+  const inputTAFieldProps = [
+    {
+      name: 'type',
+      type: 'string',
+      default: '"text"',
+      description: 'Input type (text, email, password, number, etc.).',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      default: 'undefined',
+      description: 'Controlled value of the input field.',
+    },
+    {
+      name: 'defaultValue',
+      type: 'string',
+      default: 'undefined',
+      description: 'Default value for uncontrolled input field.',
+    },
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: 'undefined',
+      description: 'Placeholder text displayed when the input is empty.',
+    },
+    {
+      name: 'onChange',
+      type: '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when the input value changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the input field is disabled.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the input field is required.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the input field.',
+    },
   ];
 
   return (
@@ -73,7 +158,21 @@ const InputDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">InputTA</h3>
+            <PropsTable props={inputTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">InputTALabel</h3>
+            <PropsTable props={inputTALabelProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">InputTAField</h3>
+            <PropsTable props={inputTAFieldProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

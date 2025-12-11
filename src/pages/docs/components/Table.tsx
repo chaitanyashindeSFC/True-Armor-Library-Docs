@@ -36,20 +36,72 @@ const columns = [
   onRowClick={(row) => console.log(row)}
 />`;
 
-  const props = [
-    { name: 'data', type: 'any[]', description: 'Array of data objects to display' },
-    { name: 'columns', type: 'Column[]', description: 'Array of column configurations. Each column must have key and header properties.' },
-    { name: 'onRowClick', type: '(row: any) => void', description: 'Callback when a row is clicked', optional: true },
-    { name: 'striped', type: 'boolean', description: 'Whether to show striped rows', optional: true },
-    { name: 'hoverable', type: 'boolean', description: 'Whether to show hover effect on rows', optional: true },
-    { name: 'className', type: 'string', description: 'Additional CSS classes for the table', optional: true },
+  // TableTA props
+  const tableTAProps = [
+    {
+      name: 'data',
+      type: 'any[]',
+      default: '[]',
+      description: 'Array of data objects to display in the table rows.',
+    },
+    {
+      name: 'columns',
+      type: 'Column[]',
+      default: '[]',
+      description: 'Array of column configurations. Each column must have key and header properties.',
+    },
+    {
+      name: 'onRowClick',
+      type: '(row: any) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when a row is clicked.',
+    },
+    {
+      name: 'striped',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether to show striped rows (alternating row colors).',
+    },
+    {
+      name: 'hoverable',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether to show hover effect on rows.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional CSS classes for the table container.',
+    },
   ];
 
+  // Column configuration props
   const columnProps = [
-    { name: 'key', type: 'string', description: 'The key in data objects that this column displays' },
-    { name: 'header', type: 'string', description: 'The header text for this column' },
-    { name: 'width', type: 'string', description: 'CSS width value for the column', optional: true },
-    { name: 'render', type: '(value: any, row: any) => React.ReactNode', description: 'Custom render function for cell content', optional: true },
+    {
+      name: 'key',
+      type: 'string',
+      default: 'undefined',
+      description: 'The key in data objects that this column displays.',
+    },
+    {
+      name: 'header',
+      type: 'string',
+      default: 'undefined',
+      description: 'The header text displayed in the column header.',
+    },
+    {
+      name: 'width',
+      type: 'string',
+      default: 'undefined',
+      description: 'CSS width value for the column (e.g., "200px", "20%").',
+    },
+    {
+      name: 'render',
+      type: '(value: any, row: any) => React.ReactNode',
+      default: 'undefined',
+      description: 'Custom render function for cell content (allows custom formatting).',
+    },
   ];
 
   return (
@@ -80,13 +132,17 @@ const columns = [
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-4">Component Props</h2>
-          <PropsTable props={props} />
-        </div>
+          <h2 className="text-2xl font-bold mb-4">Props</h2>
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">TableTA</h3>
+            <PropsTable props={tableTAProps} />
+          </div>
 
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Column Configuration</h2>
-          <PropsTable props={columnProps} />
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Column Configuration</h3>
+            <PropsTable props={columnProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

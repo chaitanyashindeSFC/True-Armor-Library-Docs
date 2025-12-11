@@ -11,10 +11,52 @@ const Checkboxes = () => {
   <CheckboxTALabel>Accept terms and conditions</CheckboxTALabel>
 </CheckboxTA>`;
 
-  const props = [
-    { name: "label", type: "string", description: "Label text" },
-    { name: "checked", type: "boolean", description: "Checked state" },
-    { name: "onChange", type: "(checked: boolean) => void", description: "Fires when checkbox changes" },
+  // CheckboxTA props
+  const checkboxTAProps = [
+    {
+      name: "checked",
+      type: "boolean",
+      default: "false",
+      description: "Controlled checked state of the checkbox.",
+    },
+    {
+      name: "onChange",
+      type: "(checked: boolean) => void",
+      default: "undefined",
+      description: "Callback function triggered when the checkbox state changes.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Whether the checkbox is disabled.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "CheckboxTAInput and CheckboxTALabel components as children.",
+    },
+  ];
+
+  // CheckboxTAInput props
+  const checkboxTAInputProps = [
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Whether the checkbox input is disabled (inherited from parent if not specified).",
+    },
+  ];
+
+  // CheckboxTALabel props
+  const checkboxTALabelProps = [
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Label text or content displayed next to the checkbox.",
+    },
   ];
 
   // ✅ Local state for preview example
@@ -50,7 +92,21 @@ const Checkboxes = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CheckboxTA</h3>
+            <PropsTable props={checkboxTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CheckboxTAInput</h3>
+            <PropsTable props={checkboxTAInputProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CheckboxTALabel</h3>
+            <PropsTable props={checkboxTALabelProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

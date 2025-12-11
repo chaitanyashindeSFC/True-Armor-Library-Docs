@@ -33,28 +33,78 @@ const ToastComponent = () => {
     }, 3000);
   };
 
-  const propsData: PropsRow[] = [
+  // ToastTA props
+  const toastTAProps: PropsRow[] = [
     {
-      name: 'title',
-      type: 'string',
-      description: 'The title to display in the toast'
+      name: 'data',
+      type: 'Array<{ id: number | string; type?: string; message: string }>',
+      default: '[]',
+      description: 'Array of toast objects to display.',
     },
     {
-      name: 'description',
-      type: 'string',
-      description: 'The description text for the toast'
+      name: 'position',
+      type: '"top-left" | "top-right" | "bottom-left" | "bottom-right"',
+      default: '"top-right"',
+      description: 'Position of the toast container on the screen.',
     },
     {
-      name: 'action',
+      name: 'duration',
+      type: 'number',
+      default: '3000',
+      description: 'Duration in milliseconds before the toast automatically disappears.',
+    },
+    {
+      name: 'children',
       type: 'React.ReactNode',
-      description: 'Optional action component to show in the toast'
+      default: 'undefined',
+      description: 'ToastTAItem components as children.',
+    },
+  ];
+
+  // ToastTAItem props
+  const toastTAItemProps: PropsRow[] = [
+    {
+      name: 'toast',
+      type: '{ id: number | string; type?: string; message: string }',
+      default: 'undefined',
+      description: 'Toast object containing id, type, and message.',
     },
     {
-      name: 'variant',
-      type: '"default" | "destructive"',
-      default: '"default"',
-      description: 'The visual style variant of the toast'
-    }
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'ToastTAIcon, ToastTAMessage, and ToastTAProgress components as children.',
+    },
+  ];
+
+  // ToastTAIcon props
+  const toastTAIconProps: PropsRow[] = [
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Optional custom icon component (defaults to type-based icon if not provided).',
+    },
+  ];
+
+  // ToastTAMessage props
+  const toastTAMessageProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom message content (defaults to toast.message if not provided).',
+    },
+  ];
+
+  // ToastTAProgress props
+  const toastTAProgressProps: PropsRow[] = [
+    {
+      name: 'duration',
+      type: 'number',
+      default: 'undefined',
+      description: 'Duration in milliseconds for the progress bar animation (inherits from ToastTA if not specified).',
+    },
   ];
 
   const importCode = `import { ToastTA, ToastTAItem, ToastTAIcon, ToastTAMessage, ToastTAProgress } from '@true-armor/ta-atoms2-public';`;
@@ -133,7 +183,31 @@ const showToast = (type) => {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
-        <PropsTable props={propsData} />
+        
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToastTA</h3>
+          <PropsTable props={toastTAProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToastTAItem</h3>
+          <PropsTable props={toastTAItemProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToastTAIcon</h3>
+          <PropsTable props={toastTAIconProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToastTAMessage</h3>
+          <PropsTable props={toastTAMessageProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToastTAProgress</h3>
+          <PropsTable props={toastTAProgressProps} />
+        </div>
       </div>
       </div>
     </DocsLayout>

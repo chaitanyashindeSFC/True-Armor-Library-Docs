@@ -20,11 +20,57 @@ import { Home, ChevronRight } from 'lucide-react';`;
   <BreadCrumbItem label="Current" icon={Package} href="#" active />
 </BreadCrumbTA>`;
 
-  const props = [
-    { 
-      name: 'items', 
-      type: 'Array<{ label: string; href?: string; active?: boolean }>', 
-      description: 'Array of breadcrumb items with label, optional href and active state' 
+  // BreadCrumbTA props
+  const breadcrumbProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Breadcrumb items and separators as children components.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the breadcrumb container.',
+    },
+  ];
+
+  // BreadCrumbItem props
+  const breadcrumbItemProps = [
+    {
+      name: 'label',
+      type: 'string',
+      default: 'undefined',
+      description: 'Text label displayed for the breadcrumb item.',
+    },
+    {
+      name: 'href',
+      type: 'string',
+      default: 'undefined',
+      description: 'URL link for the breadcrumb item. If not provided, item is rendered as plain text.',
+    },
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Optional icon component to display before the label.',
+    },
+    {
+      name: 'active',
+      type: 'boolean',
+      default: 'false',
+      description: 'Marks the breadcrumb item as active (typically the current page).',
+    },
+  ];
+
+  // BreadCrumbSeperator props
+  const breadcrumbSeparatorProps = [
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Icon component to display as the separator between breadcrumb items.',
     },
   ];
 
@@ -57,7 +103,21 @@ import { Home, ChevronRight } from 'lucide-react';`;
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BreadCrumbTA</h3>
+            <PropsTable props={breadcrumbProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BreadCrumbItem</h3>
+            <PropsTable props={breadcrumbItemProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BreadCrumbSeperator</h3>
+            <PropsTable props={breadcrumbSeparatorProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

@@ -12,39 +12,68 @@ interface PropsRow {
 }
 
 const ToggleSwitchComponent = () => {
-  const propsData: PropsRow[] = [
+  // ToggleSwitchTA props
+  const toggleSwitchTAProps: PropsRow[] = [
     {
       name: 'checked',
       type: 'boolean',
-      description: 'The controlled checked state of the toggle'
+      default: 'false',
+      description: 'Controlled checked state of the toggle switch.',
     },
     {
       name: 'onChange',
       type: '(checked: boolean) => void',
-      description: 'Callback when the toggle state changes'
+      default: 'undefined',
+      description: 'Callback function triggered when the toggle state changes.',
     },
     {
       name: 'size',
       type: '"sm" | "md" | "lg"',
       default: '"md"',
-      description: 'Size of the toggle switch'
-    },
-    {
-      name: 'label',
-      type: 'string',
-      description: 'Label text for the toggle switch'
-    },
-    {
-      name: 'description',
-      type: 'string',
-      description: 'Additional description text'
+      description: 'Size variant of the toggle switch.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       default: 'false',
-      description: 'Whether the toggle switch is disabled'
-    }
+      description: 'Whether the toggle switch is disabled.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'ToggleSwitchTAControl, ToggleSwitchTALabel, and ToggleSwitchTADescription components as children.',
+    },
+  ];
+
+  // ToggleSwitchTAControl props
+  const toggleSwitchTAControlProps: PropsRow[] = [
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the toggle control is disabled (inherited from parent if not specified).',
+    },
+  ];
+
+  // ToggleSwitchTALabel props
+  const toggleSwitchTALabelProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Label text or content displayed next to the toggle switch.',
+    },
+  ];
+
+  // ToggleSwitchTADescription props
+  const toggleSwitchTADescriptionProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Description text or content displayed below the label.',
+    },
   ];
 
   const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
@@ -95,7 +124,26 @@ const ToggleSwitchComponent = () => {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
-        <PropsTable props={propsData} />
+        
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToggleSwitchTA</h3>
+          <PropsTable props={toggleSwitchTAProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToggleSwitchTAControl</h3>
+          <PropsTable props={toggleSwitchTAControlProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToggleSwitchTALabel</h3>
+          <PropsTable props={toggleSwitchTALabelProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToggleSwitchTADescription</h3>
+          <PropsTable props={toggleSwitchTADescriptionProps} />
+        </div>
       </div>
       </div>
     </DocsLayout>

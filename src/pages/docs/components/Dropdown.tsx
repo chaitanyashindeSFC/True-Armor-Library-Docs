@@ -36,8 +36,110 @@ const Dropdown = () => {
   )} />
 </DropDownTA>`;
 
-  const props = [
-    { name: 'items', type: 'any[]', description: 'Items array' },
+  // DropDownTA props
+  const dropDownTAProps = [
+    {
+      name: 'items',
+      type: 'any[]',
+      default: '[]',
+      description: 'Array of items to display in the dropdown.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Controlled state for whether the dropdown is open.',
+    },
+    {
+      name: 'setIsOpen',
+      type: '(isOpen: boolean) => void',
+      default: 'undefined',
+      description: 'Callback function to control the open state.',
+    },
+    {
+      name: 'searchTerm',
+      type: 'string',
+      default: '""',
+      description: 'Current search/filter term for the dropdown items.',
+    },
+    {
+      name: 'setSearchTerm',
+      type: '(term: string) => void',
+      default: 'undefined',
+      description: 'Callback function to update the search term.',
+    },
+    {
+      name: 'selectedItem',
+      type: 'any',
+      default: 'undefined',
+      description: 'Currently selected item from the dropdown.',
+    },
+    {
+      name: 'setSelectedItem',
+      type: '(item: any) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when an item is selected.',
+    },
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: '"Select..."',
+      description: 'Placeholder text displayed when no item is selected.',
+    },
+    {
+      name: 'getItemLabel',
+      type: '(item: any) => string',
+      default: 'undefined',
+      description: 'Function to extract the label from an item object.',
+    },
+    {
+      name: 'showSearch',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether to show the search input field.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'DropDownTATrigger, DropDownTASearch, and DropDownTAList components as children.',
+    },
+  ];
+
+  // DropDownTATrigger props
+  const dropDownTATriggerProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom trigger content (defaults to selected item label if not provided).',
+    },
+  ];
+
+  // DropDownTASearch props
+  const dropDownTASearchProps = [
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: '"Search..."',
+      description: 'Placeholder text for the search input.',
+    },
+  ];
+
+  // DropDownTAList props
+  const dropDownTAListProps = [
+    {
+      name: 'renderItem',
+      type: '(item: any) => React.ReactNode',
+      default: 'undefined',
+      description: 'Custom render function for each dropdown item.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom list content (defaults to rendering items if not provided).',
+    },
   ];
   const teamMembers = [
     {
@@ -108,7 +210,26 @@ const Dropdown = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTA</h3>
+            <PropsTable props={dropDownTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTATrigger</h3>
+            <PropsTable props={dropDownTATriggerProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTASearch</h3>
+            <PropsTable props={dropDownTASearchProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTAList</h3>
+            <PropsTable props={dropDownTAListProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

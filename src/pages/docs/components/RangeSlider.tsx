@@ -29,8 +29,80 @@ const RangeSliderDoc = () => {
   <RangeSliderTAMarks />
 </RangeSliderTA>`;
 
-  const props = [
-    { name: 'defaultValue', type: 'number', description: 'Default value' },
+  // RangeSliderTA props
+  const rangeSliderTAProps = [
+    {
+      name: 'min',
+      type: 'number',
+      default: '0',
+      description: 'Minimum value of the slider.',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      default: '100',
+      description: 'Maximum value of the slider.',
+    },
+    {
+      name: 'step',
+      type: 'number',
+      default: '1',
+      description: 'Step increment for the slider value.',
+    },
+    {
+      name: 'value',
+      type: 'number',
+      default: 'undefined',
+      description: 'Controlled value of the slider (for controlled mode).',
+    },
+    {
+      name: 'defaultValue',
+      type: 'number',
+      default: 'undefined',
+      description: 'Default value for uncontrolled slider mode.',
+    },
+    {
+      name: 'onChange',
+      type: '(value: number) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when the slider value changes.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'RangeSliderTATooltip, RangeSliderTAInput, and RangeSliderTAMarks components as children.',
+    },
+  ];
+
+  // RangeSliderTATooltip props
+  const rangeSliderTATooltipProps = [
+    {
+      name: 'show',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether to show the tooltip displaying the current value.',
+    },
+  ];
+
+  // RangeSliderTAInput props
+  const rangeSliderTAInputProps = [
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the slider input is disabled.',
+    },
+  ];
+
+  // RangeSliderTAMarks props
+  const rangeSliderTAMarksProps = [
+    {
+      name: 'marks',
+      type: 'Array<{ value: number; label: string }>',
+      default: 'undefined',
+      description: 'Custom marks to display along the slider track.',
+    },
   ];
 
   return (
@@ -75,7 +147,26 @@ const RangeSliderDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">RangeSliderTA</h3>
+            <PropsTable props={rangeSliderTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">RangeSliderTATooltip</h3>
+            <PropsTable props={rangeSliderTATooltipProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">RangeSliderTAInput</h3>
+            <PropsTable props={rangeSliderTAInputProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">RangeSliderTAMarks</h3>
+            <PropsTable props={rangeSliderTAMarksProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

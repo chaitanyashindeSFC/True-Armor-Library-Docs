@@ -19,11 +19,68 @@ import { CheckCircle2, Star } from 'lucide-react';`;
   <BadgeLabel>Verified</BadgeLabel>
 </Badge>`;
 
-  const props = [
-    { name: 'label', type: 'string | React.ReactNode', description: 'Text or node to render inside the badge' },
-    { name: 'icon', type: 'React.ComponentType', description: 'Optional icon component' },
-    { name: 'value', type: 'any', description: 'Optional value used by Card footers' },
-    { name: 'color', type: 'string', description: 'Visual color theme (e.g. success, warning, info)' },
+  // BadgeTA props
+  const badgeTAProps = [
+    {
+      name: 'label',
+      type: 'string | React.ReactNode',
+      default: 'undefined',
+      description: 'Text or node to render inside the badge.',
+    },
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Optional icon component to display in the badge.',
+    },
+    {
+      name: 'value',
+      type: 'any',
+      default: 'undefined',
+      description: 'Optional value used by Card footers for badge display.',
+    },
+    {
+      name: 'color',
+      type: '"success" | "info" | "warning" | "failure" | "purple" | string',
+      default: '"info"',
+      description: 'Visual color theme for the badge (e.g., success, warning, info, failure, purple).',
+    },
+  ];
+
+  // Badge (compound component) props
+  const badgeProps = [
+    {
+      name: 'color',
+      type: '"success" | "info" | "warning" | "failure" | "purple" | string',
+      default: '"info"',
+      description: 'Visual color theme for the badge.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'BadgeIcon and BadgeLabel components as children.',
+    },
+  ];
+
+  // BadgeIcon props
+  const badgeIconProps = [
+    {
+      name: 'icon',
+      type: 'React.ComponentType',
+      default: 'undefined',
+      description: 'Icon component to display in the badge.',
+    },
+  ];
+
+  // BadgeLabel props
+  const badgeLabelProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Label text or content to display in the badge.',
+    },
   ];
 
   return (
@@ -65,7 +122,26 @@ import { CheckCircle2, Star } from 'lucide-react';`;
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BadgeTA</h3>
+            <PropsTable props={badgeTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Badge</h3>
+            <PropsTable props={badgeProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BadgeIcon</h3>
+            <PropsTable props={badgeIconProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">BadgeLabel</h3>
+            <PropsTable props={badgeLabelProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

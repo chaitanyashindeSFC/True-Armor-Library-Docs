@@ -12,36 +12,68 @@ interface PropsRow {
 }
 
 const TooltipComponent = () => {
-  const propsData: PropsRow[] = [
+  // ToolTipTA props
+  const toolTipTAProps: PropsRow[] = [
     {
-      name: 'content',
+      name: 'type',
+      type: '"dark" | "light"',
+      default: '"dark"',
+      description: 'Visual style type of the tooltip (dark or light theme).',
+    },
+    {
+      name: 'children',
       type: 'React.ReactNode',
-      description: 'Content to display in the tooltip'
+      default: 'undefined',
+      description: 'Trigger element and ToolTipTAWrapper component as children.',
+    },
+  ];
+
+  // ToolTipTAWrapper props
+  const toolTipTAWrapperProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'ToolTipTAContent and ToolTipTAArrow components as children.',
+    },
+  ];
+
+  // ToolTipTAContent props
+  const toolTipTAContentProps: PropsRow[] = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Content to display in the tooltip.',
     },
     {
       name: 'delayDuration',
       type: 'number',
       default: '200',
-      description: 'Delay duration before showing tooltip'
+      description: 'Delay duration in milliseconds before showing tooltip.',
     },
     {
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       default: '"top"',
-      description: 'Preferred side of the anchor to render against'
+      description: 'Preferred side of the anchor to render against.',
     },
     {
       name: 'align',
       type: '"start" | "center" | "end"',
       default: '"center"',
-      description: 'Preferred alignment against the anchor'
+      description: 'Preferred alignment against the anchor.',
     },
+  ];
+
+  // ToolTipTAArrow props
+  const toolTipTAArrowProps: PropsRow[] = [
     {
-      name: 'variant',
-      type: '"default" | "success" | "error" | "warning" | "info"',
-      default: '"default"',
-      description: 'Visual style variant of the tooltip'
-    }
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the arrow.',
+    },
   ];
 
   const importCode = `import { ToolTipTA, ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper } from '@true-armor/ta-atoms2-public';`;
@@ -115,7 +147,26 @@ const TooltipComponent = () => {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
-        <PropsTable props={propsData} />
+        
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToolTipTA</h3>
+          <PropsTable props={toolTipTAProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToolTipTAWrapper</h3>
+          <PropsTable props={toolTipTAWrapperProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToolTipTAContent</h3>
+          <PropsTable props={toolTipTAContentProps} />
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-3">ToolTipTAArrow</h3>
+          <PropsTable props={toolTipTAArrowProps} />
+        </div>
       </div>
       </div>
     </DocsLayout>

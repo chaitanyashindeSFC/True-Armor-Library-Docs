@@ -14,8 +14,46 @@ const ProgressDoc = () => {
   <ProgressBarTABar />
 </ProgressBarTA>`;
 
-  const props = [
-    { name: 'progress', type: 'number', description: '0-100' },
+  // ProgressBarTA props
+  const progressBarTAProps = [
+    {
+      name: 'progress',
+      type: 'number',
+      default: '0',
+      description: 'Progress value between 0 and 100.',
+    },
+    {
+      name: 'height',
+      type: 'string',
+      default: '"h-2"',
+      description: 'Height class for the progress bar (e.g., "h-2", "h-4").',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'ProgressBarTALabel and ProgressBarTABar components as children.',
+    },
+  ];
+
+  // ProgressBarTALabel props
+  const progressBarTALabelProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom label content (defaults to progress percentage if not provided).',
+    },
+  ];
+
+  // ProgressBarTABar props
+  const progressBarTABarProps = [
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the progress bar.',
+    },
   ];
 
   return (
@@ -48,7 +86,21 @@ const ProgressDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ProgressBarTA</h3>
+            <PropsTable props={progressBarTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ProgressBarTALabel</h3>
+            <PropsTable props={progressBarTALabelProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ProgressBarTABar</h3>
+            <PropsTable props={progressBarTABarProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

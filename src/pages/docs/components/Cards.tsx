@@ -45,10 +45,104 @@ const Cards = () => {
   <CardRightIcon icon={CheckCircle} isVisible />
 </CardTA>`;
 
-  const props = [
-    { name: "children", type: "React.ReactNode", description: "Card content or subcomponents." },
-    { name: "className", type: "string", description: "Optional custom styling classes." },
-    { name: "onClick", type: "() => void", description: "Click handler for the entire card." },
+  // CardTA props
+  const cardProps = [
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Card content or subcomponents (CardTitle, CardContent, etc.).",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: "undefined",
+      description: "Additional custom CSS classes to apply to the card container.",
+    },
+    {
+      name: "onClick",
+      type: "() => void",
+      default: "undefined",
+      description: "Callback function triggered when the card is clicked.",
+    },
+  ];
+
+  // CardTitle props
+  const cardTitleProps = [
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Title text or content to display in the card header.",
+    },
+  ];
+
+  // CardContent props
+  const cardContentProps = [
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Main content of the card (CardDescription, CardFooter, etc.).",
+    },
+  ];
+
+  // CardDescription props
+  const cardDescriptionProps = [
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Description text or content displayed in the card.",
+    },
+  ];
+
+  // CardFooter props
+  const cardFooterProps = [
+    {
+      name: "repos",
+      type: "number",
+      default: "undefined",
+      description: "Number of repositories to display (used for badge display).",
+    },
+    {
+      name: "badgeColor",
+      type: "string",
+      default: "undefined",
+      description: "Color theme for the badge (e.g., 'indigo', 'blue', 'green').",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      default: "undefined",
+      description: "Footer content or custom footer elements.",
+    },
+  ];
+
+  // CardLeftIcon props
+  const cardLeftIconProps = [
+    {
+      name: "icon",
+      type: "React.ComponentType",
+      default: "undefined",
+      description: "Icon component to display on the left side of the card.",
+    },
+  ];
+
+  // CardRightIcon props
+  const cardRightIconProps = [
+    {
+      name: "icon",
+      type: "React.ComponentType",
+      default: "undefined",
+      description: "Icon component to display on the right side of the card.",
+    },
+    {
+      name: "isVisible",
+      type: "boolean",
+      default: "false",
+      description: "Controls the visibility of the right icon.",
+    },
   ];
 
   return (
@@ -109,7 +203,41 @@ const Cards = () => {
         {/* Props */}
         <section>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardTA</h3>
+            <PropsTable props={cardProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardTitle</h3>
+            <PropsTable props={cardTitleProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardContent</h3>
+            <PropsTable props={cardContentProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardDescription</h3>
+            <PropsTable props={cardDescriptionProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardFooter</h3>
+            <PropsTable props={cardFooterProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardLeftIcon</h3>
+            <PropsTable props={cardLeftIconProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CardRightIcon</h3>
+            <PropsTable props={cardRightIconProps} />
+          </div>
         </section>
 
         {/* Best Practices */}

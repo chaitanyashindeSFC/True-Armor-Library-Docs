@@ -25,12 +25,64 @@ const RadioDoc = () => {
   <CustomRadioTALabel>Option 2</CustomRadioTALabel>
 </CustomRadioTA>`;
 
-  const props = [
-    { name: 'label', type: 'string', description: 'Label text' },
-    { name: 'name', type: 'string', description: 'Input name for form submissions' },
-    { name: 'checked', type: 'boolean', description: 'Whether the radio is checked' },
-    { name: 'onChange', type: '() => void', description: 'Callback when radio state changes' },
-    { name: 'disabled', type: 'boolean', description: 'Whether the radio is disabled', optional: true },
+  // CustomRadioTA props
+  const customRadioTAProps = [
+    {
+      name: 'name',
+      type: 'string',
+      default: 'undefined',
+      description: 'Input name for form submissions (all radio buttons in a group should share the same name).',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      default: 'false',
+      description: 'Controlled checked state of the radio button.',
+    },
+    {
+      name: 'onChange',
+      type: '() => void',
+      default: 'undefined',
+      description: 'Callback function triggered when the radio button state changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the radio button is disabled.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      default: 'undefined',
+      description: 'Value of the radio button (used for form submissions).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'CustomRadioTAInput and CustomRadioTALabel components as children.',
+    },
+  ];
+
+  // CustomRadioTAInput props
+  const customRadioTAInputProps = [
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the radio input is disabled (inherited from parent if not specified).',
+    },
+  ];
+
+  // CustomRadioTALabel props
+  const customRadioTALabelProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Label text or content displayed next to the radio button.',
+    },
   ];
 
   return (
@@ -71,7 +123,21 @@ const RadioDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CustomRadioTA</h3>
+            <PropsTable props={customRadioTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CustomRadioTAInput</h3>
+            <PropsTable props={customRadioTAInputProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">CustomRadioTALabel</h3>
+            <PropsTable props={customRadioTALabelProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

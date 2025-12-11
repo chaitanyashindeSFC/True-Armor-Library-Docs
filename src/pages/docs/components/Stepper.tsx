@@ -17,10 +17,42 @@ const StepperDoc = () => {
   <StepperTAStep label="Step 4" />
 </StepperTA>`;
 
-  const props = [
-    { name: 'currentStep', type: 'number', description: 'Current active step index' },
-    { name: 'color', type: 'string', description: 'Color theme for the stepper' },
-    { name: 'children', type: 'StepperTAStep[]', description: 'Step components' },
+  // StepperTA props
+  const stepperTAProps = [
+    {
+      name: 'currentStep',
+      type: 'number',
+      default: '0',
+      description: 'Current active step index (zero-based).',
+    },
+    {
+      name: 'color',
+      type: 'string',
+      default: 'undefined',
+      description: 'Color theme for the stepper (hex color code, e.g., "#173B4E").',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'StepperTAStep components as children.',
+    },
+  ];
+
+  // StepperTAStep props
+  const stepperTAStepProps = [
+    {
+      name: 'label',
+      type: 'string',
+      default: 'undefined',
+      description: 'Text label displayed for the step.',
+    },
+    {
+      name: 'description',
+      type: 'string',
+      default: 'undefined',
+      description: 'Optional description text for the step.',
+    },
   ];
 
   return (
@@ -63,7 +95,16 @@ const StepperDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">StepperTA</h3>
+            <PropsTable props={stepperTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">StepperTAStep</h3>
+            <PropsTable props={stepperTAStepProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

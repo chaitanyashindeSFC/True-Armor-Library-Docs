@@ -28,10 +28,62 @@ const Modals = () => {
   );
 }`;
 
-  const props = [
-    { name: 'open', type: 'boolean', description: 'Whether modal is open' },
-    { name: 'onClose', type: '() => void', description: 'Close handler' },
-    { name: 'content', type: 'object', description: 'title/body/footer slots' },
+  // ModalTA props
+  const modalTAProps = [
+    {
+      name: 'open',
+      type: 'boolean',
+      default: 'false',
+      description: 'Controls whether the modal is visible or hidden.',
+    },
+    {
+      name: 'onClose',
+      type: '() => void',
+      default: 'undefined',
+      description: 'Callback function triggered when the modal should be closed (e.g., clicking overlay or close button).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'ModalTAHeader, ModalTABody, and ModalTAFooter components as children.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional custom CSS classes to apply to the modal container.',
+    },
+  ];
+
+  // ModalTAHeader props
+  const modalTAHeaderProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Header content, typically the modal title.',
+    },
+  ];
+
+  // ModalTABody props
+  const modalTABodyProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Main content of the modal.',
+    },
+  ];
+
+  // ModalTAFooter props
+  const modalTAFooterProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Footer content, typically action buttons.',
+    },
   ];
 
   return (
@@ -67,7 +119,26 @@ const Modals = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ModalTA</h3>
+            <PropsTable props={modalTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ModalTAHeader</h3>
+            <PropsTable props={modalTAHeaderProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ModalTABody</h3>
+            <PropsTable props={modalTABodyProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">ModalTAFooter</h3>
+            <PropsTable props={modalTAFooterProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>

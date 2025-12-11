@@ -19,8 +19,48 @@ const PaginationDoc = () => {
   <PaginationTAControls previousLabel="<" nextLabel=">" />
 </PaginationTA>`;
 
-  const props = [
-    { name: 'length', type: 'number', description: 'Total items' },
+  // PaginationTA props
+  const paginationTAProps = [
+    {
+      name: 'totalPages',
+      type: 'number',
+      default: 'undefined',
+      description: 'Total number of pages to display.',
+    },
+    {
+      name: 'initialPage',
+      type: 'number',
+      default: '1',
+      description: 'Initial active page number.',
+    },
+    {
+      name: 'onChange',
+      type: '(page: number) => void',
+      default: 'undefined',
+      description: 'Callback function triggered when the page changes.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Optional PaginationTAControls component for custom navigation.',
+    },
+  ];
+
+  // PaginationTAControls props
+  const paginationTAControlsProps = [
+    {
+      name: 'previousLabel',
+      type: 'string',
+      default: '"Previous"',
+      description: 'Label text for the previous page button.',
+    },
+    {
+      name: 'nextLabel',
+      type: 'string',
+      default: '"Next"',
+      description: 'Label text for the next page button.',
+    },
   ];
 
   return (
@@ -53,7 +93,16 @@ const PaginationDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          <PropsTable props={props} />
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">PaginationTA</h3>
+            <PropsTable props={paginationTAProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">PaginationTAControls</h3>
+            <PropsTable props={paginationTAControlsProps} />
+          </div>
         </div>
       </div>
     </DocsLayout>
