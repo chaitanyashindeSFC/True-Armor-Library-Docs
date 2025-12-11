@@ -156,18 +156,24 @@ const showToast = (type) => {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
-        <div className="p-4 border rounded-lg bg-white">
-          <div className="space-x-2 mb-4">
-            <ButtonTA
-              label="Show Success Toast"
-              buttonType="primary"
-              onClick={() => showToast('success')}
-            />
+        <div className="p-4 border rounded-lg bg-white ">
+          <div className="space-x-2 mb- flex justify-center ">
+            <div className="flex gap-2">
+              <ButtonTA
+                label="Show Success Toast"
+                buttonType="primary"
+                onClick={() => showToast('success')}
+                className="w-full"
+              />
+            </div>
+            <div className=" gap-2">
             <ButtonTA
               label="Show Error Toast"
               buttonType="secondary"
               onClick={() => showToast('error')}
+              className="w-full"
             />
+            </div>
           </div>
           <ToastTA data={data} position="top-right" duration={3000}>
             {data.map((toast) => (

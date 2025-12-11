@@ -1,77 +1,116 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
+// @ts-expect-error - These components should be available according to the API documentation
 import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const RadioDoc = () => {
   const [selected, setSelected] = useState("option1");
-  const importCode = `import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';`;
-  const usageCode = `<CustomRadioTA
-  name="demo-radio"
-  checked={selected === "option1"}
-  onChange={() => setSelected("option1")}
->
-  <CustomRadioTAInput />
-  <CustomRadioTALabel>Option 1</CustomRadioTALabel>
-</CustomRadioTA>
+  const importCode = `import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';
+import { useState } from 'react';`;
+  
+  const simpleUsageCode = `// Simple Usage (Recommended)
+const [selected, setSelected] = useState("option1");
 
 <CustomRadioTA
-  name="demo-radio"
+  name="options"
+  label="Option 1"
+  checked={selected === "option1"}
+  onChange={() => setSelected("option1")}
+/>
+
+<CustomRadioTA
+  name="options"
+  label="Option 2"
   checked={selected === "option2"}
   onChange={() => setSelected("option2")}
->
-  <CustomRadioTAInput />
-  <CustomRadioTALabel>Option 2</CustomRadioTALabel>
-</CustomRadioTA>`;
+/>`;
+
+  const compoundUsageCode = `// Compound Component Pattern
+const [selected, setSelected] = useState("option1");
+
+<label className="flex items-center gap-2 cursor-pointer">
+  <CustomRadioTAInput
+    name="options"
+    checked={selected === "option1"}
+    onChange={() => setSelected("option1")}
+  />
+  <CustomRadioTALabel checked={selected === "option1"}>
+    Option 1
+  </CustomRadioTALabel>
+</label>
+
+<label className="flex items-center gap-2 cursor-pointer">
+  <CustomRadioTAInput
+    name="options"
+    checked={selected === "option2"}
+    onChange={() => setSelected("option2")}
+  />
+  <CustomRadioTALabel checked={selected === "option2"}>
+    Option 2
+  </CustomRadioTALabel>
+</label>`;
 
   // CustomRadioTA props
   const customRadioTAProps = [
     {
+      name: 'label',
+      type: 'string',
+      default: '"Default radio"',
+      description: 'Radio button label.',
+    },
+    {
       name: 'name',
       type: 'string',
-      default: 'undefined',
-      description: 'Input name for form submissions (all radio buttons in a group should share the same name).',
+      default: '"custom-radio"',
+      description: 'Radio group name (all radio buttons in a group should share the same name).',
     },
     {
       name: 'checked',
       type: 'boolean',
       default: 'false',
-      description: 'Controlled checked state of the radio button.',
+      description: 'Checked state.',
     },
     {
       name: 'onChange',
       type: '() => void',
-      default: 'undefined',
-      description: 'Callback function triggered when the radio button state changes.',
+      default: '() => {}',
+      description: 'Change handler.',
     },
     {
-      name: 'disabled',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether the radio button is disabled.',
-    },
-    {
-      name: 'value',
+      name: 'className',
       type: 'string',
       default: 'undefined',
-      description: 'Value of the radio button (used for form submissions).',
-    },
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'CustomRadioTAInput and CustomRadioTALabel components as children.',
+      description: 'Additional CSS classes.',
     },
   ];
 
   // CustomRadioTAInput props
   const customRadioTAInputProps = [
     {
-      name: 'disabled',
+      name: 'checked',
       type: 'boolean',
       default: 'false',
-      description: 'Whether the radio input is disabled (inherited from parent if not specified).',
+      description: 'Checked state.',
+    },
+    {
+      name: 'onChange',
+      type: '() => void',
+      default: '() => {}',
+      description: 'Change handler.',
+    },
+    {
+      name: 'name',
+      type: 'string',
+      default: '""',
+      description: 'Radio group name.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional CSS classes.',
     },
   ];
 
@@ -81,7 +120,19 @@ const RadioDoc = () => {
       name: 'children',
       type: 'React.ReactNode',
       default: 'undefined',
-      description: 'Label text or content displayed next to the radio button.',
+      description: 'Label text or content (required).',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      default: 'false',
+      description: 'Checked state (affects text color).',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional CSS classes.',
     },
   ];
 
@@ -96,28 +147,61 @@ const RadioDoc = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Usage</h2>
           <div className="mb-4"><CodeBlock code={importCode} language="typescript" /></div>
-          <div className="mb-4"><CodeBlock code={usageCode} language="tsx" /></div>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Simple Usage (Recommended)</h3>
+            <div className="mb-4"><CodeBlock code={simpleUsageCode} language="tsx" /></div>
+          </div>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Compound Component Pattern</h3>
+            <div className="mb-4"><CodeBlock code={compoundUsageCode} language="tsx" /></div>
+          </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white space-y-2">
-            <CustomRadioTA
-              name="demo-radio"
-              checked={selected === "option1"}
-              onChange={() => setSelected("option1")}
-            >
-              <CustomRadioTAInput />
-              <CustomRadioTALabel>Option 1</CustomRadioTALabel>
-            </CustomRadioTA>
-            <CustomRadioTA
-              name="demo-radio"
-              checked={selected === "option2"}
-              onChange={() => setSelected("option2")}
-            >
-              <CustomRadioTAInput />
-              <CustomRadioTALabel>Option 2</CustomRadioTALabel>
-            </CustomRadioTA>
+          <div className="p-4 border rounded-lg bg-white space-y-4">
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Simple Usage</h3>
+              <div className="space-y-2">
+                <CustomRadioTA
+                  name="options"
+                  label="Option 1"
+                  checked={selected === "option1"}
+                  onChange={() => setSelected("option1")}
+                />
+                <CustomRadioTA
+                  name="options"
+                  label="Option 2"
+                  checked={selected === "option2"}
+                  onChange={() => setSelected("option2")}
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Compound Pattern</h3>
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <CustomRadioTAInput
+                    name="compound-options"
+                    checked={selected === "option1"}
+                    onChange={() => setSelected("option1")}
+                  />
+                  <CustomRadioTALabel checked={selected === "option1"}>
+                    Option 1
+                  </CustomRadioTALabel>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <CustomRadioTAInput
+                    name="compound-options"
+                    checked={selected === "option2"}
+                    onChange={() => setSelected("option2")}
+                  />
+                  <CustomRadioTALabel checked={selected === "option2"}>
+                    Option 2
+                  </CustomRadioTALabel>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 

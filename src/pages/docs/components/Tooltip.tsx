@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToolTipTA, ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper } from '@true-armor/ta-atoms2-public';
+import { ToolTipTA } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -15,89 +15,46 @@ const TooltipComponent = () => {
   // ToolTipTA props
   const toolTipTAProps: PropsRow[] = [
     {
+      name: 'content',
+      type: 'string',
+      default: 'undefined',
+      description: 'The tooltip text (required).',
+    },
+    {
       name: 'type',
       type: '"dark" | "light"',
       default: '"dark"',
-      description: 'Visual style type of the tooltip (dark or light theme).',
+      description: 'Tooltip style (dark or light theme).',
     },
     {
       name: 'children',
       type: 'React.ReactNode',
       default: 'undefined',
-      description: 'Trigger element and ToolTipTAWrapper component as children.',
+      description: 'Element to attach tooltip to (required).',
     },
   ];
 
-  // ToolTipTAWrapper props
-  const toolTipTAWrapperProps: PropsRow[] = [
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'ToolTipTAContent and ToolTipTAArrow components as children.',
-    },
-  ];
-
-  // ToolTipTAContent props
-  const toolTipTAContentProps: PropsRow[] = [
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'Content to display in the tooltip.',
-    },
-    {
-      name: 'delayDuration',
-      type: 'number',
-      default: '200',
-      description: 'Delay duration in milliseconds before showing tooltip.',
-    },
-    {
-      name: 'side',
-      type: '"top" | "right" | "bottom" | "left"',
-      default: '"top"',
-      description: 'Preferred side of the anchor to render against.',
-    },
-    {
-      name: 'align',
-      type: '"start" | "center" | "end"',
-      default: '"center"',
-      description: 'Preferred alignment against the anchor.',
-    },
-  ];
-
-  // ToolTipTAArrow props
-  const toolTipTAArrowProps: PropsRow[] = [
-    {
-      name: 'className',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional custom CSS classes to apply to the arrow.',
-    },
-  ];
-
-  const importCode = `import { ToolTipTA, ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ToolTipTA } from '@true-armor/ta-atoms2-public';`;
 
   const usageCode = `// Dark Tooltip
-<ToolTipTA type="dark">
+<ToolTipTA type="dark" content="This is a dark tooltip">
   <button className="px-4 py-2 bg-gray-900 text-white rounded">
-    Hover me (Dark)
+    Hover me
   </button>
-  <ToolTipTAWrapper>
-    <ToolTipTAContent>This is a dark tooltip</ToolTipTAContent>
-    <ToolTipTAArrow />
-  </ToolTipTAWrapper>
 </ToolTipTA>
 
 // Light Tooltip
-<ToolTipTA type="light">
-  <button className="px-4 py-2 bg-gray-500 text-white rounded">
-    Hover me (Light)
+<ToolTipTA type="light" content="This is a light tooltip">
+  <button className="px-4 py-2 bg-gray-200 rounded">
+    Hover me
   </button>
-  <ToolTipTAWrapper>
-    <ToolTipTAContent>This is a light tooltip</ToolTipTAContent>
-    <ToolTipTAArrow />
-  </ToolTipTAWrapper>
+</ToolTipTA>
+
+// With Custom Element
+<ToolTipTA type="dark" content="Click to download">
+  <div className="cursor-pointer p-2">
+    <DownloadIcon />
+  </div>
 </ToolTipTA>`;
 
   return (
@@ -106,7 +63,8 @@ const TooltipComponent = () => {
       <div>
         <h1 className="text-3xl font-bold mb-4">ToolTipTA</h1>
         <p className="text-gray-600 mb-4">
-          A tooltip component that displays additional information when hovering over an element.
+          A tooltip component that displays additional information when hovering over an element. 
+          Now uses flowbite-react Tooltip directly. Wrapper components (ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper) are no longer exported.
         </p>
       </div>
 
@@ -122,50 +80,29 @@ const TooltipComponent = () => {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
-        <div className="p-4 border rounded-lg bg-white space-x-6">
-          <ToolTipTA type="dark">
+        <div className="p-4 border rounded-lg bg-white space-x-6 flex flex justify-center">
+          <ToolTipTA type="dark" content="This is a dark tooltip">
             <button className="px-4 py-2 bg-gray-900 text-white rounded">
               Hover me (Dark)
             </button>
-            <ToolTipTAWrapper>
-              <ToolTipTAContent>This is a dark tooltip</ToolTipTAContent>
-              <ToolTipTAArrow />
-            </ToolTipTAWrapper>
           </ToolTipTA>
           
-          <ToolTipTA type="light">
-            <button className="px-4 py-2 bg-gray-500 text-white rounded">
+          <ToolTipTA type="light" content="This is a light tooltip">
+            <button className="px-4 py-2 bg-gray-200 rounded">
               Hover me (Light)
             </button>
-            <ToolTipTAWrapper>
-              <ToolTipTAContent>This is a light tooltip</ToolTipTAContent>
-              <ToolTipTAArrow />
-            </ToolTipTAWrapper>
           </ToolTipTA>
         </div>
       </div>
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
-        
         <div className="mb-6">
           <h3 className="text-xl font-semibold mb-3">ToolTipTA</h3>
           <PropsTable props={toolTipTAProps} />
-        </div>
-
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-3">ToolTipTAWrapper</h3>
-          <PropsTable props={toolTipTAWrapperProps} />
-        </div>
-
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-3">ToolTipTAContent</h3>
-          <PropsTable props={toolTipTAContentProps} />
-        </div>
-
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-3">ToolTipTAArrow</h3>
-          <PropsTable props={toolTipTAArrowProps} />
+          <p className="text-sm text-gray-500 mt-3">
+            All other props from flowbite-react Tooltip are supported.
+          </p>
         </div>
       </div>
       </div>

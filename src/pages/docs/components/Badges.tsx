@@ -1,85 +1,67 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { BadgeTA, Badge, BadgeIcon, BadgeLabel } from '@true-armor/ta-atoms2-public';
-import { CheckCircle2, Star, AlertTriangle, AlertCircle, Award, Zap, Info } from 'lucide-react';
+import { BadgeTA } from '@true-armor/ta-atoms2-public';
+import { CheckCircle2, Star } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Badges = () => {
-  const importCode = `import { BadgeTA, Badge, BadgeIcon, BadgeLabel } from '@true-armor/ta-atoms2-public';
-import { CheckCircle2, Star } from 'lucide-react';`;
+  const importCode = `import { BadgeTA } from '@true-armor/ta-atoms2-public';
+import { CheckCircle, Star } from 'lucide-react';`;
 
-  const usageCode = `// BadgeTA - Simple pattern with dynamic icons
-<BadgeTA label="Active" color="success" icon={CheckCircle2} />
-<BadgeTA label="New" color="info" icon={Star} />
+  const usageCode = `// Simple Badge with Icon (left position - default)
+<BadgeTA 
+  label="Active" 
+  color="blue" 
+  icon={CheckCircle}
+  iconPosition="left"
+/>
 
-// Badge - Compound pattern with dynamic icons
-<Badge color="success">
-  <BadgeIcon icon={CheckCircle2} />
-  <BadgeLabel>Verified</BadgeLabel>
-</Badge>`;
+// Badge without Icon
+<BadgeTA 
+  label="New" 
+  color="green"
+/>
+
+// Badge with Right Icon
+<BadgeTA 
+  label="Premium" 
+  color="purple" 
+  icon={Star}
+  iconPosition="right"
+/>`;
 
   // BadgeTA props
   const badgeTAProps = [
     {
       name: 'label',
-      type: 'string | React.ReactNode',
+      type: 'string',
       default: 'undefined',
-      description: 'Text or node to render inside the badge.',
+      description: 'The badge text (required).',
     },
     {
       name: 'icon',
-      type: 'React.ComponentType',
+      type: 'React.ComponentType<any>',
       default: 'undefined',
-      description: 'Optional icon component to display in the badge.',
-    },
-    {
-      name: 'value',
-      type: 'any',
-      default: 'undefined',
-      description: 'Optional value used by Card footers for badge display.',
+      description: 'Optional icon component from lucide-react.',
     },
     {
       name: 'color',
-      type: '"success" | "info" | "warning" | "failure" | "purple" | string',
-      default: '"info"',
-      description: 'Visual color theme for the badge (e.g., success, warning, info, failure, purple).',
-    },
-  ];
-
-  // Badge (compound component) props
-  const badgeProps = [
-    {
-      name: 'color',
-      type: '"success" | "info" | "warning" | "failure" | "purple" | string',
-      default: '"info"',
-      description: 'Visual color theme for the badge.',
+      type: 'string',
+      default: '"blue"',
+      description: 'Badge color. Available: "blue", "green", "purple", "gray", "indigo", "pink", or any color supported by flowbite-react Badge.',
     },
     {
-      name: 'children',
-      type: 'React.ReactNode',
+      name: 'iconPosition',
+      type: '"left" | "right"',
+      default: '"left"',
+      description: 'Icon position relative to the label.',
+    },
+    {
+      name: 'className',
+      type: 'string',
       default: 'undefined',
-      description: 'BadgeIcon and BadgeLabel components as children.',
-    },
-  ];
-
-  // BadgeIcon props
-  const badgeIconProps = [
-    {
-      name: 'icon',
-      type: 'React.ComponentType',
-      default: 'undefined',
-      description: 'Icon component to display in the badge.',
-    },
-  ];
-
-  // BadgeLabel props
-  const badgeLabelProps = [
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'Label text or content to display in the badge.',
+      description: 'Additional CSS classes.',
     },
   ];
 
@@ -88,7 +70,10 @@ import { CheckCircle2, Star } from 'lucide-react';`;
       <div className="flex flex-col gap-8">
         <div>
           <h1 className="text-3xl font-bold mb-4">BadgeTA</h1>
-          <p className="text-gray-600 mb-4">Small inline badge for status/labels.</p>
+          <p className="text-gray-600 mb-4">
+            Small inline badge for status/labels. Now uses flowbite-react Badge directly. 
+            Wrapper components (Badge, BadgeIcon, BadgeLabel) are no longer exported.
+          </p>
         </div>
 
         <div>
@@ -97,50 +82,39 @@ import { CheckCircle2, Star } from 'lucide-react';`;
           <div className="mb-4"><CodeBlock code={usageCode} language="tsx" /></div>
         </div>
 
-        <div>
+        <div >
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white flex gap-3 items-center flex-wrap">
-            <BadgeTA label="Active" color="success" icon={CheckCircle2} />
-            <BadgeTA label="New" color="info" icon={Star} />
-            <BadgeTA label="Warning" color="warning" icon={AlertTriangle} />
-            <BadgeTA label="Error" color="failure" icon={AlertCircle} />
-            <BadgeTA label="Premium" color="purple" icon={Award} />
-            <Badge color="success">
-              <BadgeIcon icon={CheckCircle2} />
-              <BadgeLabel>Verified</BadgeLabel>
-            </Badge>
-            <Badge color="info">
-              <BadgeIcon icon={Info} />
-              <BadgeLabel>Information</BadgeLabel>
-            </Badge>
-            <Badge color="warning">
-              <BadgeIcon icon={AlertTriangle} />
-              <BadgeLabel>Pending</BadgeLabel>
-            </Badge>
+          <div className="p-4 border rounded-lg bg-white flex gap-4 justify-center items-center w-full">
+            <BadgeTA label="Active" color="blue" icon={CheckCircle2} iconPosition="left" className="w-ful" />
+            <BadgeTA label="New" color="green" />
+            <BadgeTA label="Premium" color="purple" icon={Star} iconPosition="right" />
+            <BadgeTA label="Info" color="gray" />
+            <BadgeTA label="Indigo" color="indigo" />
+            <BadgeTA label="Pink" color="pink" />
           </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
-          
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">BadgeTA</h3>
             <PropsTable props={badgeTAProps} />
+            <p className="text-sm text-gray-500 mt-3">
+              All other props from flowbite-react Badge are supported.
+            </p>
           </div>
-
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">Badge</h3>
-            <PropsTable props={badgeProps} />
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">BadgeIcon</h3>
-            <PropsTable props={badgeIconProps} />
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">BadgeLabel</h3>
-            <PropsTable props={badgeLabelProps} />
+          
+          <div className="rounded-xl border bg-muted/50 p-6 mt-6">
+            <h3 className="text-lg font-semibold mb-2">Available Colors</h3>
+            <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+              <li><code>"blue"</code> (default)</li>
+              <li><code>"green"</code></li>
+              <li><code>"purple"</code></li>
+              <li><code>"gray"</code></li>
+              <li><code>"indigo"</code></li>
+              <li><code>"pink"</code></li>
+              <li>Any color supported by flowbite-react Badge</li>
+            </ul>
           </div>
         </div>
       </div>
