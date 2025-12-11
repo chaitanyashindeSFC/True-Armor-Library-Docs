@@ -90,37 +90,7 @@ function App() {
           </div>
         </div>
 
-        <div className="rounded-xl border bg-gradient-primary p-8 text-white shadow-large">
-          <h2 className="text-2xl font-bold mb-3">Why TrueArmor UI?</h2>
-          <ul className="space-y-2 mb-6">
-            <li className="flex items-start">
-              <span className="mr-2">✓</span>
-              <span>50+ production-ready components</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">✓</span>
-              <span>Full dark mode support out of the box</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">✓</span>
-              <span>WAI-ARIA compliant for accessibility</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">✓</span>
-              <span>Comprehensive documentation with live examples</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">✓</span>
-              <span>Active community and regular updates</span>
-            </li>
-          </ul>
-          <Link to="/docs/installation">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-              Get Started →
-            </Button>
-          </Link>
-        </div>
-
+    
         <div className="flex items-center justify-between py-4 border-t">
           <span className="text-sm text-muted-foreground">
             Next: Installation Guide

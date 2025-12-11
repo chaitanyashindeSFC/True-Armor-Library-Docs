@@ -12,25 +12,102 @@ import { useState } from 'react';
 
 const Dropdown = () => {
 
-  const importCode = `import { DropDownTA, DropDownTATrigger, DropDownTASearch, DropDownTAList } from '@true-armor/ta-atoms2-public';`;
-  const usageCode = `const users = [
-  { id: 1, name: "John Doe", email: "john@example.com" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com" }
+  const importCode = `import { 
+  DropDownTA,
+  DropDownTATrigger,
+  DropDownTAContent,
+  DropDownTASearch,
+  DropDownTAItem,
+  DropDownTAEmpty
+} from "@true-armor/ta-atoms2-public";
+import { useState } from "react";`;
+  
+  const usageCode = `const [isOpen, setIsOpen] = useState(false);
+const [searchTerm, setSearchTerm] = useState("");
+const [selectedUser, setSelectedUser] = useState(null);
+
+const teamMembers = [
+  { 
+    id: 1, 
+    name: "Leslie Alexander", 
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg", 
+    isYou: true 
+  },
+  { 
+    id: 2, 
+    name: "Michael Gough", 
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg" 
+  },
+  { 
+    id: 3, 
+    name: "Lana Byrd", 
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg" 
+  },
 ];
 
-<DropDownTA
-  items={users}
-  placeholder="Select user"
-  getItemLabel={(item) => item.name}
->
-  <DropDownTATrigger />
-  <DropDownTASearch />
-  <DropDownTAList renderItem={(item) => (
-    <div>
-      <span>{item.name}</span>
-      <span className="text-gray-500">({item.email})</span>
-    </div>
-  )} />
+const filteredItems = teamMembers.filter((item) =>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+const handleSelect = (item) => {
+  setSelectedUser(item);
+  setIsOpen(false);
+  setSearchTerm("");
+};
+
+<DropDownTA isOpen={isOpen} onToggle={setIsOpen}>
+  <DropDownTATrigger
+    selectedItem={selectedUser}
+    placeholder="Select a team member"
+    getItemLabel={(item) => item.name}
+  />
+  <DropDownTAContent>
+    <DropDownTASearch
+      searchTerm={searchTerm}
+      onSearchChange={setSearchTerm}
+      placeholder="Search team members..."
+    />
+    {filteredItems.map((item) => (
+      <DropDownTAItem
+        key={item.id}
+        item={item}
+        getItemLabel={(item) => item.name}
+        onSelect={handleSelect}
+      />
+    ))}
+    {filteredItems.length === 0 && (
+      <DropDownTAEmpty message="No results found" />
+    )}
+  </DropDownTAContent>
+</DropDownTA>`;
+
+  const simpleUsageCode = `const [isOpen, setIsOpen] = useState(false);
+const [selectedUser, setSelectedUser] = useState(null);
+
+const users = [
+  { id: 1, name: "John Doe", email: "john@example.com" },
+  { id: 2, name: "Jane Smith", email: "jane@example.com" },
+];
+
+<DropDownTA isOpen={isOpen} onToggle={setIsOpen}>
+  <DropDownTATrigger
+    selectedItem={selectedUser}
+    placeholder="Select user"
+    getItemLabel={(item) => item.name}
+  />
+  <DropDownTAContent>
+    {users.map((user) => (
+      <DropDownTAItem
+        key={user.id}
+        item={user}
+        getItemLabel={(item) => item.name}
+        onSelect={(item) => {
+          setSelectedUser(item);
+          setIsOpen(false);
+        }}
+      />
+    ))}
+  </DropDownTAContent>
 </DropDownTA>`;
 
   // DropDownTA props
@@ -81,107 +158,135 @@ const Dropdown = () => {
     setSearchTerm("");
   };
 
-  // DropDownTATrigger props
-  const dropDownTATriggerProps = [
+  // DropDownTA props
+  const dropDownTAProps = [
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Controlled state for dropdown visibility.',
+    },
+    {
+      name: 'onToggle',
+      type: '(open: boolean) => void',
+      default: '() => {}',
+      description: 'Callback when dropdown state changes.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional CSS classes.',
+    },
     {
       name: 'children',
       type: 'React.ReactNode',
       default: 'undefined',
-      description: 'Custom trigger content (defaults to selected item label if not provided).',
+      description: 'DropDownTATrigger and DropDownTAContent components.',
+    },
+  ];
+
+  // DropDownTATrigger props
+  const dropDownTATriggerProps = [
+    {
+      name: 'selectedItem',
+      type: 'any',
+      default: 'null',
+      description: 'Currently selected item object.',
+    },
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: '"Select an item"',
+      description: 'Placeholder text when no item is selected.',
+    },
+    {
+      name: 'getItemLabel',
+      type: '(item: any) => string',
+      default: '(item) => item?.name || ""',
+      description: 'Function to extract label from item.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      default: 'auto-injected',
+      description: 'Whether dropdown is open (auto-injected from DropDownTA).',
+    },
+    {
+      name: 'onToggle',
+      type: '(open: boolean) => void',
+      default: 'auto-injected',
+      description: 'Toggle handler (auto-injected from DropDownTA).',
+    },
+  ];
+
+  // DropDownTAContent props
+  const dropDownTAContentProps = [
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      default: 'auto-injected',
+      description: 'Whether dropdown is open (auto-injected from DropDownTA).',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'DropDownTASearch, DropDownTAItem, and DropDownTAEmpty components.',
     },
   ];
 
   // DropDownTASearch props
   const dropDownTASearchProps = [
     {
-      name: 'placeholder',
-      type: 'string',
-      default: '"Search..."',
-      description: 'Placeholder text for the search input.',
-    },
-  ];
-
-  // DropDownTAList props
-  const dropDownTAListProps = [
-    {
-      name: 'renderItem',
-      type: '(item: any) => React.ReactNode',
-      default: 'undefined',
-      description: 'Custom render function for each dropdown item.',
-    },
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'Custom list content (defaults to rendering items if not provided).',
-    },
-  ];
-const dropDownTAProps = [
-    {
-      name: 'items',
-      type: 'any[]',
-      default: '[]',
-      description: 'Array of items to display in the dropdown.',
-    },
-    {
-      name: 'isOpen',
-      type: 'boolean',
-      default: 'false',
-      description: 'Controlled state for whether the dropdown is open.',
-    },
-    {
-      name: 'setIsOpen',
-      type: '(isOpen: boolean) => void',
-      default: 'undefined',
-      description: 'Callback function to control the open state.',
-    },
-    {
       name: 'searchTerm',
       type: 'string',
       default: '""',
-      description: 'Current search/filter term for the dropdown items.',
+      description: 'Current search value.',
     },
     {
-      name: 'setSearchTerm',
+      name: 'onSearchChange',
       type: '(term: string) => void',
-      default: 'undefined',
-      description: 'Callback function to update the search term.',
-    },
-    {
-      name: 'selectedItem',
-      type: 'any',
-      default: 'undefined',
-      description: 'Currently selected item from the dropdown.',
-    },
-    {
-      name: 'setSelectedItem',
-      type: '(item: any) => void',
-      default: 'undefined',
-      description: 'Callback function triggered when an item is selected.',
+      default: '() => {}',
+      description: 'Callback when search term changes.',
     },
     {
       name: 'placeholder',
       type: 'string',
-      default: '"Select..."',
-      description: 'Placeholder text displayed when no item is selected.',
+      default: '"Search..."',
+      description: 'Search input placeholder.',
+    },
+  ];
+
+  // DropDownTAItem props
+  const dropDownTAItemProps = [
+    {
+      name: 'item',
+      type: 'any',
+      default: 'undefined',
+      description: 'Item object to display (required).',
     },
     {
       name: 'getItemLabel',
       type: '(item: any) => string',
-      default: 'undefined',
-      description: 'Function to extract the label from an item object.',
+      default: '(item) => item?.name || ""',
+      description: 'Function to extract label.',
     },
     {
-      name: 'showSearch',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether to show the search input field.',
+      name: 'onSelect',
+      type: '(item: any) => void',
+      default: '() => {}',
+      description: 'Callback when item is selected.',
     },
+  ];
+
+  // DropDownTAEmpty props
+  const dropDownTAEmptyProps = [
     {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'DropDownTATrigger, DropDownTASearch, and DropDownTAList components as children.',
+      name: 'message',
+      type: 'string',
+      default: '"No results found"',
+      description: 'Message to display when no items match.',
     },
   ];
 
@@ -191,13 +296,23 @@ const dropDownTAProps = [
       <div className="flex flex-col gap-8">
         <div>
           <h1 className="text-3xl font-bold mb-4">DropDownTA</h1>
-          <p className="text-gray-600 mb-4">Dropdown selector with optional search.</p>
+          <p className="text-gray-600 mb-4">
+            Dropdown selector with optional search functionality and avatar support. 
+            Uses a compound component pattern for maximum flexibility.
+          </p>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Usage</h2>
           <div className="mb-4"><CodeBlock code={importCode} language="typescript" /></div>
-          <div className="mb-4"><CodeBlock code={usageCode} language="tsx" /></div>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">With Search</h3>
+            <div className="mb-4"><CodeBlock code={usageCode} language="tsx" /></div>
+          </div>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Simple Usage (without search)</h3>
+            <div className="mb-4"><CodeBlock code={simpleUsageCode} language="tsx" /></div>
+          </div>
         </div>
 
         <div>
@@ -238,14 +353,19 @@ const dropDownTAProps = [
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
           
-          {/* <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">DropDownTA</h3>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTA (Main Component)</h3>
             <PropsTable props={dropDownTAProps} />
-          </div> */}
+          </div>
 
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">DropDownTATrigger</h3>
             <PropsTable props={dropDownTATriggerProps} />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTAContent</h3>
+            <PropsTable props={dropDownTAContentProps} />
           </div>
 
           <div className="mb-6">
@@ -254,9 +374,26 @@ const dropDownTAProps = [
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">DropDownTAList</h3>
-            <PropsTable props={dropDownTAListProps} />
+            <h3 className="text-xl font-semibold mb-3">DropDownTAItem</h3>
+            <PropsTable props={dropDownTAItemProps} />
           </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">DropDownTAEmpty</h3>
+            <PropsTable props={dropDownTAEmptyProps} />
+          </div>
+        </div>
+
+        <div className="rounded-xl border bg-muted/50 p-6">
+          <h3 className="text-lg font-semibold mb-2">✨ Features</h3>
+          <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+            <li>Avatar support (displays <code>item.avatar</code> if available)</li>
+            <li>"(You)" indicator (displays when <code>item.isYou === true</code>)</li>
+            <li>Search/filter functionality</li>
+            <li>Customizable item rendering</li>
+            <li>Empty state handling</li>
+            <li>Fully controlled component pattern</li>
+          </ul>
         </div>
       </div>
     </DocsLayout>
