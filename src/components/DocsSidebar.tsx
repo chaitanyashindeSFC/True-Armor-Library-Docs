@@ -28,7 +28,7 @@ const navSections: NavSection[] = [
     items: [
       { label: "Alerts", path: "/docs/components/alerts" },
       { label: "Buttons", path: "/docs/components/buttons" },
-      // { label: "Cards", path: "/docs/components/cards" },
+      { label: "Cards", path: "/docs/components/cards" },
       { label: "Badges", path: "/docs/components/badges" },
       { label: "Accordions", path: "/docs/components/accordions" },
       { label: "Modals", path: "/docs/components/modals" },

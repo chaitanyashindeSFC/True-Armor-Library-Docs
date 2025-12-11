@@ -1,147 +1,169 @@
 import React from "react";
 import DocsLayout from "@/components/DocsLayout";
-// import {
-//   CardTA,
-//   CardTitle,
-//   CardContent,
-//   CardDescription,
-//   CardFooter,
-//   CardLeftIcon,
-//   CardRightIcon,
-// } from "@true-armor/ta-atoms2-public";
+import { CardTA } from "@true-armor/ta-atoms2-public";
+// @ts-expect-error - These components should be available according to the API documentation
+import { CardTAIcon, CardTAContent, CardTATitle, CardTABody } from "@true-armor/ta-atoms2-public";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
-import { FolderGit2, CheckCircle } from "lucide-react";
+import { UserCircle2, Users, Shield, TrendingUp } from "lucide-react";
 
 const Cards = () => {
-  const importCode = `import {
-  CardTA,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardLeftIcon,
-  CardRightIcon
-} from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { 
+  CardTA, 
+  CardTAIcon, 
+  CardTAContent, 
+  CardTATitle, 
+  CardTABody 
+} from "@true-armor/ta-atoms2-public";
+import { UserCircle2, Users, Shield, TrendingUp } from "lucide-react";`;
 
-  const usageCode = `<CardTA className="border rounded-lg shadow-sm bg-white">
-  <CardTitle>Repository</CardTitle>
-  <CardContent>
-    <CardDescription>Manage your Git repositories easily.</CardDescription>
-    <CardFooter repos={3} badgeColor="indigo" />
-  </CardContent>
+  const basicUsageCode = `// Basic card with all components
+<CardTA borderColor="#C60000">
+  <CardTAIcon icon={UserCircle2} bg="#A80C0C" color="white" />
+  <CardTAContent>
+    <CardTATitle count={42} title="Total Users" />
+    <CardTABody instances={12} label="Active Now" />
+  </CardTAContent>
 </CardTA>`;
 
-  const withIconsCode = `<CardTA className="border rounded-lg shadow-sm bg-white flex items-center">
-  <CardLeftIcon icon={FolderGit2} />
-  <div className="flex-1">
-    <CardTitle>Version Control</CardTitle>
-    <CardContent>
-      <CardDescription>
-        Integrated tools for managing source control.
-      </CardDescription>
-    </CardContent>
-  </div>
-  <CardRightIcon icon={CheckCircle} isVisible />
+  const multipleCardsCode = `// Multiple Cards Example
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  {/* Users Card */}
+  <CardTA borderColor="#C60000">
+    <CardTAIcon icon={UserCircle2} bg="#A80C0C" color="white" />
+    <CardTAContent>
+      <CardTATitle count={42} title="Total Users" />
+      <CardTABody instances={12} label="Active Now" />
+    </CardTAContent>
+  </CardTA>
+
+  {/* Teams Card */}
+  <CardTA borderColor="#059669">
+    <CardTAIcon icon={Users} bg="#047857" color="white" />
+    <CardTAContent>
+      <CardTATitle count={8} title="Teams" />
+      <CardTABody instances={24} label="Members" />
+    </CardTAContent>
+  </CardTA>
+</div>`;
+
+  const titleOnlyCode = `// Card with Title Only
+<CardTA borderColor="#173B4E">
+  <CardTAIcon icon={TrendingUp} bg="#1E40AF" color="white" />
+  <CardTAContent>
+    <CardTATitle title="Revenue Growth" />
+    <CardTABody instances="+24%" label="This Month" />
+  </CardTAContent>
+</CardTA>`;
+
+  const customContentCode = `// Card with Custom Content
+<CardTA borderColor="#7C3AED" className="max-w-sm">
+  <CardTAIcon icon={Shield} bg="#6D28D9" color="white" />
+  <CardTAContent>
+    <CardTATitle count={99.9} title="Uptime" color="#7C3AED" />
+    <div className="mt-3">
+      <p className="text-sm text-gray-600">
+        System is running smoothly with no issues detected.
+      </p>
+    </div>
+  </CardTAContent>
 </CardTA>`;
 
   // CardTA props
-  const cardProps = [
+  const cardTAProps = [
     {
-      name: "children",
-      type: "React.ReactNode",
-      default: "undefined",
-      description: "Card content or subcomponents (CardTitle, CardContent, etc.).",
+      name: "borderColor",
+      type: "string",
+      default: '"#C60000"',
+      description: "Left border color (6px solid border).",
     },
     {
       name: "className",
       type: "string",
       default: "undefined",
-      description: "Additional custom CSS classes to apply to the card container.",
+      description: "Additional CSS classes.",
     },
-    {
-      name: "onClick",
-      type: "() => void",
-      default: "undefined",
-      description: "Callback function triggered when the card is clicked.",
-    },
-  ];
-
-  // CardTitle props
-  const cardTitleProps = [
     {
       name: "children",
       type: "React.ReactNode",
       default: "undefined",
-      description: "Title text or content to display in the card header.",
+      description: "CardTAIcon and CardTAContent components.",
     },
   ];
 
-  // CardContent props
-  const cardContentProps = [
+  // CardTAIcon props
+  const cardTAIconProps = [
+    {
+      name: "icon",
+      type: "React.ComponentType<any>",
+      default: "UserCircle2",
+      description: "Icon component from lucide-react.",
+    },
+    {
+      name: "bg",
+      type: "string",
+      default: '"#A80C0C"',
+      description: "Background color of the icon container.",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: '"white"',
+      description: "Icon color.",
+    },
+  ];
+
+  // CardTAContent props
+  const cardTAContentProps = [
     {
       name: "children",
       type: "React.ReactNode",
       default: "undefined",
-      description: "Main content of the card (CardDescription, CardFooter, etc.).",
+      description: "CardTATitle, CardTABody, or custom content.",
     },
   ];
 
-  // CardDescription props
-  const cardDescriptionProps = [
+  // CardTATitle props
+  const cardTATitleProps = [
     {
-      name: "children",
-      type: "React.ReactNode",
+      name: "count",
+      type: "number | string",
       default: "undefined",
-      description: "Description text or content displayed in the card.",
-    },
-  ];
-
-  // CardFooter props
-  const cardFooterProps = [
-    {
-      name: "repos",
-      type: "number",
-      default: "undefined",
-      description: "Number of repositories to display (used for badge display).",
+      description: "Large number displayed at the top.",
     },
     {
-      name: "badgeColor",
+      name: "title",
       type: "string",
       default: "undefined",
-      description: "Color theme for the badge (e.g., 'indigo', 'blue', 'green').",
+      description: "Title text displayed below the count.",
     },
     {
-      name: "children",
-      type: "React.ReactNode",
-      default: "undefined",
-      description: "Footer content or custom footer elements.",
-    },
-  ];
-
-  // CardLeftIcon props
-  const cardLeftIconProps = [
-    {
-      name: "icon",
-      type: "React.ComponentType",
-      default: "undefined",
-      description: "Icon component to display on the left side of the card.",
+      name: "color",
+      type: "string",
+      default: '"#111827"',
+      description: "Color of the count text.",
     },
   ];
 
-  // CardRightIcon props
-  const cardRightIconProps = [
+  // CardTABody props
+  const cardTABodyProps = [
     {
-      name: "icon",
-      type: "React.ComponentType",
+      name: "instances",
+      type: "number | string",
       default: "undefined",
-      description: "Icon component to display on the right side of the card.",
+      description: "Number or text displayed before the label.",
     },
     {
-      name: "isVisible",
-      type: "boolean",
-      default: "false",
-      description: "Controls the visibility of the right icon.",
+      name: "label",
+      type: "string",
+      default: '"Instances"',
+      description: "Label text displayed after instances.",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: '"#6B7280"',
+      description: "Color of both instances and label text.",
     },
   ];
 
@@ -152,52 +174,49 @@ const Cards = () => {
         <div>
           <h1 className="text-4xl font-bold mb-3">CardTA</h1>
           <p className="text-lg text-muted-foreground">
-            A flexible container for displaying content such as titles, descriptions, icons,
-            and badges — built with subcomponents for clean composition.
+            Card component with icon, title, and body sections. Perfect for dashboard widgets, 
+            statistics cards, and feature highlights. Uses a compound component pattern for flexible composition.
           </p>
         </div>
 
         {/* Usage */}
-        {/* <section> */}
-          {/* <h2 className="text-2xl font-bold mb-4">Usage</h2>
-          <CodeBlock code={importCode} language="tsx" />
-          <CodeBlock code={usageCode} language="tsx" />
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Usage</h2>
+          <div className="mb-4"><CodeBlock code={importCode} language="typescript" /></div>
+          
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Basic Card</h3>
+            <div className="mb-4"><CodeBlock code={basicUsageCode} language="tsx" /></div>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Multiple Cards</h3>
+            <div className="mb-4"><CodeBlock code={multipleCardsCode} language="tsx" /></div>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Card with Title Only</h3>
+            <div className="mb-4"><CodeBlock code={titleOnlyCode} language="tsx" /></div>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Card with Custom Content</h3>
+            <div className="mb-4"><CodeBlock code={customContentCode} language="tsx" /></div>
+          </div>
 
           <div className="p-6 border rounded-lg bg-card mt-6 shadow-soft">
             <h3 className="text-lg font-semibold mb-4">Preview</h3>
-            <CardTA className="border rounded-lg shadow-sm bg-white">
-              <CardTitle>Repository</CardTitle>
-              <CardContent>
-                <CardDescription>
-                  Manage your Git repositories easily.
-                </CardDescription>
-                <CardFooter repos={3} badgeColor="indigo" />
-              </CardContent>
-            </CardTA>
+            <section className="space-y-4">
+              <CardTA borderColor="#DC2626">
+                <CardTAIcon icon={Users} bg="#DC2626" />
+                <CardTAContent>
+                  <CardTATitle count={8} title="Critical Severity" />
+                  <CardTABody instances={22} label="Instances" />
+                </CardTAContent>
+              </CardTA>
+            </section>
           </div>
         </section>
-
-        {/* With Icons */}
-        {/* <section>
-          <h2 className="text-2xl font-bold mb-4">With Icons</h2>
-          <CodeBlock code={withIconsCode} language="tsx" />
-
-          <div className="p-6 border rounded-lg bg-card mt-6 shadow-soft">
-            <h3 className="text-lg font-semibold mb-4">Preview</h3>
-            <CardTA className="border rounded-lg shadow-sm bg-white flex items-center">
-              <CardLeftIcon icon={FolderGit2} />
-              <div className="flex-1">
-                <CardTitle>Version Control</CardTitle>
-                <CardContent>
-                  <CardDescription>
-                    Integrated tools for managing source control.
-                  </CardDescription>
-                </CardContent>
-              </div>
-              <CardRightIcon icon={CheckCircle} isVisible />
-            </CardTA>
-          </div>
-        </section> */}
 
 
         {/* Props */}
@@ -205,50 +224,42 @@ const Cards = () => {
           <h2 className="text-2xl font-bold mb-4">Props</h2>
           
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardTA</h3>
-            <PropsTable props={cardProps} />
+            <h3 className="text-xl font-semibold mb-3">CardTA (Main Component)</h3>
+            <PropsTable props={cardTAProps} />
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardTitle</h3>
-            <PropsTable props={cardTitleProps} />
+            <h3 className="text-xl font-semibold mb-3">CardTAIcon</h3>
+            <PropsTable props={cardTAIconProps} />
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardContent</h3>
-            <PropsTable props={cardContentProps} />
+            <h3 className="text-xl font-semibold mb-3">CardTAContent</h3>
+            <PropsTable props={cardTAContentProps} />
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardDescription</h3>
-            <PropsTable props={cardDescriptionProps} />
+            <h3 className="text-xl font-semibold mb-3">CardTATitle</h3>
+            <PropsTable props={cardTATitleProps} />
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardFooter</h3>
-            <PropsTable props={cardFooterProps} />
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardLeftIcon</h3>
-            <PropsTable props={cardLeftIconProps} />
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-3">CardRightIcon</h3>
-            <PropsTable props={cardRightIconProps} />
+            <h3 className="text-xl font-semibold mb-3">CardTABody</h3>
+            <PropsTable props={cardTABodyProps} />
           </div>
         </section>
 
-        {/* Best Practices */}
+        {/* Features */}
         <section className="rounded-xl border bg-muted/50 p-6">
-          <h3 className="text-lg font-semibold mb-2">💡 Best Practices</h3>
+          <h3 className="text-lg font-semibold mb-2">✨ Features</h3>
           <ul className="text-sm text-muted-foreground space-y-2">
-            <li>• Use <code>CardTitle</code> for concise, descriptive titles</li>
-            <li>• Combine <code>CardDescription</code> and <code>CardFooter</code> for context and metadata</li>
-            <li>• Include icons for visually rich cards</li>
-            <li>• Maintain consistent spacing inside <code>CardContent</code></li>
-            <li>• Keep card actions (click or link) clear and intentional</li>
+            <li>✅ Customizable left border color</li>
+            <li>✅ Icon support with custom background and color</li>
+            <li>✅ Flexible content layout</li>
+            <li>✅ Optional count and title display</li>
+            <li>✅ Optional instances and label display</li>
+            <li>✅ Fully customizable styling</li>
+            <li>✅ Responsive design ready</li>
           </ul>
         </section>
       </div>
