@@ -13,7 +13,7 @@ import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
 
 const Alerts = () => {
-  const basicExample = `import { AlertTA, Alert, AlertIcon, AlertTitle, AlertDescription } from "@true-armor/atoms-ta";
+  const basicExample = `import { AlertTA, Alert, AlertIcon, AlertTitle, AlertDescription } from "@true-armor/ta-atoms2-public";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 
 function App() {

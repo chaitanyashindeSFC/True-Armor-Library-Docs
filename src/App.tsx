@@ -33,7 +33,7 @@ import StepperDoc from "@/pages/docs/components/Stepper";
 import TableDoc from "@/pages/docs/components/Table";
 import Theming from "./pages/docs/Theming";
 
-import '@true-armor/atoms-ta/styles.css';
+import '@true-armor/ta-atoms2-public/styles.css';
 import "@true-armor/ta-atoms2-public/styles.css";
 
 
