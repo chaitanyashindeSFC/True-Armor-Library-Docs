@@ -1,20 +1,17 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { DropDownTA } from '@true-armor/ta-atoms2-public';
+import {  DropDownTA,
+  DropDownTATrigger,
+  DropDownTAContent,
+  DropDownTASearch,
+  DropDownTAItem,
+  DropDownTAEmpty, } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 import { useState } from 'react';
 
 const Dropdown = () => {
-  const [currentStep, setCurrentStep] = useState(2);
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null);
-  const users = [
-    { id: 1, name: "John Doe", email: "john@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com" },
-    { id: 3, name: "Bob Johnson", email: "bob@example.com" }
-  ];
+
   const importCode = `import { DropDownTA, DropDownTATrigger, DropDownTASearch, DropDownTAList } from '@true-armor/ta-atoms2-public';`;
   const usageCode = `const users = [
   { id: 1, name: "John Doe", email: "john@example.com" },
@@ -37,7 +34,89 @@ const Dropdown = () => {
 </DropDownTA>`;
 
   // DropDownTA props
-  const dropDownTAProps = [
+ const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const teamMembers = [
+    {
+      id: 1,
+      name: "Leslie Alexander",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+      isYou: true,
+    },
+    {
+      id: 2,
+      name: "Michael Gough",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    {
+      id: 3,
+      name: "Lana Byrd",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    },
+    {
+      id: 4,
+      name: "Jessica Lee",
+      avatar: "https://randomuser.me/api/portraits/women/52.jpg",
+    },
+    {
+      id: 5,
+      name: "Thomas Lean",
+      avatar: "https://randomuser.me/api/portraits/men/29.jpg",
+    },
+    {
+      id: 6,
+      name: "Jese Leos",
+      avatar: "https://randomuser.me/api/portraits/women/63.jpg",
+    },
+  ];
+  const filteredItems = teamMembers.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSelect = (item) => {
+    setSelectedUser(item);
+    setIsOpen(false);
+    setSearchTerm("");
+  };
+
+  // DropDownTATrigger props
+  const dropDownTATriggerProps = [
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom trigger content (defaults to selected item label if not provided).',
+    },
+  ];
+
+  // DropDownTASearch props
+  const dropDownTASearchProps = [
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: '"Search..."',
+      description: 'Placeholder text for the search input.',
+    },
+  ];
+
+  // DropDownTAList props
+  const dropDownTAListProps = [
+    {
+      name: 'renderItem',
+      type: '(item: any) => React.ReactNode',
+      default: 'undefined',
+      description: 'Custom render function for each dropdown item.',
+    },
+    {
+      name: 'children',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Custom list content (defaults to rendering items if not provided).',
+    },
+  ];
+const dropDownTAProps = [
     {
       name: 'items',
       type: 'any[]',
@@ -106,75 +185,6 @@ const Dropdown = () => {
     },
   ];
 
-  // DropDownTATrigger props
-  const dropDownTATriggerProps = [
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'Custom trigger content (defaults to selected item label if not provided).',
-    },
-  ];
-
-  // DropDownTASearch props
-  const dropDownTASearchProps = [
-    {
-      name: 'placeholder',
-      type: 'string',
-      default: '"Search..."',
-      description: 'Placeholder text for the search input.',
-    },
-  ];
-
-  // DropDownTAList props
-  const dropDownTAListProps = [
-    {
-      name: 'renderItem',
-      type: '(item: any) => React.ReactNode',
-      default: 'undefined',
-      description: 'Custom render function for each dropdown item.',
-    },
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      default: 'undefined',
-      description: 'Custom list content (defaults to rendering items if not provided).',
-    },
-  ];
-  const teamMembers = [
-    {
-      id: 1,
-      name: "Leslie Alexander",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      isYou: true,
-    },
-    {
-      id: 2,
-      name: "Michael Gough",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      id: 3,
-      name: "Lana Byrd",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-    },
-    {
-      id: 4,
-      name: "Jessica Lee",
-      avatar: "https://randomuser.me/api/portraits/women/52.jpg",
-    },
-    {
-      id: 5,
-      name: "Thomas Lean",
-      avatar: "https://randomuser.me/api/portraits/men/29.jpg",
-    },
-    {
-      id: 6,
-      name: "Jese Leos",
-      avatar: "https://randomuser.me/api/portraits/women/63.jpg",
-    },
-  ];
-
   return (
     
     <DocsLayout>
@@ -193,28 +203,45 @@ const Dropdown = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-          <DropDownTA
-          items={teamMembers}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          selectedItem={selectedUser}
-          setSelectedItem={setSelectedUser}
-          placeholder="Select a team member or yourself"
-          getItemLabel={(item) => item.name}
-          showSearch={true}
-        />
+         <section className="space-y-4">
+        <DropDownTA isOpen={isOpen} onToggle={setIsOpen}>
+          <DropDownTATrigger
+            selectedItem={selectedUser}
+            placeholder="Select a team member"
+            getItemLabel={(item) => item.name}
+          />
+
+          <DropDownTAContent>
+            <DropDownTASearch
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+            />
+
+            {filteredItems.map((item) => (
+              <DropDownTAItem
+                key={item.id}
+                item={item}
+                getItemLabel={(item) => item.name}
+                onSelect={handleSelect}
+              />
+            ))}
+
+            {filteredItems.length === 0 && (
+              <DropDownTAEmpty message="No results" />
+            )}
+          </DropDownTAContent>
+        </DropDownTA>
+      </section>
           </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Props</h2>
           
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">DropDownTA</h3>
             <PropsTable props={dropDownTAProps} />
-          </div>
+          </div> */}
 
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">DropDownTATrigger</h3>
