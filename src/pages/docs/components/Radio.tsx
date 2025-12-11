@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { CustomRadioTA } from '@true-armor/atoms-ta';
+import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const RadioDoc = () => {
-  const importCode = `import { CustomRadioTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<CustomRadioTA label="Option" name="r1" checked={true} onChange={()=>{}} />`;
+  const [selected, setSelected] = useState("option1");
+  const importCode = `import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `<CustomRadioTA
+  name="demo-radio"
+  checked={selected === "option1"}
+  onChange={() => setSelected("option1")}
+>
+  <CustomRadioTAInput />
+  <CustomRadioTALabel>Option 1</CustomRadioTALabel>
+</CustomRadioTA>
+
+<CustomRadioTA
+  name="demo-radio"
+  checked={selected === "option2"}
+  onChange={() => setSelected("option2")}
+>
+  <CustomRadioTAInput />
+  <CustomRadioTALabel>Option 2</CustomRadioTALabel>
+</CustomRadioTA>`;
 
   const props = [
     { name: 'label', type: 'string', description: 'Label text' },
@@ -32,8 +49,23 @@ const RadioDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <CustomRadioTA label="Option" name="r1" checked={true} onChange={()=>{}} />
+          <div className="p-4 border rounded-lg bg-white space-y-2">
+            <CustomRadioTA
+              name="demo-radio"
+              checked={selected === "option1"}
+              onChange={() => setSelected("option1")}
+            >
+              <CustomRadioTAInput />
+              <CustomRadioTALabel>Option 1</CustomRadioTALabel>
+            </CustomRadioTA>
+            <CustomRadioTA
+              name="demo-radio"
+              checked={selected === "option2"}
+              onChange={() => setSelected("option2")}
+            >
+              <CustomRadioTAInput />
+              <CustomRadioTALabel>Option 2</CustomRadioTALabel>
+            </CustomRadioTA>
           </div>
         </div>
 

@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { PaginationTA } from '@true-armor/atoms-ta';
+import { PaginationTA, PaginationTAControls } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const PaginationDoc = () => {
-  const importCode = `import { PaginationTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<PaginationTA length={100} rowsCount={10} page={0} setPage={(p)=>{}} />`;
+  const [currentPage, setCurrentPage] = useState(1);
+  const importCode = `import { PaginationTA, PaginationTAControls } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `const [currentPage, setCurrentPage] = useState(1);
+
+<PaginationTA 
+  totalPages={10} 
+  initialPage={currentPage}
+  onChange={(page) => setCurrentPage(page)}
+/>
+
+<PaginationTA totalPages={10} initialPage={1} onChange={(page) => console.log(page)}>
+  <PaginationTAControls previousLabel="<" nextLabel=">" />
+</PaginationTA>`;
 
   const props = [
     { name: 'length', type: 'number', description: 'Total items' },
@@ -28,8 +39,15 @@ const PaginationDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <PaginationTA length={100} rowsCount={10} page={0} setPage={()=>{}} />
+          <div className="p-4 border rounded-lg bg-white space-y-4">
+            <PaginationTA 
+              totalPages={10} 
+              initialPage={currentPage}
+              onChange={(page) => setCurrentPage(page)}
+            />
+            <PaginationTA totalPages={10} initialPage={1} onChange={(page) => console.log(page)}>
+              <PaginationTAControls previousLabel="<" nextLabel=">" />
+            </PaginationTA>
           </div>
         </div>
 

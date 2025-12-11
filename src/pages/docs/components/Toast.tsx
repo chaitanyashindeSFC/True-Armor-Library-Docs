@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToastTA ,ButtonTA} from '@true-armor/atoms-ta';
+import { ToastTA, ToastTAItem, ToastTAIcon, ToastTAMessage, ToastTAProgress, ButtonTA } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -15,11 +15,22 @@ interface PropsRow {
 const ToastComponent = () => {
   const [data, setData] = useState<Array<{ id: number | string; type?: string; message: string }>>([]);
 
-  const showToast = () => {
+  const showToast = (type: string) => {
     const id = Date.now();
-    setData([{ id, type: 'success', message: 'This is a toast notification' }]);
+    setData((prev) => [
+      ...prev,
+      {
+        id,
+        type,
+        message: type === 'success'
+          ? 'Operation completed successfully'
+          : 'Something went wrong',
+      },
+    ]);
     // clear after 3s to mimic typical toast lifecycle
-    setTimeout(() => setData([]), 3000);
+    setTimeout(() => {
+      setData((prev) => prev.filter((t) => t.id !== id));
+    }, 3000);
   };
 
   const propsData: PropsRow[] = [
@@ -46,15 +57,32 @@ const ToastComponent = () => {
     }
   ];
 
-  const importCode = `import { ToastTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { ToastTA, ToastTAItem, ToastTAIcon, ToastTAMessage, ToastTAProgress } from '@true-armor/ta-atoms2-public';`;
 
-  const usageCode = `import { ToastTA } from '@true-armor/atoms-ta';
+  const usageCode = `const [toasts, setToasts] = useState([]);
 
-export default function ToastExample() {
-  return (
-    <ToastTA data={[{ id: 1, type: 'success', message: 'Saved' }]} />
-  );
-}`;
+const showToast = (type) => {
+  setToasts((prev) => [
+    ...prev,
+    {
+      id: Date.now(),
+      type,
+      message: type === "success"
+        ? "Operation completed successfully"
+        : "Something went wrong",
+    },
+  ]);
+};
+
+<ToastTA data={toasts} position="top-right" duration={3000}>
+  {toasts.map((toast) => (
+    <ToastTAItem toast={toast} key={toast.id}>
+      <ToastTAIcon />
+      <ToastTAMessage />
+      <ToastTAProgress />
+    </ToastTAItem>
+  ))}
+</ToastTA>`;
 
   return (
     <DocsLayout>
@@ -79,17 +107,27 @@ export default function ToastExample() {
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
         <div className="p-4 border rounded-lg bg-white">
-         <div className='h-10'>
-           <ToastTA data={data}  top-0 right-0/>
-         </div>
-          <br />
-
-          <ButtonTA
-           
-            onClick={showToast}
-          >
-            Show Toast
-          </ButtonTA>
+          <div className="space-x-2 mb-4">
+            <ButtonTA
+              label="Show Success Toast"
+              buttonType="primary"
+              onClick={() => showToast('success')}
+            />
+            <ButtonTA
+              label="Show Error Toast"
+              buttonType="secondary"
+              onClick={() => showToast('error')}
+            />
+          </div>
+          <ToastTA data={data} position="top-right" duration={3000}>
+            {data.map((toast) => (
+              <ToastTAItem toast={toast} key={toast.id}>
+                <ToastTAIcon />
+                <ToastTAMessage />
+                <ToastTAProgress />
+              </ToastTAItem>
+            ))}
+          </ToastTA>
         </div>
       </div>
 

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { DatePickerTA, CalendarTA } from '@true-armor/atoms-ta';
+import { DatePickerTA, DatePickerTAInput, DatePickerTACalendar } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const DatePickerDoc = () => {
-  const importCode = `import { DatePickerTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<DatePickerTA />`;
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const importCode = `import { DatePickerTA, DatePickerTAInput, DatePickerTACalendar } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+<DatePickerTA initialDate={selectedDate || new Date()} onDateChange={(date) => setSelectedDate(date)}>
+  <DatePickerTAInput placeholder="Select date" />
+  <DatePickerTACalendar />
+</DatePickerTA>`;
 
   const props = [
     { name: 'value', type: 'Date', description: 'Selected date' },
@@ -29,7 +35,10 @@ const DatePickerDoc = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <DatePickerTA />
+            <DatePickerTA initialDate={selectedDate || new Date()} onDateChange={(date) => setSelectedDate(date)}>
+              <DatePickerTAInput placeholder="Select date" />
+              <DatePickerTACalendar />
+            </DatePickerTA>
           </div>
         </div>
 

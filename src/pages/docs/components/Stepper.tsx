@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { StepperTA } from '@true-armor/atoms-ta';
+import { StepperTA, StepperTAStep, ButtonTA } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
-import { ButtonTA } from '@true-armor/atoms-ta';
+
 const StepperDoc = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const steps = ['Account', 'Details', 'Review'];
+  const [currentStep, setCurrentStep] = useState(2);
 
-  const importCode = `import { StepperTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `const [currentStep, setCurrentStep] = useState(1);
-const steps = ['Account', 'Details', 'Review'];
+  const importCode = `import { StepperTA, StepperTAStep } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `const [currentStep, setCurrentStep] = useState(2);
 
-<StepperTA 
-  steps={steps}
-  currentStep={currentStep}
-  onStepClick={setCurrentStep}
-/>`;
+<StepperTA currentStep={currentStep} color="#173B4E">
+  <StepperTAStep label="Step 1" />
+  <StepperTAStep label="Step 2" />
+  <StepperTAStep label="Step 3" />
+  <StepperTAStep label="Step 4" />
+</StepperTA>`;
 
   const props = [
-    { name: 'steps', type: 'string[]', description: 'Array of step titles' },
-    { name: 'currentStep', type: 'number', description: 'Current active step (1-based index)' },
-    { name: 'onStepClick', type: '(step: number) => void', description: 'Callback when a step is clicked' },
-    { name: 'disabled', type: 'boolean', description: 'Whether the stepper is disabled', optional: true },
+    { name: 'currentStep', type: 'number', description: 'Current active step index' },
+    { name: 'color', type: 'string', description: 'Color theme for the stepper' },
+    { name: 'children', type: 'StepperTAStep[]', description: 'Step components' },
   ];
 
   return (
@@ -41,27 +39,24 @@ const steps = ['Account', 'Details', 'Review'];
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <StepperTA 
-              steps={steps}
-              currentStep={currentStep}
-              onStepClick={setCurrentStep}
-            />
-            <div className="mt-4 space-x-2 flex">
+          <div className="p-4 border rounded-lg bg-white space-y-4">
+            <StepperTA currentStep={currentStep} color="#173B4E">
+              <StepperTAStep label="Step 1" />
+              <StepperTAStep label="Step 2" />
+              <StepperTAStep label="Step 3" />
+              <StepperTAStep label="Step 4" />
+            </StepperTA>
+            <div className="flex gap-2">
               <ButtonTA 
-                onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
-              
-                disabled={currentStep === 1}
-              >
-                Previous
-              </ButtonTA>
+                label="Previous" 
+                buttonType="secondary" 
+                onClick={() => setCurrentStep(Math.max(0, currentStep - 1))} 
+              />
               <ButtonTA 
-                onClick={() => setCurrentStep(Math.min(steps.length, currentStep + 1))}
-              
-                disabled={currentStep === steps.length}
-              >
-                Next
-              </ButtonTA>
+                label="Next" 
+                buttonType="secondary" 
+                onClick={() => setCurrentStep(Math.min(3, currentStep + 1))} 
+              />
             </div>
           </div>
         </div>

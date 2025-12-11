@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import DocsLayout from "@/components/DocsLayout";
-import { CheckboxTA } from "@true-armor/atoms-ta";
+import { CheckboxTA, CheckboxTAInput, CheckboxTALabel } from "@true-armor/ta-atoms2-public";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 
 const Checkboxes = () => {
-  const importCode = `import { CheckboxTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<CheckboxTA label="Accept" checked={true} onChange={(v)=>console.log(v)} />`;
+  const importCode = `import { CheckboxTA, CheckboxTAInput, CheckboxTALabel } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `<CheckboxTA checked={isChecked} onChange={setIsChecked}>
+  <CheckboxTAInput />
+  <CheckboxTALabel>Accept terms and conditions</CheckboxTALabel>
+</CheckboxTA>`;
 
   const props = [
     { name: "label", type: "string", description: "Label text" },
@@ -38,8 +41,10 @@ const Checkboxes = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white flex flex-col gap-3">
-            <CheckboxTA label="Accept Terms" checked={checked} onChange={setChecked} />
-
+            <CheckboxTA checked={checked} onChange={setChecked}>
+              <CheckboxTAInput />
+              <CheckboxTALabel>Accept terms and conditions</CheckboxTALabel>
+            </CheckboxTA>
           </div>
         </div>
 

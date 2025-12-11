@@ -4,18 +4,21 @@ import {
   BreadCrumbTA,
   BreadCrumbItem,
   BreadCrumbSeperator
-} from '@true-armor/atoms-ta';
+} from '@true-armor/ta-atoms2-public';
+import { Home, ShoppingBag, Package, ChevronRight } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Breadcrumbs = () => {
-  const importCode = `import { BreadCrumbTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<BreadCrumbTA 
-  items={[
-    { label: 'Home', href: '/' },
-    { label: 'Components', href: '/docs/components', active: true }
-  ]}
-/>`;
+  const importCode = `import { BreadCrumbTA, BreadCrumbItem, BreadCrumbSeperator } from '@true-armor/ta-atoms2-public';
+import { Home, ChevronRight } from 'lucide-react';`;
+  const usageCode = `<BreadCrumbTA>
+  <BreadCrumbItem label="Home" icon={Home} href="/" />
+  <BreadCrumbSeperator icon={ChevronRight} />
+  <BreadCrumbItem label="Products" icon={ShoppingBag} href="/products" />
+  <BreadCrumbSeperator icon={ChevronRight} />
+  <BreadCrumbItem label="Current" icon={Package} href="#" active />
+</BreadCrumbTA>`;
 
   const props = [
     { 
@@ -42,13 +45,13 @@ const Breadcrumbs = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <div className="p-4 border rounded-lg bg-white">
-              <BreadCrumbTA>
-                <BreadCrumbItem label="Home" href="/" />
-                <BreadCrumbSeperator />
-                <BreadCrumbItem label="Components" href="/docs/components" active />
-              </BreadCrumbTA>
-            </div>
+            <BreadCrumbTA>
+              <BreadCrumbItem label="Home" icon={Home} href="/" />
+              <BreadCrumbSeperator icon={ChevronRight} />
+              <BreadCrumbItem label="Products" icon={ShoppingBag} href="/products" />
+              <BreadCrumbSeperator icon={ChevronRight} />
+              <BreadCrumbItem label="Current" icon={Package} href="#" active />
+            </BreadCrumbTA>
           </div>
         </div>
 

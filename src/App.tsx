@@ -34,6 +34,8 @@ import TableDoc from "@/pages/docs/components/Table";
 import Theming from "./pages/docs/Theming";
 
 import '@true-armor/atoms-ta/styles.css';
+import "@true-armor/ta-atoms2-public/styles.css";
+
 
 const TabsDoc = lazy(() => import("./pages/docs/components/Tabs"));
 const ToastDoc = lazy(() => import("./pages/docs/components/Toast"));

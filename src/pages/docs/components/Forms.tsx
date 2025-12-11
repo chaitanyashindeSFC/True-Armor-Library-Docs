@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from '@true-armor/atoms-ta';
+import { 
+  InputTA, InputTALabel, InputTAField,
+  CheckboxTA, CheckboxTAInput, CheckboxTALabel,
+  FileInputTA, FileInputTADropzone, FileInputTAIcon, FileInputTAText, FileInputTAButton,
+  DatePickerTA, DatePickerTAInput, DatePickerTACalendar
+} from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Forms = () => {
   const [name, setName] = useState('');
   const [agree, setAgree] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const importCode = `import { InputTA, CheckboxTA, FileInputTA, DatePickerTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { 
+  InputTA, InputTALabel, InputTAField,
+  CheckboxTA, CheckboxTAInput, CheckboxTALabel,
+  DatePickerTA, DatePickerTAInput, DatePickerTACalendar
+} from '@true-armor/ta-atoms2-public';`;
 
   const usageCode = `export default function FormDemo(){
-  const [name,setName] = useState('');
+  const [name, setName] = useState('');
+  const [agree, setAgree] = useState(false);
+  
   return (
     <div>
-      <InputTA id="name" label="Name" value={name} onChange={(e)=>setName(e.target.value)} />
-      <CheckboxTA label="Agree" checked={true} onChange={()=>{}} />
+      <InputTA id="name" multiline={false}>
+        <InputTALabel>Name</InputTALabel>
+        <InputTAField 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+        />
+      </InputTA>
+      <CheckboxTA checked={agree} onChange={setAgree}>
+        <CheckboxTAInput />
+        <CheckboxTALabel>Agree to terms</CheckboxTALabel>
+      </CheckboxTA>
     </div>
   );
 }`;
@@ -42,10 +63,31 @@ const Forms = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white space-y-4">
-            <InputTA id="name" label="Name" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
-            <CheckboxTA label="Agree to terms" checked={agree} onChange={(v:boolean)=>setAgree(v)} />
-            <FileInputTA />
-            <DatePickerTA />
+            <InputTA id="name" multiline={false}>
+              <InputTALabel>Name</InputTALabel>
+              <InputTAField 
+                value={name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
+              />
+            </InputTA>
+            <CheckboxTA checked={agree} onChange={setAgree}>
+              <CheckboxTAInput />
+              <CheckboxTALabel>Agree to terms</CheckboxTALabel>
+            </CheckboxTA>
+            <FileInputTA accept="image/*">
+              <FileInputTADropzone>
+                <FileInputTAIcon />
+                <FileInputTAText 
+                  mainText="Click to upload" 
+                  subText="SVG, PNG, JPG or GIF (MAX. 800x400px)" 
+                />
+                <FileInputTAButton label="Browse File" />
+              </FileInputTADropzone>
+            </FileInputTA>
+            <DatePickerTA initialDate={selectedDate || new Date()} onDateChange={(date) => setSelectedDate(date)}>
+              <DatePickerTAInput placeholder="Select date" />
+              <DatePickerTACalendar />
+            </DatePickerTA>
           </div>
         </div>
 

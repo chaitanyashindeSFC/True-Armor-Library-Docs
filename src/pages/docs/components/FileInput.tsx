@@ -1,12 +1,21 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { FileInputTA } from '@true-armor/atoms-ta';
+import { FileInputTA, FileInputTADropzone, FileInputTAIcon, FileInputTAText, FileInputTAButton } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const FileInput = () => {
-  const importCode = `import { FileInputTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<FileInputTA />`;
+  const importCode = `import { FileInputTA, FileInputTADropzone, FileInputTAIcon, FileInputTAText, FileInputTAButton } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `<FileInputTA accept="image/*">
+  <FileInputTADropzone>
+    <FileInputTAIcon />
+    <FileInputTAText 
+      mainText="Click to upload" 
+      subText="SVG, PNG, JPG or GIF (MAX. 800x400px)" 
+    />
+    <FileInputTAButton label="Browse File" />
+  </FileInputTADropzone>
+</FileInputTA>`;
 
   const props = [
     { name: 'onChange', type: 'function', description: 'File change handler' },
@@ -29,7 +38,16 @@ const FileInput = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <FileInputTA />
+            <FileInputTA accept="image/*">
+              <FileInputTADropzone>
+                <FileInputTAIcon />
+                <FileInputTAText 
+                  mainText="Click to upload" 
+                  subText="SVG, PNG, JPG or GIF (MAX. 800x400px)" 
+                />
+                <FileInputTAButton label="Browse File" />
+              </FileInputTADropzone>
+            </FileInputTA>
           </div>
         </div>
 

@@ -1,37 +1,39 @@
 import React from "react";
 import DocsLayout from "@/components/DocsLayout";
-import { ContextMenuTA } from "@true-armor/atoms-ta";
+import { ContextMenuTA, ContextMenuTAItem } from "@true-armor/ta-atoms2-public";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
-import { FileText, Share2 } from "lucide-react";
+import { Edit2Icon, Trash2, Share2 } from "lucide-react";
 
 const ContextMenu = () => {
-  const importCode = `import { ContextMenuTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { ContextMenuTA, ContextMenuTAItem } from '@true-armor/ta-atoms2-public';
+import { Edit2Icon, Trash2, Share2 } from 'lucide-react';`;
 
-  const usageCode = `<ContextMenuTA
-  type=""
-  customItems={[
-    { label: "Duplicate", icon: <FileText size={16} /> },
-    { label: "Pin", icon: <Share2 size={16} /> },
-  ]}
-  onSelect={(label) => console.log('Selected:', label)}
-/>`;
+  const usageCode = `<ContextMenuTA onSelect={(item) => console.log("Clicked:", item)}>
+  <ContextMenuTAItem 
+    label="Edit" 
+    icon={Edit2Icon} 
+  />
+  <ContextMenuTAItem 
+    label="Delete" 
+    icon={Trash2} 
+  />
+  <ContextMenuTAItem 
+    label="Share" 
+    icon={Share2} 
+  />
+</ContextMenuTA>`;
 
   const props = [
     {
-      name: "type",
-      type: `"action" | "download" | "archived"`,
-      description: "Defines which type of menu to render.",
-    },
-    {
-      name: "customItems",
-      type: "Array<{ label: string; icon?: React.ReactNode }>",
-      description: "Optional array of custom menu items to extend or replace defaults.",
-    },
-    {
       name: "onSelect",
-      type: "(label: string) => void",
+      type: "(item: string) => void",
       description: "Callback function triggered when a menu item is clicked.",
+    },
+    {
+      name: "children",
+      type: "ContextMenuTAItem[]",
+      description: "Menu item components.",
     },
   ];
 
@@ -42,9 +44,8 @@ const ContextMenu = () => {
         <div>
           <h1 className="text-3xl font-bold mb-4">ContextMenuTA</h1>
           <p className="text-gray-600 mb-4">
-            A flexible and reusable context menu component for TrueArmor UI.  
-            Supports predefined menu types (<code>action</code>, <code>download</code>, <code>archived</code>)  
-            and fully custom menu items.
+            A flexible and reusable context menu component for TrueArmor UI  
+            built with compound components for clean composition.
           </p>
         </div>
 
@@ -63,14 +64,20 @@ const ContextMenu = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <ContextMenuTA
-            
-              customItems={[
-                { label: "Duplicate", icon: <FileText size={16} /> },
-                { label: "Pin", icon: <Share2 size={16} /> },
-              ]}
-              onSelect={(label) => alert(`Selected: ${label}`)}
-            />
+            <ContextMenuTA onSelect={(item) => alert(`Clicked: ${item}`)}>
+              <ContextMenuTAItem 
+                label="Edit" 
+                icon={Edit2Icon} 
+              />
+              <ContextMenuTAItem 
+                label="Delete" 
+                icon={Trash2} 
+              />
+              <ContextMenuTAItem 
+                label="Share" 
+                icon={Share2} 
+              />
+            </ContextMenuTA>
           </div>
         </div>
 

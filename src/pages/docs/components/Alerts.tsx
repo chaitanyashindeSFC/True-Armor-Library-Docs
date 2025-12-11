@@ -1,30 +1,68 @@
 import { Link } from "react-router-dom";
 import {
   AlertTA,
-  
-} from "@true-armor/atoms-ta";
-import { ButtonTA } from "@true-armor/atoms-ta";
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@true-armor/ta-atoms2-public";
+import { ButtonTA } from "@true-armor/ta-atoms2-public";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
 
 const Alerts = () => {
-  const basicExample = `import { AlertTA } from "@true-armor/atoms-ta";
+  const basicExample = `import { AlertTA, Alert, AlertIcon, AlertTitle, AlertDescription } from "@true-armor/atoms-ta";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 function App() {
   return (
-    <AlertTA
-      type="info"
-      title="Heads up!"
-      message="You can add components to your app using the CLI."
-    />
+    <>
+      <AlertTA
+        type="success"
+        title="Success!"
+        message="Operation completed successfully"
+        icon={<CheckCircle2 size={20} />}
+      />
+      
+      <Alert type="error">
+        <AlertCircle size={20} className="text-red-600" />
+        <div>
+          <AlertTitle type="error">Error</AlertTitle>
+          <AlertDescription>Something went wrong</AlertDescription>
+        </div>
+      </Alert>
+    </>
   );
 }`;
 
-  const variantsExample = `<AlertTA type="success" title="Success" message="This is a success alert." />
-<AlertTA type="error" title="Error" message="Something went wrong!" />
-<AlertTA type="warning" title="Warning" message="Please review your information." />
-<AlertTA type="info" title="Info" message="This is an informational alert." />`;
+  const variantsExample = `<AlertTA 
+  type="success" 
+  title="Success" 
+  message="This is a success alert." 
+  icon={<CheckCircle2 size={20} />}
+/>
+
+<Alert type="error">
+  <AlertCircle size={20} className="text-red-600" />
+  <div>
+    <AlertTitle type="error">Error</AlertTitle>
+    <AlertDescription>Something went wrong!</AlertDescription>
+  </div>
+</Alert>
+
+<AlertTA 
+  type="warning" 
+  title="Warning" 
+  message="Please review your information." 
+/>
+
+<AlertTA 
+  type="info" 
+  title="Info" 
+  message="This is an informational alert." 
+/>`;
 
   const alertProps = [
     {
@@ -79,10 +117,18 @@ function App() {
 
             <div className="mt-6 space-y-4">
               <AlertTA
-                type="info"
-                title="Heads up!"
-                message="You can add components to your app using the CLI."
+                type="success"
+                title="Success!"
+                message="Operation completed successfully"
+                icon={<CheckCircle2 size={20} />} 
               />
+              <Alert type="error">
+                <AlertCircle size={20} className="text-red-600" />
+                <div>
+                  <AlertTitle type="error">Error</AlertTitle>
+                  <AlertDescription>Something went wrong</AlertDescription>
+                </div>
+              </Alert>
             </div>
           </div>
 
@@ -104,12 +150,15 @@ function App() {
                 type="success"
                 title="Success"
                 message="Your changes have been saved successfully!"
+                icon={<CheckCircle2 size={20} />}
               />
-              <AlertTA
-                type="error"
-                title="Error"
-                message="Something went wrong! Please try again."
-              />
+              <Alert type="error">
+                <AlertCircle size={20} className="text-red-600" />
+                <div>
+                  <AlertTitle type="error">Error</AlertTitle>
+                  <AlertDescription>Something went wrong! Please try again.</AlertDescription>
+                </div>
+              </Alert>
               <AlertTA
                 type="warning"
                 title="Warning"

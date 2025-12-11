@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ModalTA, ButtonTA } from '@true-armor/atoms-ta';
+import { ModalTA, ModalTAHeader, ModalTABody, ModalTAFooter, ButtonTA } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Modals = () => {
   const [open, setOpen] = useState(false);
 
-  const importCode = `import { ModalTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { ModalTA, ModalTAHeader, ModalTABody, ModalTAFooter, ButtonTA } from '@true-armor/ta-atoms2-public';`;
 
   const usageCode = `export default function ModalDemo(){
-  const [open,setOpen] = useState(true);
-  return <ModalTA open={open} onClose={()=>setOpen(false)} content={{ title: 'Title', body: <p>Body</p> }} />;
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <ButtonTA label="Open Modal" buttonType="primary" onClick={() => setOpen(true)} />
+      <ModalTA open={open} onClose={() => setOpen(false)}>
+        <ModalTAHeader>Confirm Action</ModalTAHeader>
+        <ModalTABody>
+          <p>Are you sure you want to proceed?</p>
+        </ModalTABody>
+        <ModalTAFooter>
+          <ButtonTA label="Cancel" buttonType="secondary" onClick={() => setOpen(false)} />
+          <ButtonTA label="Confirm" buttonType="primary" onClick={() => setOpen(false)} />
+        </ModalTAFooter>
+      </ModalTA>
+    </>
+  );
 }`;
 
   const props = [
@@ -37,8 +51,17 @@ const Modals = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
           <div className="p-4 border rounded-lg bg-white">
-            <ButtonTA label="Open Modal" onClick={() => setOpen(true)} />
-            <ModalTA open={open} onClose={() => setOpen(false)} content={{ title: 'Hello', body: <p>This is modal content</p> }} />
+            <ButtonTA label="Open Modal" buttonType="primary" onClick={() => setOpen(true)} />
+            <ModalTA open={open} onClose={() => setOpen(false)}>
+              <ModalTAHeader>Confirm Action</ModalTAHeader>
+              <ModalTABody>
+                <p>Are you sure you want to proceed?</p>
+              </ModalTABody>
+              <ModalTAFooter>
+                <ButtonTA label="Cancel" buttonType="secondary" onClick={() => setOpen(false)} />
+                <ButtonTA label="Confirm" buttonType="primary" onClick={() => setOpen(false)} />
+              </ModalTAFooter>
+            </ModalTA>
           </div>
         </div>
 

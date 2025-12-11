@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { RangeSliderTA } from '@true-armor/atoms-ta';
+import { RangeSliderTA, RangeSliderTAInput, RangeSliderTATooltip, RangeSliderTAMarks } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const RangeSliderDoc = () => {
-  const importCode = `import { RangeSliderTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<RangeSliderTA defaultValue={50} />`;
+  const [sliderValue, setSliderValue] = useState(50);
+  const importCode = `import { RangeSliderTA, RangeSliderTAInput, RangeSliderTATooltip, RangeSliderTAMarks } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `const [sliderValue, setSliderValue] = useState(50);
+
+// Controlled mode with value and onChange
+<RangeSliderTA 
+  min={0} 
+  max={100} 
+  value={sliderValue} 
+  step={1} 
+  onChange={(val) => setSliderValue(val)}
+>
+  <RangeSliderTATooltip />
+  <RangeSliderTAInput />
+  <RangeSliderTAMarks />
+</RangeSliderTA>
+
+// Uncontrolled mode
+<RangeSliderTA min={0} max={100} defaultValue={50} step={1}>
+  <RangeSliderTATooltip />
+  <RangeSliderTAInput />
+  <RangeSliderTAMarks />
+</RangeSliderTA>`;
 
   const props = [
     { name: 'defaultValue', type: 'number', description: 'Default value' },
@@ -28,8 +49,27 @@ const RangeSliderDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <RangeSliderTA defaultValue={50} max={100} />
+          <div className="p-4 border rounded-lg bg-white space-y-4">
+            <p className="text-sm text-gray-600">Current value: {sliderValue}</p>
+            <RangeSliderTA 
+              min={0} 
+              max={100} 
+              value={sliderValue} 
+              step={1} 
+              onChange={(val) => setSliderValue(val)}
+            >
+              <RangeSliderTATooltip />
+              <RangeSliderTAInput />
+              <RangeSliderTAMarks />
+            </RangeSliderTA>
+            <div className="mt-4">
+              <p className="text-sm text-gray-600 mb-2">Uncontrolled mode:</p>
+              <RangeSliderTA min={0} max={100} defaultValue={50} step={1}>
+                <RangeSliderTATooltip />
+                <RangeSliderTAInput />
+                <RangeSliderTAMarks />
+              </RangeSliderTA>
+            </div>
           </div>
         </div>
 

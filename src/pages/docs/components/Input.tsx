@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { InputTA } from '@true-armor/atoms-ta';
+import { InputTA, InputTALabel, InputTAField } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const InputDoc = () => {
-  const [value, setValue] = useState('');
-  const importCode = `import { InputTA } from '@true-armor/atoms-ta';`;
-  const usageCode = `<InputTA id="name" label="Name" value={value} onChange={(e)=>setValue(e.target.value)} />`;
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const importCode = `import { InputTA, InputTALabel, InputTAField } from '@true-armor/ta-atoms2-public';`;
+  const usageCode = `const [email, setEmail] = useState('');
+
+<InputTA id="email" multiline={false}>
+  <InputTALabel>Email Address</InputTALabel>
+  <InputTAField 
+    type="email" 
+    placeholder="Enter your email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+  />
+</InputTA>
+
+<InputTA id="message" multiline={true} rows={5}>
+  <InputTALabel>Message</InputTALabel>
+  <InputTAField 
+    placeholder="Enter your message"
+    value={message}
+    onChange={(e) => setMessage(e.target.value)}
+  />
+</InputTA>`;
 
   const props = [
     { name: 'id', type: 'string', description: 'Input id' },
@@ -30,8 +50,24 @@ const InputDoc = () => {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <InputTA id="name" label="Name" value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setValue(e.target.value)} />
+          <div className="p-4 border rounded-lg bg-white space-y-4">
+            <InputTA id="email" multiline={false}>
+              <InputTALabel>Email Address</InputTALabel>
+              <InputTAField 
+                type="email" 
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </InputTA>
+            <InputTA id="message" multiline={true} rows={5}>
+              <InputTALabel>Message</InputTALabel>
+              <InputTAField 
+                placeholder="Enter your message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </InputTA>
           </div>
         </div>
 

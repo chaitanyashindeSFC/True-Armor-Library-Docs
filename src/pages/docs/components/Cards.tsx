@@ -1,14 +1,14 @@
 import React from "react";
 import DocsLayout from "@/components/DocsLayout";
-import {
-  CardTA,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardLeftIcon,
-  CardRightIcon,
-} from "@true-armor/atoms-ta";
+// import {
+//   CardTA,
+//   CardTitle,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+//   CardLeftIcon,
+//   CardRightIcon,
+// } from "@true-armor/ta-atoms2-public";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import { FolderGit2, CheckCircle } from "lucide-react";
@@ -22,7 +22,7 @@ const Cards = () => {
   CardFooter,
   CardLeftIcon,
   CardRightIcon
-} from '@true-armor/atoms-ta';`;
+} from '@true-armor/ta-atoms2-public';`;
 
   const usageCode = `<CardTA className="border rounded-lg shadow-sm bg-white">
   <CardTitle>Repository</CardTitle>
@@ -64,8 +64,8 @@ const Cards = () => {
         </div>
 
         {/* Usage */}
-        <section>
-          <h2 className="text-2xl font-bold mb-4">Usage</h2>
+        {/* <section> */}
+          {/* <h2 className="text-2xl font-bold mb-4">Usage</h2>
           <CodeBlock code={importCode} language="tsx" />
           <CodeBlock code={usageCode} language="tsx" />
 
@@ -84,7 +84,7 @@ const Cards = () => {
         </section>
 
         {/* With Icons */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-bold mb-4">With Icons</h2>
           <CodeBlock code={withIconsCode} language="tsx" />
 
@@ -103,7 +103,8 @@ const Cards = () => {
               <CardRightIcon icon={CheckCircle} isVisible />
             </CardTA>
           </div>
-        </section>
+        </section> */}
+
 
         {/* Props */}
         <section>

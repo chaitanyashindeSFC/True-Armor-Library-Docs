@@ -1,5 +1,7 @@
+import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { TabsTA } from '@true-armor/atoms-ta';
+import { TabsTA, TabsTAList, TabsTAItem, TabsTAPanel } from '@true-armor/ta-atoms2-public';
+import { FolderIcon, ArchiveIcon } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -10,51 +12,42 @@ interface PropsRow {
   description: string;
 }
 
-const tabs = [
-  {
-    title: 'Tab 1',
-    content: 'Content for Tab 1'
-  },
-  {
-    title: 'Tab 2',
-    content: 'Content for Tab 2'
-  }
-];
-
 const TabsComponent = () => {
   const propsData: PropsRow[] = [
     {
-      name: 'tabs',
-      type: 'TabItem[]',
-      default: '[]',
-      description: 'Array of tab items containing title and content'
-    },
-    {
       name: 'variant',
-      type: '"default" | "pills" | "underline"',
-      default: '"default"',
+      type: '"primary" | "tertiary"',
+      default: '"primary"',
       description: 'Visual style variant of the tabs'
     },
     {
       name: 'color',
       type: 'string',
-      default: '"primary"',
+      default: 'undefined',
       description: 'Color theme for the active tab indicator'
     }
   ];
 
-  const importCode = `import { TabsTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { TabsTA, TabsTAList, TabsTAItem, TabsTAPanel } from '@true-armor/ta-atoms2-public';
+import { FolderIcon, ArchiveIcon } from 'lucide-react';`;
 
-  const usageCode = `import { TabsTA } from '@true-armor/atoms-ta';
+  const usageCode = `<TabsTA variant="tertiary" color="#173B4E">
+  <TabsTAList>
+    <TabsTAItem index={0} title="My Files" icon={FolderIcon} />
+    <TabsTAItem index={1} title="Archived" icon={ArchiveIcon} />
+  </TabsTAList>
+  <TabsTAPanel index={0}>Content for My Files</TabsTAPanel>
+  <TabsTAPanel index={1}>Content for Archived</TabsTAPanel>
+</TabsTA>
 
-const tabs = [
-  { title: 'One', content: 'First' },
-  { title: 'Two', content: 'Second' }
-];
-
-export default function TabsExample() {
-  return <TabsTA tabs={tabs} />;
-}`;
+<TabsTA variant="primary">
+  <TabsTAList>
+    <TabsTAItem index={0} title="My Files" />
+    <TabsTAItem index={1} title="Archived" />
+  </TabsTAList>
+  <TabsTAPanel index={0}>Content for My Files</TabsTAPanel>
+  <TabsTAPanel index={1}>Content for Archived</TabsTAPanel>
+</TabsTA>`;
 
   return (
     <DocsLayout>
@@ -78,8 +71,23 @@ export default function TabsExample() {
 
         <div>
           <h2 className="text-2xl font-bold mb-4">Preview</h2>
-          <div className="p-4 border rounded-lg bg-white">
-            <TabsTA tabs={tabs} />
+          <div className="p-4 border rounded-lg bg-white space-y-6">
+            <TabsTA variant="tertiary" color="#173B4E">
+              <TabsTAList>
+                <TabsTAItem index={0} title="My Files" icon={FolderIcon as React.ComponentType<{ size?: number; className?: string }>} />
+                <TabsTAItem index={1} title="Archived" icon={ArchiveIcon as React.ComponentType<{ size?: number; className?: string }>} />
+              </TabsTAList>
+              <TabsTAPanel index={0}>Content for My Files</TabsTAPanel>
+              <TabsTAPanel index={1}>Content for Archived</TabsTAPanel>
+            </TabsTA>
+            <TabsTA variant="primary">
+              <TabsTAList>
+                <TabsTAItem index={0} title="My Files" />
+                <TabsTAItem index={1} title="Archived" />
+              </TabsTAList>
+              <TabsTAPanel index={0}>Content for My Files</TabsTAPanel>
+              <TabsTAPanel index={1}>Content for Archived</TabsTAPanel>
+            </TabsTA>
           </div>
         </div>
 

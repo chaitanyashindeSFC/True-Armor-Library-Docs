@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToggleSwitchTA } from '@true-armor/atoms-ta';
+import { ToggleSwitchTA, ToggleSwitchTAControl, ToggleSwitchTALabel, ToggleSwitchTADescription } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -47,17 +47,18 @@ const ToggleSwitchComponent = () => {
     }
   ];
 
-  const importCode = `import { ToggleSwitchTA } from '@true-armor/atoms-ta';`;
+  const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
+  const importCode = `import { ToggleSwitchTA, ToggleSwitchTAControl, ToggleSwitchTALabel, ToggleSwitchTADescription } from '@true-armor/ta-atoms2-public';`;
 
-  const usageCode = `import { ToggleSwitchTA } from '@true-armor/atoms-ta';
-import React from 'react';
+  const usageCode = `const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
 
-export default function ToggleSwitchExample() {
-  const [checked, setChecked] = React.useState(false);
-  return (
-    <ToggleSwitchTA checked={checked} onChange={(v) => setChecked(v)} label="Notifications" />
-  );
-}`;
+<ToggleSwitchTA checked={isSwitchEnabled} onChange={setIsSwitchEnabled} size="md">
+  <ToggleSwitchTAControl />
+  <div>
+    <ToggleSwitchTALabel>Enable notifications</ToggleSwitchTALabel>
+    <ToggleSwitchTADescription>Receive email notifications</ToggleSwitchTADescription>
+  </div>
+</ToggleSwitchTA>`;
 
   return (
     <DocsLayout>
@@ -82,22 +83,13 @@ export default function ToggleSwitchExample() {
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
         <div className="p-4 border rounded-lg bg-white space-y-4">
-          <ToggleSwitchTA
-            label="Small Toggle"
-            size="sm"
-          />
-          <ToggleSwitchTA
-            label="Default Toggle"
-            description="With description"
-          />
-          <ToggleSwitchTA
-            label="Large Toggle"
-            size="lg"
-          />
-          <ToggleSwitchTA
-            label="Disabled Toggle"
-            disabled
-          />
+          <ToggleSwitchTA checked={isSwitchEnabled} onChange={setIsSwitchEnabled} size="md">
+            <ToggleSwitchTAControl />
+            <div>
+              <ToggleSwitchTALabel>Enable notifications</ToggleSwitchTALabel>
+              <ToggleSwitchTADescription>Receive email notifications</ToggleSwitchTADescription>
+            </div>
+          </ToggleSwitchTA>
         </div>
       </div>
 

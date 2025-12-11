@@ -1,6 +1,6 @@
 import React from 'react';
 import DocsLayout from '@/components/DocsLayout';
-import { ToolTipTA } from '@true-armor/atoms-ta';
+import { ToolTipTA, ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper } from '@true-armor/ta-atoms2-public';
 import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
@@ -44,17 +44,29 @@ const TooltipComponent = () => {
     }
   ];
 
-  const importCode = `import { ToolTipTA } from '@true-armor/atoms-ta';`;
+  const importCode = `import { ToolTipTA, ToolTipTAContent, ToolTipTAArrow, ToolTipTAWrapper } from '@true-armor/ta-atoms2-public';`;
 
-  const usageCode = `import { ToolTipTA } from '@true-armor/atoms-ta';
+  const usageCode = `// Dark Tooltip
+<ToolTipTA type="dark">
+  <button className="px-4 py-2 bg-gray-900 text-white rounded">
+    Hover me (Dark)
+  </button>
+  <ToolTipTAWrapper>
+    <ToolTipTAContent>This is a dark tooltip</ToolTipTAContent>
+    <ToolTipTAArrow />
+  </ToolTipTAWrapper>
+</ToolTipTA>
 
-export default function TooltipExample() {
-  return (
-    <ToolTipTA content="This is a tooltip">
-      <button>Hover me</button>
-    </ToolTipTA>
-  );
-}`;
+// Light Tooltip
+<ToolTipTA type="light">
+  <button className="px-4 py-2 bg-gray-500 text-white rounded">
+    Hover me (Light)
+  </button>
+  <ToolTipTAWrapper>
+    <ToolTipTAContent>This is a light tooltip</ToolTipTAContent>
+    <ToolTipTAArrow />
+  </ToolTipTAWrapper>
+</ToolTipTA>`;
 
   return (
     <DocsLayout>
@@ -78,29 +90,25 @@ export default function TooltipExample() {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Preview</h2>
-        <div className="p-4 border rounded-lg bg-white space-x-4">
-          <ToolTipTA content="Default tooltip">
-            <button className="px-4 py-2 bg-primary text-white rounded-md">
-              Hover me
+        <div className="p-4 border rounded-lg bg-white space-x-6">
+          <ToolTipTA type="dark">
+            <button className="px-4 py-2 bg-gray-900 text-white rounded">
+              Hover me (Dark)
             </button>
+            <ToolTipTAWrapper>
+              <ToolTipTAContent>This is a dark tooltip</ToolTipTAContent>
+              <ToolTipTAArrow />
+            </ToolTipTAWrapper>
           </ToolTipTA>
           
-          <ToolTipTA 
-            content="Side tooltip" 
-            side="right"
-          >
-            <button className="px-4 py-2 bg-primary text-white rounded-md">
-              Right side
+          <ToolTipTA type="light">
+            <button className="px-4 py-2 bg-gray-500 text-white rounded">
+              Hover me (Light)
             </button>
-          </ToolTipTA>
-
-          <ToolTipTA 
-            content="Success tooltip" 
-            variant="success"
-          >
-            <button className="px-4 py-2 bg-success text-white rounded-md">
-              Success
-            </button>
+            <ToolTipTAWrapper>
+              <ToolTipTAContent>This is a light tooltip</ToolTipTAContent>
+              <ToolTipTAArrow />
+            </ToolTipTAWrapper>
           </ToolTipTA>
         </div>
       </div>

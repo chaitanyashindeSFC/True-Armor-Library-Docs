@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
-import { ButtonTA } from "@true-armor/atoms-ta"; // ✅ TrueArmor UI button
+import { 
+  ButtonTA, 
+  ButtonTAIcon, 
+  ButtonTALabel, 
+  ButtonTAContent 
+} from "@true-armor/ta-atoms2-public";
 import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 import DocsLayout from "@/components/DocsLayout";
-import { Download, ArrowRight } from "lucide-react"; // ✅ Correct Lucide React imports
+import { Download, ArrowRight } from "lucide-react";
 
 const Buttons = () => {
   // ✅ Example Code Snippets
-  const basicExample = `import { ButtonTA } from "@true-armor/atoms-ta";
+  const basicExample = `import { ButtonTA } from "@true-armor/ta-atoms2-public";
 
 function App() {
   return (
@@ -20,19 +25,29 @@ function App() {
   );
 }`;
 
-  const iconsExample = `import { ArrowRight, Download } from "lucide-react";
+  const iconsExample = `import { ButtonTA, ButtonTAIcon, ButtonTALabel, ButtonTAContent } from "@true-armor/ta-atoms2-public";
+import { ArrowRight, Download } from "lucide-react";
 
+// Old pattern with label and icon props (backward compatible)
 <ButtonTA 
   label="Download" 
   icon={<Download size={16} />} 
-  iconPosition="before" 
+  buttonType="primary" 
 />
 
-<ButtonTA 
-  label="Continue" 
-  icon={<ArrowRight size={16} />} 
-  iconPosition="after" 
-/>`;
+// New compound pattern
+<ButtonTA buttonType="secondary">
+  <ButtonTAContent>
+    <ButtonTAIcon>
+      <Download size={16} />
+    </ButtonTAIcon>
+    <ButtonTALabel>Download</ButtonTALabel>
+  </ButtonTAContent>
+</ButtonTA>
+
+<ButtonTA buttonType="tertiary">
+  <ButtonTALabel>Continue</ButtonTALabel>
+</ButtonTA>`;
 
   // ✅ Props Table Data
   const buttonProps = [
@@ -139,13 +154,19 @@ function App() {
               <ButtonTA
                 label="Download"
                 icon={<Download size={18} />}
-                iconPosition="before"
+                buttonType="primary"
               />
-              <ButtonTA
-                label="Continue"
-                icon={<ArrowRight size={18} />}
-                iconPosition="after"
-              />
+              <ButtonTA buttonType="secondary">
+                <ButtonTAContent>
+                  <ButtonTAIcon>
+                    <Download size={18} />
+                  </ButtonTAIcon>
+                  <ButtonTALabel>Download</ButtonTALabel>
+                </ButtonTAContent>
+              </ButtonTA>
+              <ButtonTA buttonType="tertiary">
+                <ButtonTALabel>Continue</ButtonTALabel>
+              </ButtonTA>
             </div>
           </div>
         </section>

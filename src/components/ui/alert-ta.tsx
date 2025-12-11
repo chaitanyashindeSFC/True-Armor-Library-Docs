@@ -31,14 +31,15 @@ interface AlertTAProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title
   title?: React.ReactNode;
   description?: React.ReactNode;
   message?: React.ReactNode; // Alternative to description
+  icon?: React.ReactNode; // Custom icon override
 }
 
-export function AlertTA({ className, title, description, message, type, ...props }: AlertTAProps) {
-  const Icon = icons[type || "info"];
+export function AlertTA({ className, title, description, message, type, icon, ...props }: AlertTAProps) {
+  const DefaultIcon = icons[type || "info"];
   
   return (
     <div className={cn(alertVariants({ type }), className)} {...props}>
-      <Icon className="h-5 w-5" />
+      {icon || <DefaultIcon className="h-5 w-5" />}
       <div className="flex flex-col gap-1">
         {title && <h5 className="font-medium leading-none tracking-tight">{title}</h5>}
         {(description || message) && (
@@ -52,17 +53,21 @@ export function AlertTA({ className, title, description, message, type, ...props
 }
 
 // Named exports for composition
-export function Alert({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("relative rounded-lg border p-4", className)} {...props} />;
+export function Alert({ className, type, ...props }: React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>) {
+  return <div className={cn(alertVariants({ type }), className)} {...props} />;
 }
 
-export function AlertIcon({ className, type = "info" }: { className?: string; type?: keyof typeof icons }) {
-  const Icon = icons[type];
+export function AlertIcon({ className, type, children, ...props }: { className?: string; type?: keyof typeof icons; children?: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) {
+  if (children) {
+    return <div className={className} {...props}>{children}</div>;
+  }
+  const Icon = icons[type || "info"];
   return <Icon className={cn("h-5 w-5", className)} />;
 }
 
-export function AlertTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-  return <h5 className={cn("font-medium leading-none tracking-tight", className)} {...props} />;
+export function AlertTitle({ className, type, ...props }: React.HTMLAttributes<HTMLHeadingElement> & { type?: keyof typeof icons }) {
+  const typeStyles = type === "error" ? "text-red-600" : type === "warning" ? "text-yellow-600" : type === "success" ? "text-green-600" : "";
+  return <h5 className={cn("font-medium leading-none tracking-tight", typeStyles, className)} {...props} />;
 }
 
 export function AlertDescription({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
