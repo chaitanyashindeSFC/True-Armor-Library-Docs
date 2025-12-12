@@ -51,7 +51,8 @@ const Forms = () => {
       <div className="flex flex-col gap-8">
         <div>
           <h1 className="text-3xl font-bold mb-4">Forms</h1>
-          <p className="text-gray-600 mb-4">The package provides input primitives (InputTA, CheckboxTA, FileInputTA, DatePickerTA). There is no single `FormTA` composite — compose primitives to build forms.</p>
+           <p className="text-green-500 mb-4 text-sm bg-green-100 p-2 rounded-md">Please Refer <a href="https://formik.org/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">https://formik.org/</a> for more information on how to use forms with Formik. to use the forms with Formik, you can use the Formik component and pass the formik props to the formik component.</p>
+          <p className="text-red-600 mb-4 text-sm bg-red-100 p-2 rounded-md">The package provides input primitives (InputTA, CheckboxTA, FileInputTA, DatePickerTA). There is no single `FormTA` composite — compose primitives to build forms.</p>
         </div>
 
         <div>

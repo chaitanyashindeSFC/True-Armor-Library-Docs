@@ -162,7 +162,7 @@ import { UserCircle2, Users, Shield, TrendingUp } from "lucide-react";`;
     {
       name: "color",
       type: "string",
-      default: '"#6B7280"',
+        default: '"#6B7280"',
       description: "Color of both instances and label text.",
     },
   ];
