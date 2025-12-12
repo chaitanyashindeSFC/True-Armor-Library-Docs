@@ -48,7 +48,10 @@ const navSections: NavSection[] = [
       { label: "Toast", path: "/docs/components/toast" },
       { label: "Toggle Switch", path: "/docs/components/toggleswitch" },
       { label: "Tooltip", path: "/docs/components/tooltip" },
-      {label: "No Data Page", path: "/docs/components/no-data-page"}
+      {label: "No Data Page", path: "/docs/components/no-data-page"},
+      {label: "Grouped Multi Select", path: "/docs/components/grouped-multi-select"},
+      {label: "Loader", path: "/docs/components/loader"},
+      {label: "Pagination", path: "/docs/components/pagination"}
     ],
   },
 ];

@@ -34,7 +34,8 @@ import TableDoc from "@/pages/docs/components/Table";
 import Theming from "./pages/docs/Theming";
 import NoDataPage from "./pages/docs/components/NoDataPage";
 import '@true-armor/ta-atoms2-public/styles.css';
-
+import GroupedMultiSelect from "./pages/docs/components/GroupedMultiSelect";
+import CircularLoader from "./pages/docs/components/CircularLoader";
 
 const TabsDoc = lazy(() => import("./pages/docs/components/Tabs"));
 const ToastDoc = lazy(() => import("./pages/docs/components/Toast"));
@@ -78,7 +79,10 @@ const App = () => (
           <Route path="/docs/components/stepper" element={<StepperDoc />} />
           <Route path="/docs/components/table" element={<TableDoc />} />
           <Route path="/docs/components/no-data-page" element={<NoDataPage />} />
-          <Route
+          <Route path="/docs/components/grouped-multi-select" element={<GroupedMultiSelect />} />
+          <Route path="/docs/components/loader" element={<CircularLoader />} />
+          
+          <Route  
             path="/docs/components/tabs"
             element={
               <Suspense fallback={<div>Loading...</div>}>
