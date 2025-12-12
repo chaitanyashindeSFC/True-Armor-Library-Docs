@@ -7,7 +7,7 @@ import PropsTable from '@/components/PropsTable';
 const StepperDoc = () => {
   const [currentStep, setCurrentStep] = useState(2);
 
-  const importCode = `import { StepperTA, StepperTAStep } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { StepperTA, StepperTAStep } from '@true-armor/atoms';`;
   const usageCode = `const [currentStep, setCurrentStep] = useState(2);
 
 <StepperTA currentStep={currentStep} color="#173B4E">

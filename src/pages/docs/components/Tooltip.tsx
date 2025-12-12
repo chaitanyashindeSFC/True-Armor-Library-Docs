@@ -34,7 +34,7 @@ const TooltipComponent = () => {
     },
   ];
 
-  const importCode = `import { ToolTipTA } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ToolTipTA } from '@true-armor/atoms';`;
 
   const usageCode = `// Dark Tooltip
 <ToolTipTA type="dark" content="This is a dark tooltip">

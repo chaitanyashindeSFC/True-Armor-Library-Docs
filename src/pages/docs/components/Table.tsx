@@ -62,7 +62,7 @@ const TableDoc = () => {
     { key: "actions", label: "Action", header: "Action" },
   ];
 
-  const importCode = `import { TableTA } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { TableTA } from '@true-armor/atoms';`;
   const usageCode = `const tableData = [
     {
       agentName: "Customer Support BOT",

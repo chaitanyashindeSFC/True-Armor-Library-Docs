@@ -5,7 +5,7 @@ import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const FileInput = () => {
-  const importCode = `import { FileInputTA, FileInputTADropzone, FileInputTAIcon, FileInputTAText, FileInputTAButton } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { FileInputTA, FileInputTADropzone, FileInputTAIcon, FileInputTAText, FileInputTAButton } from '@true-armor/atoms';`;
   const usageCode = `<FileInputTA accept="image/*">
   <FileInputTADropzone>
     <FileInputTAIcon />

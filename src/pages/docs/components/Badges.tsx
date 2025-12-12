@@ -6,7 +6,7 @@ import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Badges = () => {
-  const importCode = `import { BadgeTA } from '@true-armor/ta-atoms2-public';
+  const importCode = `import { BadgeTA } from '@true-armor/atoms';
 import { CheckCircle, Star } from 'lucide-react';`;
 
   const usageCode = `// Simple Badge with Icon (left position - default)

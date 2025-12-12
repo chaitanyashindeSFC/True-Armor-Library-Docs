@@ -12,7 +12,7 @@ import { Download, ArrowRight } from "lucide-react";
 
 const Buttons = () => {
   // ✅ Example Code Snippets
-  const basicExample = `import { ButtonTA } from "@true-armor/ta-atoms2-public";
+  const basicExample = `import { ButtonTA } from "@true-armor/atoms";
 
 function App() {
   return (

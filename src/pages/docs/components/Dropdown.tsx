@@ -19,7 +19,7 @@ const Dropdown = () => {
   DropDownTASearch,
   DropDownTAItem,
   DropDownTAEmpty
-} from "@true-armor/ta-atoms2-public";
+} from "@true-armor/atoms";
 import { useState } from "react";`;
   
   const usageCode = `const [isOpen, setIsOpen] = useState(false);

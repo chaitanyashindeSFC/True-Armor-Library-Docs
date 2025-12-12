@@ -6,7 +6,7 @@ import PropsTable from '@/components/PropsTable';
 
 const RangeSliderDoc = () => {
   const [sliderValue, setSliderValue] = useState(50);
-  const importCode = `import { RangeSliderTA, RangeSliderTAInput, RangeSliderTATooltip, RangeSliderTAMarks } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { RangeSliderTA, RangeSliderTAInput, RangeSliderTATooltip, RangeSliderTAMarks } from '@true-armor/atoms';`;
   const usageCode = `const [sliderValue, setSliderValue] = useState(50);
 
 // Controlled mode with value and onChange

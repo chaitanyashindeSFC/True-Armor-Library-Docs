@@ -10,7 +10,7 @@ import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Breadcrumbs = () => {
-  const importCode = `import { BreadCrumbTA, BreadCrumbItem, BreadCrumbSeperator } from '@true-armor/ta-atoms2-public';
+  const importCode = `import { BreadCrumbTA, BreadCrumbItem, BreadCrumbSeperator } from '@true-armor/atoms';
 import { Home, ChevronRight } from 'lucide-react';`;
   const usageCode = `<BreadCrumbTA>
   <BreadCrumbItem label="Home" icon={Home} href="/" />

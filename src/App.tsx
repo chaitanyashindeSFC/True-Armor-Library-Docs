@@ -32,7 +32,7 @@ import RangeSliderDoc from "@/pages/docs/components/RangeSlider";
 import StepperDoc from "@/pages/docs/components/Stepper";
 import TableDoc from "@/pages/docs/components/Table";
 import Theming from "./pages/docs/Theming";
-
+import NoDataPage from "./pages/docs/components/NoDataPage";
 import '@true-armor/ta-atoms2-public/styles.css';
 
 
@@ -77,6 +77,7 @@ const App = () => (
           <Route path="/docs/components/rangeslider" element={<RangeSliderDoc />} />
           <Route path="/docs/components/stepper" element={<StepperDoc />} />
           <Route path="/docs/components/table" element={<TableDoc />} />
+          <Route path="/docs/components/no-data-page" element={<NoDataPage />} />
           <Route
             path="/docs/components/tabs"
             element={

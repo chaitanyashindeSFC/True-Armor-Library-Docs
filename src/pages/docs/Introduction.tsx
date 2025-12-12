@@ -5,10 +5,10 @@ import CodeBlock from "@/components/CodeBlock";
 import DocsLayout from "@/components/DocsLayout";
 
 const Introduction = () => {
-  const installCode = `npm install @true-armor/ta-atoms2-public`;
+  const installCode = `npm install @true-armor/atoms`;
 
-  const importCode = `import { ButtonTA, AlertTA, CardTA } from "@true-armor/ta-atoms2-public";
-import "@true-armor/ta-atoms2-public/styles.css";
+  const importCode = `import { ButtonTA, AlertTA, CardTA } from "@true-armor/atoms";
+import "@true-armor/atoms/styles.css";
 
 function App() {
   return (

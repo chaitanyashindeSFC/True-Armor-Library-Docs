@@ -107,7 +107,7 @@ const ToastComponent = () => {
     },
   ];
 
-  const importCode = `import { ToastTA, ToastTAItem, ToastTAIcon, ToastTAMessage, ToastTAProgress } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ToastTA, ToastTAItem, ToastTAIcon, ToastTAMessage, ToastTAProgress } from '@true-armor/atoms';`;
 
   const usageCode = `const [toasts, setToasts] = useState([]);
 

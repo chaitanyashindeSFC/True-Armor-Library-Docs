@@ -6,7 +6,7 @@ import PropsTable from '@/components/PropsTable';
 
 const ProgressDoc = () => {
   const [progress, setProgress] = useState(75);
-  const importCode = `import { ProgressBarTA, ProgressBarTALabel, ProgressBarTABar } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ProgressBarTA, ProgressBarTALabel, ProgressBarTABar } from '@true-armor/atoms';`;
   const usageCode = `const [progress, setProgress] = useState(75);
 
 <ProgressBarTA progress={progress} height="h-2">

@@ -18,7 +18,7 @@ const Forms = () => {
   InputTA, InputTALabel, InputTAField,
   CheckboxTA, CheckboxTAInput, CheckboxTALabel,
   DatePickerTA, DatePickerTAInput, DatePickerTACalendar
-} from '@true-armor/ta-atoms2-public';`;
+} from '@true-armor/atoms';`;
 
   const usageCode = `export default function FormDemo(){
   const [name, setName] = useState('');

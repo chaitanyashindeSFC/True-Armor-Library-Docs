@@ -77,7 +77,7 @@ const ToggleSwitchComponent = () => {
   ];
 
   const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
-  const importCode = `import { ToggleSwitchTA, ToggleSwitchTAControl, ToggleSwitchTALabel, ToggleSwitchTADescription } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ToggleSwitchTA, ToggleSwitchTAControl, ToggleSwitchTALabel, ToggleSwitchTADescription } from '@true-armor/atoms';`;
 
   const usageCode = `const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
 

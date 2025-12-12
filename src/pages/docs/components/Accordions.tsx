@@ -6,7 +6,7 @@ import CodeBlock from '@/components/CodeBlock';
 import PropsTable from '@/components/PropsTable';
 
 const Accordions = () => {
-  const importCode = `import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { AccordionTA, AccordionPanel, AccordionTitle, AccordionContent } from '@true-armor/atoms';`;
 
   const usageCode = `
 <AccordionTA>

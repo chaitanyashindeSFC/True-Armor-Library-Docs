@@ -7,7 +7,7 @@ import PropsTable from '@/components/PropsTable';
 
 const RadioDoc = () => {
   const [selected, setSelected] = useState("option1");
-  const importCode = `import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/ta-atoms2-public';
+  const importCode = `import { CustomRadioTA, CustomRadioTAInput, CustomRadioTALabel } from '@true-armor/atoms';
 import { useState } from 'react';`;
   
   const simpleUsageCode = `// Simple Usage (Recommended)

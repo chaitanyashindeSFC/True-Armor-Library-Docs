@@ -83,7 +83,7 @@ const TabsComponent = () => {
     },
   ];
 
-  const importCode = `import { TabsTA, TabsTAList, TabsTAItem, TabsTAPanel } from '@true-armor/ta-atoms2-public';
+  const importCode = `import { TabsTA, TabsTAList, TabsTAItem, TabsTAPanel } from '@true-armor/atoms';
 import { FolderIcon, ArchiveIcon } from 'lucide-react';`;
 
   const usageCode = `<TabsTA variant="tertiary" color="#173B4E">

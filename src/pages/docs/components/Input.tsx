@@ -11,7 +11,7 @@ const InputDoc = () => {
   const importCode = `import {
   InputTA,
 InputTALabel, InputTAField,InputTAError
-} from "@true-armor/ta-atoms2-public';`;
+} from "@true-armor/atoms";`;
   const usageCode = `  const [email, setEmail] = useState("");
   const [emailWithIcon, setEmailWithIcon] = useState("");
   const [emailWithError, setEmailWithError] = useState("");

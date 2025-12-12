@@ -17,7 +17,7 @@ const Quickstart = () => {
   const [count, setCount] = useState(0);
 
   const quickExample = `import React, { useState } from "react";
-import { ButtonTA } from "@true-armor/ta-atoms2-public";
+import { ButtonTA } from "@true-armor/atoms";
 
 function CounterExample() {
   const [count, setCount] = useState(0);
@@ -33,7 +33,7 @@ function CounterExample() {
   );
 }`;
 
-  const alertExample = `import { AlertTA } from "@true-armor/ta-atoms2-public";
+  const alertExample = `import { AlertTA } from "@true-armor/atoms";
 
 function AlertExample() {
   return (

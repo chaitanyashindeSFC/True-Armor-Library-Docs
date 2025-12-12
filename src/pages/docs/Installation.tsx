@@ -5,9 +5,9 @@ import CodeBlock from "@/components/CodeBlock";
 import DocsLayout from "@/components/DocsLayout";
 
 const Installation = () => {
-  const npmInstall = `npm install @true-armor/ta-atoms2-public`;
-  const yarnInstall = `yarn add @true-armor/ta-atoms2-public`;
-  const pnpmInstall = `pnpm add @true-armor/ta-atoms2-public`;
+  const npmInstall = `npm install @true-armor/atoms`;
+  const yarnInstall = `yarn add @true-armor/atoms`;
+  const pnpmInstall = `pnpm add @true-armor/atoms`;
 
   const tailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@true-armor/ta-atoms2-public/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@true-armor/atoms/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -24,7 +24,7 @@ module.exports = {
 };
 `;
 
-const cssConfig = `import "@true-armor/ta-atoms2-public/styles.css";`;
+const cssConfig = `import "@true-armor/atoms/styles.css";`;
 
   const tsConfig = `// tsconfig.json
 {

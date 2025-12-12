@@ -6,7 +6,7 @@ import PropsTable from '@/components/PropsTable';
 
 const PaginationDoc = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const importCode = `import { PaginationTA, PaginationTAControls } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { PaginationTA, PaginationTAControls } from '@true-armor/atoms';`;
   const usageCode = `const [currentPage, setCurrentPage] = useState(1);
 
 <PaginationTA 

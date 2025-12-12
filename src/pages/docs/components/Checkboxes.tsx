@@ -5,7 +5,7 @@ import CodeBlock from "@/components/CodeBlock";
 import PropsTable from "@/components/PropsTable";
 
 const Checkboxes = () => {
-  const importCode = `import { CheckboxTA, CheckboxTAInput, CheckboxTALabel } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { CheckboxTA, CheckboxTAInput, CheckboxTALabel } from '@true-armor/atoms';`;
   const usageCode = `<CheckboxTA checked={isChecked} onChange={setIsChecked}>
   <CheckboxTAInput />
   <CheckboxTALabel>Accept terms and conditions</CheckboxTALabel>

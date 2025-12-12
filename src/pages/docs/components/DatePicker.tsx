@@ -6,7 +6,7 @@ import PropsTable from '@/components/PropsTable';
 
 const DatePickerDoc = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const importCode = `import { DatePickerTA, DatePickerTAInput, DatePickerTACalendar } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { DatePickerTA, DatePickerTAInput, DatePickerTACalendar } from '@true-armor/atoms';`;
   const usageCode = `const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
 <DatePickerTA initialDate={selectedDate || new Date()} onDateChange={(date) => setSelectedDate(date)}>

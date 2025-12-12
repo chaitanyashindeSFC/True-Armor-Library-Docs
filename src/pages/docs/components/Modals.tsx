@@ -7,7 +7,7 @@ import PropsTable from '@/components/PropsTable';
 const Modals = () => {
   const [open, setOpen] = useState(false);
 
-  const importCode = `import { ModalTA, ModalTAHeader, ModalTABody, ModalTAFooter, ButtonTA } from '@true-armor/ta-atoms2-public';`;
+  const importCode = `import { ModalTA, ModalTAHeader, ModalTABody, ModalTAFooter, ButtonTA } from '@true-armor/atoms';`;
 
   const usageCode = `export default function ModalDemo(){
   const [open, setOpen] = useState(false);

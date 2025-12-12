@@ -14,7 +14,7 @@ const Cards = () => {
   CardTAContent, 
   CardTATitle, 
   CardTABody 
-} from "@true-armor/ta-atoms2-public";
+} from "@true-armor/atoms";
 import { UserCircle2, Users, Shield, TrendingUp } from "lucide-react";`;
 
   const basicUsageCode = `// Basic card with all components

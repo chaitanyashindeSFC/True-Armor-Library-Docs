@@ -48,6 +48,7 @@ const navSections: NavSection[] = [
       { label: "Toast", path: "/docs/components/toast" },
       { label: "Toggle Switch", path: "/docs/components/toggleswitch" },
       { label: "Tooltip", path: "/docs/components/tooltip" },
+      {label: "No Data Page", path: "/docs/components/no-data-page"}
     ],
   },
 ];

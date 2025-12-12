@@ -6,7 +6,7 @@ import PropsTable from "@/components/PropsTable";
 import { Edit2Icon, Trash2, Share2 } from "lucide-react";
 
 const ContextMenu = () => {
-  const importCode = `import { ContextMenuTA, ContextMenuTAItem } from '@true-armor/ta-atoms2-public';
+  const importCode = `import { ContextMenuTA, ContextMenuTAItem } from '@true-armor/atoms';
 import { Edit2Icon, Trash2, Share2 } from 'lucide-react';`;
 
   const usageCode = `<ContextMenuTA onSelect={(item) => console.log("Clicked:", item)}>
